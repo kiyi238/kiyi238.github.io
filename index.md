@@ -27,6 +27,7 @@ layout: default
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
     <button id="markinglistf" onclick="addFields()">GO</button><br>
+    <div id="containerf"></div>
 
   </div>
   <div class="column">Mweor acting as <b>Male<b>:<br><br>
