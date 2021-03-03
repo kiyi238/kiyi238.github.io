@@ -42,6 +42,6 @@ function calculateMwitt() {
   }
 
   container = document.getElementById("containert");
-  container.appendChild(femaleBreed);
+  container.appendChild(document.createTextNode(femaleBreed));
   container.appendChild(document.createElement("br"));
 }
