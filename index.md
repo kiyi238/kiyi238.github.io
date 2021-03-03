@@ -19,14 +19,14 @@ layout: default
       <option value="ice">Ice</option>
     </select><br>
   <label for="base">Base Color: #</label>
-    <input type="text" id="base" name="base"><br>
+    <input type="text" id="base" name="base" maxlength="6" size="6"><br>
   <label for="secondary">Secondary Color: #</label>
-    <input type="text" id="secondary" name="secondary"><br>
+    <input type="text" id="secondary" name="secondary" maxlength="6" size="6"><br>
   <label for="tertiary">Tertiary Color: #</label>
-    <input type="text" id="tertiary" name="tertiary"><br><br>
+    <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlf" name="mlf" maxlength="2" size="2"><br>
-    <a href="#" id="markinglistf" onclick="addFields()">Create Markings Feilds</a><br><br>
+    <button id="markinglistf" onclick="addFields()">GO</button><br>
     <div id="containerf"/>
 
   </div>
