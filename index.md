@@ -30,7 +30,7 @@ layout: default
     <div id="containerf"></div>
   </div>
 
-  <div class="column">Mweor acting as <b>Male<b>:<br><br>
+  <div class="column">Mweor acting as <b>Male</b>:<br><br>
 
   <label for="breed">Breed: </label>
     <select name="breed" id="breed">
