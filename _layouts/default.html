@@ -15,7 +15,7 @@
                 // Append a node with a random text
                 container.appendChild(document.createTextNode("Marking " + (i+1) + ": "));
                 // Create an <input> element, set its type and name attributes
-                var marking = document.createElement("marking");
+                var marking = document.createElement("select");
                 marking.type = "select";
                 marking.name = "marking" + i;
                 marking.add("Agouti Tabby");
@@ -116,13 +116,13 @@
                 marking.add("Zebra");
                 container.appendChild(marking);
                 container.appendChild(document.createTextNode(" #"));
-                var color = document.createElement("color");
+                var color = document.createElement("text");
                 color.type = "text";
                 color.name = "color" + i;
                 color.maxlength = "6";
                 color.size = "6";
                 container.appendChild(color);
-                var opacity = document.createElement("opacity");
+                var opacity = document.createElement("select");
                 opacity.type = "select";
                 opacity.name = "opacity" + i;
                 opacity.maxlength = "2";
