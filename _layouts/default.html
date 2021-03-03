@@ -2,11 +2,11 @@
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
     <script type='text/javascript'>
-        function addFields(){
+        function addFields(num, con){
             // Number of inputs to create
-            var number = document.getElementById("mlf").value;
+            var number = document.getElementById(num).value;
             // Container <div> where dynamic content will be placed
-            var container = document.getElementById("containerf");
+            var container = document.getElementById(con);
             // Clear previous contents of the container
             while (container.hasChildNodes()) {
                 container.removeChild(container.lastChild);
