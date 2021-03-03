@@ -167,7 +167,7 @@ a {
   }
 
   @include large {
-    max-width: 64rem;
+    max-width: 128rem;
     padding: 2rem 6rem;
     margin: 0 auto;
     font-size: 1.1rem;
@@ -182,7 +182,7 @@ a {
     padding: 2rem 1rem;
     font-size: 1rem;
   }
-  
+
   kbd {
     background-color: #fafbfc;
     border: 1px solid #c6cbd1;
