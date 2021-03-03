@@ -56,5 +56,6 @@ layout: default
     <button id="markinglistm" onclick="addFields('mlm','containerm');">GO</button><br>
     <div id="containerm"></div>
   </div>
-  <button id="predict" onclick="calculator()">PREDICT</button><br>
 </div>
+
+<button id="predict" onclick="calculator()">PREDICT</button><br>
