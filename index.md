@@ -26,7 +26,7 @@ layout: default
     <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
-    <button id="markinglistf" onclick="addFields('mlf','containerf');">GO</button><br>
+    <button id="markinglistf" onclick="addFields("mlf","containerf")">GO</button><br>
     <div id="containerf"></div>
   </div>
 
@@ -53,9 +53,15 @@ layout: default
     <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
-    <button id="markinglistm" onclick="addFields('mlm','containerm');">GO</button><br>
+    <button id="markinglistm" onclick="addFields("mlm","containerm")">GO</button><br>
     <div id="containerm"></div>
   </div>
 </div>
 
-<button id="predict" onclick="calculator()">PREDICT</button><br>
+<div class="container">
+  <div class="center">
+
+  <button id="predict" onclick="calculator()">PREDICT</button><br>
+
+  </div>
+</div>
