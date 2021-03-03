@@ -21,7 +21,7 @@
             while (container.hasChildNodes()) {
                 container.removeChild(container.lastChild);
             }
-            for (i=0;i<number;i++){
+            for (var i = 0; i < number; i++){
                 // Append a node with a random text
                 container.appendChild(document.createTextNode("Marking " + (i+1) + ": "));
                 // Create an <input> element, set its type and name attributes
@@ -29,30 +29,32 @@
                 marking.type = "select";
                 marking.name = "marking" + i;
 
-                for (var i = 0; i < markingList.length; i++) {
+                for (var j = 0; j < markingList.length; j++) {
                   var mark = document.createElement("option");
-                  mark.value = markingList[i];
-                  mark.text = markingList[i];
+                  mark.value = markingList[j];
+                  mark.text = markingList[j];
                   marking.appendChild(mark);
                 }
 
                 container.appendChild(marking);
                 container.appendChild(document.createTextNode(" #"));
+
                 var color = document.createElement("input");
                 color.type = "text";
                 color.name = "color" + i;
                 color.maxlength = "6";
                 color.size = "6";
                 container.appendChild(color);
+
                 var opacity = document.createElement("select");
                 opacity.type = "select";
                 opacity.name = "opacity" + i;
 
-                for (var i = 0; i < opacityList.length; i++) {
+                for (var n = 0; n < opacityList.length; n++) {
                   var opac = document.createElement("option");
-                  opac.value = opacityList[i];
-                  opac.text = opacityList[i];
-                  opac.appendChild(opac);
+                  opac.value = opacityList[n];
+                  opac.text = opacityList[n];
+                  opacity.appendChild(opac);
                 }
 
                 container.appendChild(opacity);
