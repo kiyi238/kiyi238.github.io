@@ -25,9 +25,8 @@ layout: default
   <label for="tertiary">Tertiary Color: #</label>
     <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
-    <input type="text" id="mlf" name="mlf" maxlength="2" size="2"><br>
+    <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
     <button id="markinglistf" onclick="addFields()">GO</button><br>
-    <div id="containerf"/>
 
   </div>
   <div class="column">Mweor acting as <b>Male<b>:<br><br>
