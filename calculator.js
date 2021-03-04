@@ -330,7 +330,7 @@ function calculateMarkings(f, m) {
           if(gene == "aa" || gene == "Aa") {
             mwittMarkings.push(f.markings[m]);
             mwittMarkingGenes.push(gene);
-            mwittMarkingColors.push(blendColors(f.markingColors[m]);
+            mwittMarkingColors.push(f.markingColors[m]);
             mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m], f.markingOpacities[m]));
           }
         }
