@@ -279,7 +279,7 @@ function calculateMarkings(f, m) {
   var len = 0;
   if(f.markings && m.markings) { Math.max(f.markings.length,m.markings.length); }
   else if(f.markings) { f.markings.length; }
-  else { m.markings.length; }
+  else if(m.markings) { m.markings.length; }
 
   for(var m = 0; m < len; m++) {
     //FEMALE TURN.
