@@ -47,6 +47,7 @@ function calculateMwitt() {
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("" + mwittMarkingOpacities.toString()));
   container.appendChild(document.createElement("br"));
+  console.log(mwittMarkings[0]);
 }
 
 function calculateBreed(f, m) {
