@@ -39,14 +39,6 @@ function calculateMwitt() {
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("" + mwittEye));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittMarkings.toString()));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittMarkingGenes.toString()));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittMarkingColors.toString()));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittMarkingOpacities.toString()));
-  container.appendChild(document.createElement("br"));
   console.log(mwittMarkings[0]);
 }
 
@@ -306,6 +298,10 @@ function calculateMarkings(f, m) {
             mwittMarkingGenes.push(gene);
             mwittMarkingColors.push(blendColors(f.markingColors[m], m.markingColors[i], 0.5));
             mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],m.markingOpacities[i]));
+            console.log(calculateGene(mwittMarkings[m]));
+            console.log(calculateGene(mwittMarkingGenes[m]));
+            console.log(calculateGene(mwittMarkingColors[m]));
+            console.log(calculateGene(mwittMarkingOpacities[m]));
           }
           m.markings[i] = "null"
         }
@@ -387,8 +383,7 @@ function calculateMarkings(f, m) {
       }
     }
   }
-  var array = [mwittMarkings, mwittMarkingGenes, mwittMarkingColors, mwittMarkingOpacities];
-  return array;
+  return [mwittMarkings, mwittMarkingGenes, mwittMarkingColors, mwittMarkingOpacities];
 }
 
 function calculateGene(fGene, mGene) {
