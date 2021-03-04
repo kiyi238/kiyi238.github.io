@@ -276,8 +276,12 @@ function calculateMarkings(f, m) {
   var mwittMarkingGenes = [];
   var mwittMarkingColors = [];
   var mwittMarkingOpacities = [];
+  var len = 0;
+  if(f.markings && m.markings) { Math.max(f.markings.length,m.markings.length); }
+  else if(f.markings) { f.markings.length; }
+  else { m.markings.length; }
 
-  for(var m = 0; m < Math.max(f.markings.length,m.markings.length); m++) {
+  for(var m = 0; m < len; m++) {
     //FEMALE TURN.
     //If next marking exists.
     if(f.markings[m]) {
