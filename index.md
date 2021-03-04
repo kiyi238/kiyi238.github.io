@@ -33,7 +33,7 @@ layout: default
   <div class="column">Mweor acting as <b>Male</b>:<br><br>
 
   <label for="breedm">Breed: </label>
-    <select name="breedm" id="breed">
+    <select name="breedm" id="breedm">
       <option value="lesser">Lesser</option>
       <option value="longhair">Longhair</option>
       <option value="munchkin">Munchkin</option>
