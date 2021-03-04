@@ -24,6 +24,8 @@ layout: default
     <input type="text" id="secondary" name="secondary" maxlength="6" size="6"><br>
   <label for="tertiaryl">Tertiary Color: #</label>
     <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
+  <label for="eyel">Eye Color: #</label>
+    <input type="text" id="eye" name="eye" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
     <button id="markinglistf" onclick="addFields('mlf','containerf');">GO</button><br>
@@ -51,6 +53,8 @@ layout: default
     <input type="text" id="secondarym" name="secondarym" maxlength="6" size="6"><br>
   <label for="tertiaryml">Tertiary Color: #</label>
     <input type="text" id="tertiarym" name="tertiarym" maxlength="6" size="6"><br><br>
+  <label for="eyel">Eye Color: #</label>
+      <input type="text" id="eyem" name="eyem" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
     <button id="markinglistm" onclick="addFields('mlm','containerm');">GO</button><br>
@@ -60,7 +64,7 @@ layout: default
 
 <div class="container">
   <div class="center">
-
+  <br>
   <button id="predict" onclick="calculateMwitt()">PREDICT</button><br>
   <div id="containert"></div>
   </div>
