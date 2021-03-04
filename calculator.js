@@ -254,7 +254,7 @@ function calculateMarkings(f, m) {
   var mwittMarkingColors = [];
   var mwittMarkingOpacities = [];
 
-  for(var m = 0; m < max(f.markings.length,m.markings.length); m++) {
+  for(var m = 0; m < Math.max(f.markings.length,m.markings.length); m++) {
     if(!recessives.includes(f.markings[m])) {
       if(m.markings.includes(f.markings[m])) {
         var i = m.markings.indexOf(f.markings[m]);
@@ -307,8 +307,8 @@ function calculateGene(fGene, mGene) {
 }
 
 function calculateMarkingOpacitiy(fOp, mOp) {
-  var biggest = max(parseInt(fOp), parseInt(mOp));
-  var smallest = min(parseInt(fOp), parseInt(mOp));
+  var biggest = Math.max(parseInt(fOp), parseInt(mOp));
+  var smallest = Math.min(parseInt(fOp), parseInt(mOp));
   var index = smallest;
   var array = [];
   if (index - 10 > 0) { array.push(index - 10); }
