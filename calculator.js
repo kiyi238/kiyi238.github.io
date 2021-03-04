@@ -254,7 +254,7 @@ function calculateMarkings(f, m) {
   var mwittMarkingColors = [];
   var mwittMarkingOpacities = [];
 
-  for(var m = 0; m < max(f.markings.length,m.markings.length)) {
+  for(var m = 0; m < max(f.markings.length,m.markings.length); m++) {
     if(!recessives.includes(f.markings[m])) {
       if(m.markings.includes(f.markings[m])) {
         var i = m.markings.indexOf(f.markings[m]);
