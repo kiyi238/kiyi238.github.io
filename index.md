@@ -5,7 +5,7 @@ layout: default
 <div class="row">
   <div class="column">Mweor acting as <b>Female</b>:<br><br>
 
-  <label for="breed">Breed: </label>
+  <label for="breedl">Breed: </label>
     <select name="breed" id="breed">
       <option value="lesser">Lesser</option>
       <option value="longhair">Longhair</option>
@@ -18,11 +18,11 @@ layout: default
       <option value="plant">Plant</option>
       <option value="ice">Ice</option>
     </select><br>
-  <label for="base">Base Color: #</label>
+  <label for="basel">Base Color: #</label>
     <input type="text" id="base" name="base" maxlength="6" size="6"><br>
-  <label for="secondary">Secondary Color: #</label>
+  <label for="secondaryl">Secondary Color: #</label>
     <input type="text" id="secondary" name="secondary" maxlength="6" size="6"><br>
-  <label for="tertiary">Tertiary Color: #</label>
+  <label for="tertiaryl">Tertiary Color: #</label>
     <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
@@ -45,11 +45,11 @@ layout: default
       <option value="plant">Plant</option>
       <option value="ice">Ice</option>
     </select><br>
-  <label for="basem">Base Color: #</label>
+  <label for="baseml">Base Color: #</label>
     <input type="text" id="basem" name="basem" maxlength="6" size="6"><br>
-  <label for="secondarym">Secondary Color: #</label>
+  <label for="secondaryml">Secondary Color: #</label>
     <input type="text" id="secondarym" name="secondarym" maxlength="6" size="6"><br>
-  <label for="tertiarym">Tertiary Color: #</label>
+  <label for="tertiaryml">Tertiary Color: #</label>
     <input type="text" id="tertiarym" name="tertiarym" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
