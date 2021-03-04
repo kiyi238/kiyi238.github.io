@@ -3,6 +3,6 @@ function calculateMwitt() {
   var option = femaleBreed.options[femaleBreed.selectedIndex].text;
 
   container = document.getElementById("containert");
-  container.appendChild(document.createTextNode("" + femaleBreed));
+  container.appendChild(document.createTextNode("" + option));
   container.appendChild(document.createElement("br"));
 }
