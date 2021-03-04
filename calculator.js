@@ -14,7 +14,8 @@ function calculateMwitt() {
   var femaleMweor = new Mweor("breed","base","secondary","tertiary","eye","containerf");
   var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem","containerm");
 
-  console.log(blendColors('00FF66', '443456', 0.5));
+  var recessives = initializeRecessives();
+  console.log(calculateMarkingOpacitiy("50", "70"));
 }
 
 function calculateBreed(f, m) {
@@ -249,9 +250,77 @@ function calculateEye(f, m) {
 
 function calculateMarkings(f, m) {
   var mwittMarkings = [];
-  for(var m = 0; m < max(f.markings.length,m.markings.length)) {
+  var mwittMarkingGenes = [];
+  var mwittMarkingColors = [];
+  var mwittMarkingOpacities = [];
 
+  for(var m = 0; m < max(f.markings.length,m.markings.length)) {
+    if(!recessives.includes(f.markings[m])) {
+      if(m.markings.includes(f.markings[m])) {
+        var i = m.markings.indexOf(f.markings[m]);
+        var gene = calculateGene(f.markingGenes[m], m.markingGenes[m]);
+        if(gene == "AA" || gene == "Aa") {
+          mwittMarkings.push(f.markings[m]);
+          mwittMarkingGenes.push(gene);
+          mwittMarkingColors.push(blendColors(f.markingColors[m], m.markingColors[m], 0.5));
+        }
+        m.markings[i] = "null"
+      }
+    }
   }
+}
+
+function calculateGene(fGene, mGene) {
+  var mwittGene;
+  var rand = Math.random();
+  //AAxAA
+  if(fGene == "AA" && mGene == "AA") {
+    mwittGene = "AA";
+  }
+  //AAxAa and AaxAA
+  else if((fGene == "AA" && mGene == "Aa") || (fGene == "Aa" && mGene == "AA")) {
+    if(rand < 0.5) {
+      mwittGene = "AA";
+    } else { mwittGene = "Aa"; }
+  }
+  //AaxAa
+  else if(fGene == "Aa" && mGene == "Aa") {
+    if(rand < 0.5) {
+      mwittGene = "Aa";
+    }
+    else if(rand > 0.5 && rand < 0.75) {
+      mwittGene = "AA";
+    }
+    else { mwittGene = "aa"; }
+  }
+  //Aaxaa and aaxAa
+  else if((fGene == "Aa" && mGene == "aa") || (fGene == "aa" && mGene == "Aa")) {
+    if(rand < 0.5) {
+      mwittGene = "Aa";
+    } else { mwittGene = "aa"; }
+  }
+  //AAxaa and aaxAA
+  else if((fGene == "AA" && mGene == "aa") || (fGene == "aa" && mGene == "AA")) {
+    mwittGene = "Aa";
+  }
+  return mwittGene;
+}
+
+function calculateMarkingOpacitiy(fOp, mOp) {
+  var biggest = max(parseInt(fOp), parseInt(mOp));
+  var smallest = min(parseInt(fOp), parseInt(mOp));
+  var index = smallest;
+  var array = [];
+  if (index - 10 > 0) { array.push(index - 10); }
+  while(index < biggest && index < 100) {
+    array.push(index);
+    index = index + 10;
+  }
+  if (index + 10 < 100) { array.push(index + 10); }
+  console.log(array.toString());
+
+  var opacity = array[Math.floor(Math.random() * array.length)];
+  return array[opacity];
 }
 
 function blendColors(colorA, colorB, amount) {
