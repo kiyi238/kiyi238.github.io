@@ -8,6 +8,8 @@ function calculateMwitt() {
   }
 
   container = document.getElementById("containert");
+  container.appendChild(document.createTextNode("" + inputs[0].value));
+  container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("" + femaleMarkingColors[0]));
   container.appendChild(document.createElement("br"));
 }
