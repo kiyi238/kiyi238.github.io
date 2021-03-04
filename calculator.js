@@ -23,46 +23,6 @@ function calculateBreed(f, m) {
   //Air combos.
   
 
-  //Plant combos.
-  else if(f.breed = "plant" || m.breed = "plant") {
-    if(f.breed = "plant") {
-      if (m.breed = "fire" || m.breed = "air" || m.breed = "lightning") {
-        breed = "lesser";
-      }
-      else if(m.breed = "ice") {
-        if(rand < 1 && rand > 0.64) {
-          breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
-          breed = m.breed;
-        } else {
-          breed = "water"
-        }
-      }
-    }
-    else if(f.breed = "fire" || f.breed = "air" || f.breed = "lightning") {
-      breed = "lesser";
-    }
-    else if(f.breed = "ice") {
-      if(rand < 1 && rand > 0.64) {
-        breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
-        breed = m.breed;
-      } else {
-        breed = "water"
-      }
-    }
-  }
-
-  //Water combos.
-  else if(f.breed = "water" || m.breed = "water") {
-    if(f.breed = "water" && (m.breed = "fire" || m.breed = "lightning")) {
-      breed = "lesser";
-    }
-    else if(f.breed = "fire" || f.breed = "lightning") {
-      breed = "lesser";
-    }
-  }
-
   else if (rand < 0.5) {
     breed = f.breed;
   } else { breed = m.breed; }
