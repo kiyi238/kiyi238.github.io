@@ -46,11 +46,11 @@ layout: default
       <option value="ice">Ice</option>
     </select><br>
   <label for="basem">Base Color: #</label>
-    <input type="text" id="base" name="base" maxlength="6" size="6"><br>
+    <input type="text" id="basem" name="basem" maxlength="6" size="6"><br>
   <label for="secondarym">Secondary Color: #</label>
-    <input type="text" id="secondary" name="secondary" maxlength="6" size="6"><br>
+    <input type="text" id="secondarym" name="secondarym" maxlength="6" size="6"><br>
   <label for="tertiarym">Tertiary Color: #</label>
-    <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
+    <input type="text" id="tertiarym" name="tertiarym" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
     <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
     <button id="markinglistm" onclick="addFields('mlm','containerm');">GO</button><br>
