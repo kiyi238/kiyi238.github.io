@@ -23,7 +23,7 @@ layout: default
   <label for="secondaryl">Secondary Color: #</label>
     <input type="text" id="secondary" name="secondary" maxlength="6" size="6"><br>
   <label for="tertiaryl">Tertiary Color: #</label>
-    <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br><br>
+    <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br>
   <label for="eyel">Eye Color: #</label>
     <input type="text" id="eye" name="eye" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
@@ -52,7 +52,7 @@ layout: default
   <label for="secondaryml">Secondary Color: #</label>
     <input type="text" id="secondarym" name="secondarym" maxlength="6" size="6"><br>
   <label for="tertiaryml">Tertiary Color: #</label>
-    <input type="text" id="tertiarym" name="tertiarym" maxlength="6" size="6"><br><br>
+    <input type="text" id="tertiarym" name="tertiarym" maxlength="6" size="6"><br>
   <label for="eyel">Eye Color: #</label>
       <input type="text" id="eyem" name="eyem" maxlength="6" size="6"><br><br>
   <label for="mlf">Number of Markings:</label>
