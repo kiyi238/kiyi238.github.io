@@ -98,107 +98,63 @@ function calculateBreed(f, m) {
     }
   }
 
-  //Fire combos.
-  else if(f.breed = "fire" || m.breed = "fire") {
-    if(f.breed = "fire" && (m.breed = "water" || m.breed = "plant" || m.breed = "ice")) {
-      breed = "lesser";
-    }
-    else if(f.breed = "water" || f.breed = "plant" || f.breed = "ice") {
-      breed = "lesser";
-    }
-  }
-
-  //Ice combos.
-  else if(f.breed = "ice" || m.breed = "ice") {
-    if(f.breed = "ice") {
-      if(m.breed = "fire" || m.breed = "earth") {
-        breed = "lesser";
-      }
-      else if(m.breed = "lightning") {
-        if(rand < 1 && rand > 0.64) {
-          breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
-          breed = m.breed;
-        } else {
-          breed = "air";
-        }
-      }
-    }
-    else if(f.breed = "fire" || f.breed = "earth") {
-      breed = "lesser";
-    }
-    else if(f.breed = "lightning") {
-      if(rand < 1 && rand > 0.64) {
-        breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
-        breed = m.breed;
-      } else {
-        breed = "air";
-      }
-    }
-  }
-
-  //Lightning combos.
-  else if(f.breed = "lightning" || m.breed = "lightning") {
-    if(f.breed = "lightning" && (m.breed = "water" || m.breed = "plant" || m.breed = "earth")) {
-      breed = "lesser";
-    }
-    else if(f.breed = "water" || f.breed = "plant" || f.breed = "earth") {
-      breed = "lesser";
-    }
-  }
-
-  //Plant combos.
-  else if(f.breed = "plant" || m.breed = "plant") {
-    if(f.breed = "plant") {
-      if (m.breed = "fire" || m.breed = "air" || m.breed = "lightning") {
-        breed = "lesser";
-      }
-      else if(m.breed = "ice") {
-        if(rand < 1 && rand > 0.64) {
-          breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
-          breed = m.breed;
-        } else {
-          breed = "water";
-        }
-      }
-    }
-    else if(f.breed = "fire" || f.breed = "air" || f.breed = "lightning") {
-      breed = "lesser";
-    }
-    else if(f.breed = "ice") {
-      if(rand < 1 && rand > 0.64) {
-        breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
-        breed = m.breed;
-      } else {
-        breed = "water";
-      }
-    }
-  }
-
-  //Water combos.
-  else if(f.breed = "water" || m.breed = "water") {
-    if(f.breed = "water" && (m.breed = "fire" || m.breed = "lightning")) {
-      breed = "lesser";
-    }
-    else if(f.breed = "fire" || f.breed = "lightning") {
-      breed = "lesser";
-    }
-  }
-
   else if (rand < 0.5) {
     breed = f.breed;
   } else { breed = m.breed; }
   return breed;
 }
 
-function calculateBase(f, m) {}
+function calculateBase(f, m) {
+  var color;
+  var rand = Math.random();
+  if(rand < 1 && rand > 0.66) {
+    color = f.base;
+  } else if(rand < 0.66 && rand > 0.33) {
+    color = m.base;
+  } else {
+    color = blendColors(f.base, m.base, 0.5);
+  }
+  return color;
+}
 
-function calculateSecondary(f, m) {}
+function calculateSecondary(f, m) {
+  var color;
+  var rand = Math.random();
+  if(rand < 1 && rand > 0.66) {
+    color = f.second;
+  } else if(rand < 0.66 && rand > 0.33) {
+    color = m.second;
+  } else {
+    color = blendColors(f.second, m.second, 0.5);
+  }
+  return color;
+}
 
-function calculateTertiary(f, m) {}
+function calculateTertiary(f, m) {
+  var color;
+  var rand = Math.random();
+  if(rand < 1 && rand > 0.66) {
+    color = f.tert;
+  } else if(rand < 0.66 && rand > 0.33) {
+    color = m.tert;
+  } else {
+    color = blendColors(f.tert, m.tert, 0.5);
+  }
+  return color;
+}
+
+function calculateEye(f, m) {
+  var color;
+  var rand = Math.random();
+  if(rand < 1 && rand > 0.66) {
+    color = f.eye;
+  } else if(rand < 0.66 && rand > 0.33) {
+    color = m.eye;
+  } else {
+    color = blendColors(f.eye, m.eye, 0.5);
+  }
+  return color;
+}
 
 function calculateMarkings(f, m) {}
 
