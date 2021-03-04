@@ -56,14 +56,14 @@ function calculateBreed(f, m) {
       } else {
         breed = "ice"
       }
-      else if(f.breed = "fire") {
-        if(rand < 1 && rand > 0.64) {
+    }
+    else if(f.breed = "fire") {
+      if(rand < 1 && rand > 0.64) {
           breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
-          breed = m.breed;
-        } else {
-          breed = "lightning"
-        }
+      } else if(rand < 0.64 && rand > 0.31) {
+        breed = m.breed;
+      } else {
+        breed = "lightning"
       }
     }
   }
@@ -108,7 +108,85 @@ function calculateBreed(f, m) {
     }
   }
 
-  
+  //Ice combos.
+  else if(f.breed = "ice" || m.breed = "ice") {
+    if(f.breed = "ice") {
+      if(m.breed = "fire" || m.breed = "earth") {
+        breed = "lesser";
+      }
+      else if(m.breed = "lightning") {
+        if(rand < 1 && rand > 0.64) {
+          breed = f.breed;
+        } else if(rand < 0.64 && rand > 0.31) {
+          breed = m.breed;
+        } else {
+          breed = "air"
+        }
+      }
+    }
+    else if(f.breed = "fire" || f.breed = "earth") {
+      breed = "lesser";
+    }
+    else if(f.breed = "lightning") {
+      if(rand < 1 && rand > 0.64) {
+        breed = f.breed;
+      } else if(rand < 0.64 && rand > 0.31) {
+        breed = m.breed;
+      } else {
+        breed = "air"
+      }
+    }
+  }
+
+  //Lightning combos.
+  else if(f.breed = "lightning" || m.breed = "lightning") {
+    if(f.breed = "lightning" && (m.breed = "water" || m.breed = "plant" || m.breed = "earth")) {
+      breed = "lesser";
+    }
+    else if(f.breed = "water" || f.breed = "plant" || f.breed = "earth") {
+      breed = "lesser";
+    }
+  }
+
+  //Plant combos.
+  else if(f.breed = "plant" || m.breed = "plant") {
+    if(f.breed = "plant") {
+      if (m.breed = "fire" || m.breed = "air" || m.breed = "lightning") {
+        breed = "lesser";
+      }
+      else if(m.breed = "ice") {
+        if(rand < 1 && rand > 0.64) {
+          breed = f.breed;
+        } else if(rand < 0.64 && rand > 0.31) {
+          breed = m.breed;
+        } else {
+          breed = "water"
+        }
+      }
+    }
+    else if(f.breed = "fire" || f.breed = "air" || f.breed = "lightning") {
+      breed = "lesser";
+    }
+    else if(f.breed = "ice") {
+      if(rand < 1 && rand > 0.64) {
+        breed = f.breed;
+      } else if(rand < 0.64 && rand > 0.31) {
+        breed = m.breed;
+      } else {
+        breed = "water"
+      }
+    }
+  }
+
+  //Water combos.
+  else if(f.breed = "water" || m.breed = "water") {
+    if(f.breed = "water" && (m.breed = "fire" || m.breed = "lightning")) {
+      breed = "lesser";
+    }
+    else if(f.breed = "fire" || f.breed = "lightning") {
+      breed = "lesser";
+    }
+  }
 
   else if (rand < 0.5) {
     breed = f.breed;
