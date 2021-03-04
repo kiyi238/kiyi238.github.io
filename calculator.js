@@ -450,6 +450,7 @@ function getMarkings(con) {
       }
     }
   }
+  console.log(markings[0]);
   return markings;
 }
 
