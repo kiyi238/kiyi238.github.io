@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
-    <script type='text/javascript' src="/calculator.js"></script>
 
     <script type='text/javascript'>
+        function calculateMwitt() {
+          var container = document.getElementById("containert");
+          container.appendChild(document.createTextNode("Marking " + (i+1) + ": "));
+        }
+
         function addFields(num, con){
             var markingList = ["Agouti Tabby","Appaloosa","Backstripe","Badger","Barring","Bat Wings","Blaze","Blush","Body Stripe","Butterfly Wings","Caiman",
                               "Calico","CandelFlame Tabby","Cardinal","Centered","Cheetah","Chest Splash","Classic Tabby","Clouded Leopard","Crown","Dalmation",
