@@ -17,16 +17,7 @@ function calculateMwitt() {
 }
 
 function calculateBreed(f, m) {
-  var breed;
-  var rand = Math.random();
-  //Canceling and hybrid breed combos.
-  //Air combos.
-  
 
-  else if (rand < 0.5) {
-    breed = f.breed;
-  } else { breed = m.breed; }
-  return breed;
 }
 
 function calculateBase(f, m) {}
