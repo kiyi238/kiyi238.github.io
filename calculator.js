@@ -15,7 +15,7 @@ function calculateMwitt() {
   var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem","containerm");
 
   var recessives = initializeRecessives();
-  console.log(calculateMarkingOpacitiy("50", "100"));
+  console.log(calculateGene("AA", "Aa"));
 }
 
 function calculateBreed(f, m) {
@@ -318,8 +318,6 @@ function calculateMarkingOpacitiy(fOp, mOp) {
   }
   array.push(index);
   if (index + 10 < 100) { array.push(index + 10); }
-  console.log(array.toString());
-
   var opacity = array[Math.floor(Math.random() * array.length)];
   return opacity;
 }
