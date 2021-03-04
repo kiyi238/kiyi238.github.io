@@ -7,40 +7,6 @@ function calculateMwitt() {
   var femaleMarkingColors = [];
   var femaleMarkingOpacities = [];
 
-  var container = document.getElementById("containerf");
-  var inputs = container.getElementsByTagName("select");
-  for (var index = 0; index < inputs.length; ++index) {
-    if(inputs[index].name.includes("marking")) {
-      femaleMarkings.push(inputs[index].options[inputs[index].selectedIndex].value);
-    } else { femaleMarkingOpacities.push(inputs[index].options[inputs[index].selectedIndex].value); }
-  }
-
-  inputs = container.getElementsByTagName("input");
-  for (index = 0; index < inputs.length; ++index) {
-    femaleMarkingColors.push(inputs[index].value);
-  }
-
-  var maleBreed = document.getElementById("breedm").value;
-  var maleBase = document.getElementById("basem").value;
-  var maleSecondary = document.getElementById("secondarym").value;
-  var maleTertiary = document.getElementById("tertiarym").value;
-  var maleMarkings = [];
-  var maleMarkingColors = [];
-  var maleMarkingOpacities = [];
-
-  container = document.getElementById("containerm");
-  var inputs = container.getElementsByTagName("select");
-  for (index = 0; index < inputs.length; ++index) {
-    if(inputs[index].name.includes("marking")) {
-      maleMarkings.push(inputs[index].options[inputs[index].selectedIndex].value);
-    } else { maleMarkingOpacities.push(inputs[index].options[inputs[index].selectedIndex].value); }
-  }
-
-  inputs = container.getElementsByTagName("input");
-  for (index = 0; index < inputs.length; ++index) {
-    maleMarkingColors.push(inputs[index].value);
-  }
-
   container = document.getElementById("containert");
   container.appendChild(document.createTextNode("" + femaleBreed));
   container.appendChild(document.createElement("br"));
@@ -49,14 +15,5 @@ function calculateMwitt() {
   container.appendChild(document.createTextNode("" + femaleSecondary));
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("" + femaleTertiary));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + maleBreed));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + maleBase));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + maleSecondary));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + maleTertiary));
-  container.appendChild(document.createElement("br"));
 
 }
