@@ -16,6 +16,29 @@ function calculateMwitt() {
 
   var recessives = initializeRecessives();
   console.log(calculateGene("AA", "Aa"));
+
+  var mwittBreed = calculateBreed(femaleMweor, maleMweor);
+  var mwittBase = calculateBase(femaleMweor, maleMweor);
+  var mwittSeconary = calculateSecondary(femaleMweor, maleMweor);
+  var mwittTertiary = calculateTertiary(femaleMweor, maleMweor);
+  var mwittEye = calculateEye(femaleMweor, maleMweor);
+  var array = calculateMarkings(femaleMweor, maleMweor);
+  var mwittMarkings = array[0];
+  var mwittMarkingGenes = array[1];
+  var mwittMarkingColors = array[2];
+  var mwittMarkingOpacities = array[3];
+
+  var container = document.getElementById("containert");
+  container.appendChild(document.createTextNode("" + mwittBreed));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittBase));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittSeconary));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittTertiary));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittEye));
+  container.appendChild(document.createElement("br"));
 }
 
 function calculateBreed(f, m) {
@@ -255,19 +278,104 @@ function calculateMarkings(f, m) {
   var mwittMarkingOpacities = [];
 
   for(var m = 0; m < Math.max(f.markings.length,m.markings.length); m++) {
-    if(!recessives.includes(f.markings[m])) {
-      if(m.markings.includes(f.markings[m])) {
-        var i = m.markings.indexOf(f.markings[m]);
-        var gene = calculateGene(f.markingGenes[m], m.markingGenes[m]);
-        if(gene == "AA" || gene == "Aa") {
-          mwittMarkings.push(f.markings[m]);
-          mwittMarkingGenes.push(gene);
-          mwittMarkingColors.push(blendColors(f.markingColors[m], m.markingColors[m], 0.5));
+    //FEMALE TURN.
+    //If next marking exists.
+    if(f.markings[m]) {
+      //If marking is dominant.
+      if(!recessives.includes(f.markings[m])) {
+        //If male shares marking.
+        if(m.markings.includes(f.markings[m])) {
+          var i = m.markings.indexOf(f.markings[m]);
+          var gene = calculateGene(f.markingGenes[m], m.markingGenes[m]);
+          //If DOMINANT marking shows.
+          if(gene == "AA" || gene == "Aa") {
+            mwittMarkings.push(f.markings[m]);
+            mwittMarkingGenes.push(gene);
+            mwittMarkingColors.push(blendColors(f.markingColors[m], m.markingColors[i], 0.5));
+            mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],m.markingOpacities[i]));
+          }
+          m.markings[i] = "null"
         }
-        m.markings[i] = "null"
+        //Male does not share marking.
+        else {
+          var gene = calculateGene(f.markingGenes[m], "aa");
+          //If DOMINANT marking shows.
+          if(gene == "AA" || gene == "Aa") {
+            mwittMarkings.push(f.markings[m]);
+            mwittMarkingGenes.push(gene);
+            mwittMarkingColors.push(blendColors(f.markingColors[m], m.markingColors[i], 0.5));
+            mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],"100"));
+          }
+        }
+      }
+      //Marking is recessive.
+      else {
+        //If male shares marking.
+        if(m.markings.includes(f.markings[m])) {
+          var i = m.markings.indexOf(f.markings[m]);
+          var gene = calculateGene(f.markingGenes[m], m.markingGenes[m]);
+          //If RECESSIVE marking shows or carries.
+          if(gene == "aa" || gene == "Aa") {
+            mwittMarkings.push(f.markings[m]);
+            mwittMarkingGenes.push(gene);
+            mwittMarkingColors.push(blendColors(f.markingColors[m], m.markingColors[i], 0.5));
+            mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],m.markingOpacities[i]));
+          }
+          m.markings[i] = "null"
+        }
+        //Male does not share marking.
+        else {
+          var gene = calculateGene(f.markingGenes[m], "AA");
+          //If RECESSIVE marking shows.
+          if(gene == "aa" || gene == "Aa") {
+            mwittMarkings.push(f.markings[m]);
+            mwittMarkingGenes.push(gene);
+            mwittMarkingColors.push(blendColors(f.markingColors[m]);
+            mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m], f.markingOpacities[m]));
+          }
+        }
+      }
+    }
+    //MALE TURN.
+    //If next marking exists.
+    if(m.markings[m]) {
+      //If marking is not null, and marking is not shared by female.
+      if(m.markings[m] != "null" && !f.markings.includes(m.markings[m])) {
+        //If marking is dominant.
+        if(!recessives.includes(m.markings[m])) {
+          //If female does not share marking.
+          if(!f.markings.includes(m.markings[m])) {
+            var gene = calculateGene(m.markingGenes[m], "aa");
+            //If DOMINANT marking shows.
+            if(gene == "AA" || gene == "Aa") {
+              mwittMarkings.push(m.markings[m]);
+              mwittMarkingGenes.push(gene);
+              mwittMarkingColors.push(m.markingColors[m]);
+              mwittMarkingOpacities.push(calculateMarkingOpacitiy(m.markingOpacities[m], m.markingOpacities[m]));
+            }
+            m.markings[m] = "null"
+          }
+        }
+        //Marking is recessive.
+        else {
+          //If female does not share marking.
+          if(!f.markings.includes(m.markings[m])) {
+            var gene = calculateGene(m.markingGenes[m], "AA");
+            //If RECESSIVE marking shows.
+            if(gene == "aa" || gene == "Aa") {
+              mwittMarkings.push(m.markings[m]);
+              mwittMarkingGenes.push(gene);
+              mwittMarkingColors.push(m.markingColors[m]);
+              mwittMarkingOpacities.push(calculateMarkingOpacitiy(m.markingOpacities[m], m.markingOpacities[m]));
+            }
+            m.markings[m] = "null"
+          }
+        }
       }
     }
   }
+  var array = [mwittMarkings, mwittMarkingGenes, mwittMarkingColors, mwittMarkingOpacities];
+  return array;
 }
 
 function calculateGene(fGene, mGene) {
