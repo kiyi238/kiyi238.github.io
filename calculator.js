@@ -39,6 +39,14 @@ function calculateMwitt() {
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("" + mwittEye));
   container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittMarkings.toString()));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittMarkingGenes.toString()));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittMarkingColors.toString()));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("" + mwittMarkingOpacities.toString()));
+  container.appendChild(document.createElement("br"));
 }
 
 function calculateBreed(f, m) {
@@ -440,7 +448,7 @@ function blendColors(colorA, colorB, amount) {
   var r = Math.round(rA + (rB - rA) * amount).toString(16).padStart(2, '0');
   var g = Math.round(gA + (gB - gA) * amount).toString(16).padStart(2, '0');
   var b = Math.round(bA + (bB - bA) * amount).toString(16).padStart(2, '0');
-  return '#' + r + g + b;
+  return r + g + b;
 }
 
 function getMarkings(con) {
