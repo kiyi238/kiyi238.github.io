@@ -15,7 +15,11 @@ function calculateMwitt() {
   var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem","containerm");
 
   var recessives = initializeRecessives();
-  console.log(calculateGene("AA", "Aa"));
+
+  console.log(femaleMweor.markings[0]);
+  console.log(femaleMweor.getMarkingGenes[0]);
+  console.log(femaleMweor.getMarkingColors[0]);
+  console.log(femaleMweor.getMarkingOpacities[0]);
 
   var mwittBreed = calculateBreed(femaleMweor, maleMweor);
   var mwittBase = calculateBase(femaleMweor, maleMweor);
@@ -27,19 +31,6 @@ function calculateMwitt() {
   var mwittMarkingGenes = array[1];
   var mwittMarkingColors = array[2];
   var mwittMarkingOpacities = array[3];
-
-  var container = document.getElementById("containert");
-  container.appendChild(document.createTextNode("" + mwittBreed));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittBase));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittSeconary));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittTertiary));
-  container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("" + mwittEye));
-  container.appendChild(document.createElement("br"));
-  console.log(mwittMarkings[0]);
 }
 
 function calculateBreed(f, m) {
