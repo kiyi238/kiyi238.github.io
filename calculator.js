@@ -23,8 +23,17 @@ function calculateBreed(f, m) {
   //Air combos.
 
 
+  //Water combos.
+  if(f.breed = "water" || m.breed = "water") {
+    if(f.breed = "water" && (m.breed = "fire" || m.breed = "lightning")) {
+      breed = "lesser";
+    }
+    else if(f.breed = "fire" || f.breed = "lightning") {
+      breed = "lesser";
+    }
+  }
 
-  if (rand < 0.5) {
+  else if (rand < 0.5) {
     breed = f.breed;
   } else { breed = m.breed; }
   return breed;
