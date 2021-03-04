@@ -443,7 +443,7 @@ function getMarkings(con) {
   var container = document.getElementById(con);
   var inputs = container.getElementsByTagName("select");
 
-  if(inputs[0] != "undefined") {
+  if(inputs) {
     for (var index = 0; index < inputs.length; ++index) {
       if(inputs[index].name.includes("marking")) {
         markings.push(inputs[index].value);
