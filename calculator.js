@@ -5,6 +5,7 @@ function Mweor(breed, base, second, tert, eye, con) {
   this.tert = document.getElementById(tert).value;
   this.eye = document.getElementById(eye).value;
   var markings = getMarkings(con);
+  var markingGenes = getMarkingGenes(con);
   var markingColors = getMarkingColors(con);
   var markingOpacities = getMarkingOpacities(con);
 }
@@ -246,7 +247,12 @@ function calculateEye(f, m) {
   return color;
 }
 
-function calculateMarkings(f, m) {}
+function calculateMarkings(f, m) {
+  var mwittMarkings = [];
+  for(var m = 0; m < max(f.markings.length,m.markings.length)) {
+
+  }
+}
 
 function blendColors(colorA, colorB, amount) {
   var [rA, gA, bA] = colorA.match(/\w\w/g).map((c) => parseInt(c, 16));
@@ -270,6 +276,21 @@ function getMarkings(con) {
     }
   }
   return markings;
+}
+
+function getMarkingGenes(con) {
+  var genes = [];
+  var container = document.getElementById(con);
+  var inputs = container.getElementsByTagName("select");
+
+  if(inputs[0] != "undefined") {
+    for (var index = 0; index < inputs.length; ++index) {
+      if(inputs[index].name.includes("gene")) {
+        genes.push(inputs[index].value);
+      }
+    }
+  }
+  return genes;
 }
 
 function getMarkingOpacities(con) {
