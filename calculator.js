@@ -570,8 +570,8 @@ function drawPreview(mwitt) {
   tempCtx.fillStyle = '#' + mwitt.base;
   tempCtx.fillRect(0, 0, canvas.width, canvas.height);
   tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.drawImage(color);
+  tempCtx.drawImage(color, 0, 0);
 
-  ctx.drawImage(tempCanvas);
-  ctx.drawImage(eyeWhites);
+  ctx.drawImage(tempCanvas, 0, 0);
+  ctx.drawImage(eyeWhites, 0, 0);
 }
