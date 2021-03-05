@@ -559,6 +559,8 @@ function drawPreview(mwitt) {
 
   var canvas = document.getElementById('prevCanvas');
   var ctx = canvas.getContext('2d');
+  canvas.width = "400";
+  canvas.height = "300";
 
   var tempCanvas = document.createElement('canvas');
   var tempCtx = tempCanvas.getContext('2d');
@@ -568,55 +570,8 @@ function drawPreview(mwitt) {
   tempCtx.fillStyle = '#' + mwitt.base;
   tempCtx.fillRect(0, 0, canvas.width, canvas.height);
   tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.drawImage(color, 0, 0);
+  tempCtx.drawImage(color);
 
-  ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(eyeWhites, 0, 0, canvas.width, canvas.height);
-
-  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-  tempCtx.fillStyle = '#' + mwitt.eye;
-  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-  tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.drawImage(eyeColor, 0, 0);
-
-  ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
-
-  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-  tempCtx.fillStyle = '#' + mwitt.second;
-  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-  tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.drawImage(secondary, 0, 0);
-
-  ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
-
-  if(greaters.includes(mwitt.breed)) {
-    tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-    tempCtx.fillStyle = '#' + mwitt.tert;
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-    tempCtx.globalCompositeOperation = "destination-in";
-    tempCtx.drawImage(tertiary, 0, 0);
-
-    ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
-
-    if(mwitt.breed == "ice") {
-      var secondaryTop = new Image();
-      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
-      var secondaryTopLines = new Image();
-      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
-
-      tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-      tempCtx.fillStyle = '#' + mwitt.second;
-      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-      tempCtx.globalCompositeOperation = "destination-in";
-      tempCtx.drawImage(secondaryTop, 0, 0);
-
-      ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
-      ctx.drawImage(secondaryTopLines, 0, 0, canvas.width, canvas.height);
-    }
-  }
-
-  //Markings
-
-  ctx.drawImage(lines, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(copyright, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(tempCanvas);
+  ctx.drawImage(eyeWhites);
 }
