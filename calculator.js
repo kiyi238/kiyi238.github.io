@@ -22,7 +22,7 @@ function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingCo
 
 function calculateMwitt() {
   var femaleMweor = new Mweor(document.getElementById("breed").value,document.getElementById("base").value,document.getElementById("secondary").value,document.getElementById("tertiary").value,document.getElementById("eye").value,getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
-  var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem",getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
+  var maleMweor = new Mweor(document.getElementById("breedm").value,document.getElementById("basem").value,document.getElementById("secondarym").value,document.getElementById("tertiarym").value,document.getElementById("eyem").value,getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
 
   var markingResults = calculateMarkings(femaleMweor, maleMweor);
   var mwitt = new Mweor(calculateBreed(femaleMweor, maleMweor), calculateBase(femaleMweor, maleMweor), calculateSecondary(femaleMweor, maleMweor), calculateTertiary(femaleMweor, maleMweor), calculateEye(femaleMweor, maleMweor), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
@@ -49,6 +49,8 @@ function calculateMwitt() {
     container.appendChild(document.createTextNode("Marking " + (i+1) + ": " + mwitt.markings[i] + " " + mwitt.markingGenes[i] + " #" + mwitt.markingColors[i] + " " + mwitt.markingOpacities[i] + "%"));
     container.appendChild(document.createElement("br"));
   }
+
+  drawPreview(mwitt);
 }
 
 function calculateBreed(f, m) {
