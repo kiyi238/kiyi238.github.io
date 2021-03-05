@@ -289,7 +289,7 @@ function calculateMarkings(f, m) {
   for(var m = 0; m < len; m++) {
     //FEMALE TURN.
     //If next marking exists.
-    if(f.markings[m]) {
+    if(f.markings && f.markings.length && f.markings[m]) {
       console.log("Female marking Exists");
 ////////If marking is dominant.
       if(!recessives.includes(f.markings[m])) {
@@ -308,17 +308,17 @@ function calculateMarkings(f, m) {
           }
           m.markings[i] = "null"
         }
-      }
-      //Male does not share marking.
-      else {
-        console.log("Male does not share marking");
-        var gene = calculateGene(f.markingGenes[m], "aa");
-          //If DOMINANT marking shows.
-        if(gene == "AA" || gene == "Aa") {
-          mwittMarkings.push(f.markings[m]);
-          mwittMarkingGenes.push(gene);
-          mwittMarkingColors.push(f.markingColors[m]);
-          mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],f.markingOpacities[m]));
+        //Male does not share marking.
+        else {
+          console.log("Male does not share marking");
+          var gene = calculateGene(f.markingGenes[m], "aa");
+            //If DOMINANT marking shows.
+          if(gene == "AA" || gene == "Aa") {
+            mwittMarkings.push(f.markings[m]);
+            mwittMarkingGenes.push(gene);
+            mwittMarkingColors.push(f.markingColors[m]);
+            mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],f.markingOpacities[m]));
+          }
         }
       }
 ////////Marking is recessive.
@@ -357,7 +357,7 @@ function calculateMarkings(f, m) {
     if(m.markings && m.markings.length && m.markings[m]) {
       console.log("Male marking Exists");
       //If marking is not null, and marking is not shared by female.
-      if(m.markings[m] != "null" && f.markings && !f.markings.includes(m.markings[m])) {
+      if(m.markings[m] != "null" && f.markings && f.markings.length && !f.markings.includes(m.markings[m])) {
         console.log("Male marking not null or shared");
 //////////If marking is dominant.
         if(!recessives.includes(m.markings[m])) {
