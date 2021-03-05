@@ -288,12 +288,12 @@ function calculateMarkings(f, m) {
   for(var m = 0; m < len; m++) {
     //FEMALE TURN.
     //If next marking exists.
-    if(f.markings.isArray() && f.markings.length && f.markings[m]) {
+    if(Array.isArray(f.markings) && f.markings.length && f.markings[m]) {
       console.log("Female marking Exists");
 ////////If marking is dominant.
       if(!recessives.includes(f.markings[m])) {
         //If male shares marking.
-        if(m.markings.isArray() && m.markings.length && m.markings.includes(f.markings[m])) {
+        if(Array.isArray(m.markings) && m.markings.length && m.markings.includes(f.markings[m])) {
           console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[m]);
           var gene = calculateGene(f.markingGenes[m], m.markingGenes[i]);
@@ -323,7 +323,7 @@ function calculateMarkings(f, m) {
       else {
         console.log("Marking is recessive");
         //If male shares marking.
-        if(m.markings.isArray() && m.markings.length && m.markings.includes(f.markings[m])) {
+        if(Array.isArray(m.markings) && m.markings.length && m.markings.includes(f.markings[m])) {
           console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[m]);
           var gene = calculateGene(f.markingGenes[m], m.markingGenes[i]);
@@ -352,7 +352,7 @@ function calculateMarkings(f, m) {
     }
     //MALE TURN.
     //If next marking exists.
-    if(m.markings.isArray() && m.markings.length && m.markings[m]) {
+    if(Array.isArray(m.markings) && m.markings.length && m.markings[m]) {
       console.log("Male marking Exists");
       //If marking is not null, and marking is not shared by female.
       if(m.markings[m] != "null" && f.markings && f.markings.length && !f.markings.includes(m.markings[m])) {
