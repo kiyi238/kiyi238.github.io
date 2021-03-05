@@ -65,7 +65,7 @@ layout: default
 <div class="container">
   <div class="center">
   <br>
-  <button id="predict" onclick="calculateMwitt()">PREDICT</button><br>
+  <button id="predict" onclick="calculateMwitt()">PREDICT</button><br><br>
   <div id="containert"></div>
   </div>
 </div>

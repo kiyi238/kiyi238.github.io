@@ -31,6 +31,29 @@ function calculateMwitt() {
   var mwittMarkingColors = array[2];
   var mwittMarkingOpacities = array[3];
 
+  var container = document.getElementById("containert");
+  while (container.hasChildNodes()) {
+      container.removeChild(container.lastChild);
+  }
+
+  container.appendChild(document.createTextNode("Possible Mwitt: "));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("Breed: " + mwittBreed));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("Base Color: #" + mwittBase));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("Secondary Color: #" + mwittSeconary));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("Tertiary Color: #" + mwittTertiary));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createTextNode("Eye Color: #" + mwittEye));
+  container.appendChild(document.createElement("br"));
+  container.appendChild(document.createElement("br"));
+  for(var i = 0; i < mwittMarkings.length; i++) {
+    container.appendChild(document.createTextNode("Marking 1: " mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
+    container.appendChild(document.createElement("br"));
+  }
+
   console.log(mwittBreed);
   console.log(mwittBase);
   console.log(mwittSeconary);
