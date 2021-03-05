@@ -552,6 +552,8 @@ function drawPreview(mwitt) {
   if (greaters.includes(mwitt.breed)) {
     tertiary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/tertiary.png';
   }
+  var copyright = new Image();
+  copyright.src = 'https://kiyi238.github.io/images/copyright.png';
 
   var canvas = document.getElementById('prevCanvas');
   var ctx = can.getContext('2d');
@@ -614,4 +616,5 @@ function drawPreview(mwitt) {
   //Markings
 
   ctx.drawImage(lines, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(copyright, 0, 0, canvas.width, canvas.height);
 }
