@@ -1,18 +1,18 @@
-function Mweor(breed, base, second, tert, eye, con) {
+function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = document.getElementById(breed).value;
   this.base = document.getElementById(base).value;
   this.second = document.getElementById(second).value;
   this.tert = document.getElementById(tert).value;
   this.eye = document.getElementById(eye).value;
-  var markings = getMarkings(con);
-  var markingGenes = getMarkingGenes(con);
-  var markingColors = getMarkingColors(con);
-  var markingOpacities = getMarkingOpacities(con);
+  this.markings = markings;
+  this.markingGenes = markingGenes;
+  this.markingColors = markingColors;
+  this.markingOpacities = markingOpacities;
 }
 
 function calculateMwitt() {
-  var femaleMweor = new Mweor("breed","base","secondary","tertiary","eye","containerf");
-  var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem","containerm");
+  var femaleMweor = new Mweor("breed","base","secondary","tertiary","eye",getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
+  var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem",getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
 
   var recessives = initializeRecessives();
 
@@ -459,7 +459,7 @@ function getMarkingGenes(con) {
   var container = document.getElementById(con);
   var inputs = container.getElementsByTagName("select");
 
-  if(inputs[0] != "undefined") {
+  if(typeof inputs[0] != 'undefined') {
     for (var index = 0; index < inputs.length; ++index) {
       if(inputs[index].name.includes("gene")) {
         genes.push(inputs[index].value);
@@ -474,7 +474,7 @@ function getMarkingOpacities(con) {
   var container = document.getElementById(con);
   var inputs = container.getElementsByTagName("select");
 
-  if(inputs[0] != "undefined") {
+  if(typeof inputs[0] != 'undefined') {
     for (var index = 0; index < inputs.length; ++index) {
       if(inputs[index].name.includes("opacity")) {
         opacities.push(inputs[index].value);
@@ -489,7 +489,7 @@ function getMarkingColors(con) {
   var container = document.getElementById(con);
   var inputs = container.getElementsByTagName("input");
 
-  if(inputs[0] != "undefined") {
+  if(typeof inputs[0] != 'undefined') {
     for (index = 0; index < inputs.length; ++index) {
       colors.push(inputs[index].value);
     }
