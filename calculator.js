@@ -25,7 +25,8 @@ function calculateMwitt() {
   var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem",getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
 
   var markingResults = calculateMarkings(femaleMweor, maleMweor);
-  var mwitt = new Mweor(calculateBreed(femaleMweor, maleMweor), calculateBase(femaleMweor, maleMweor), calculateSecondary(femaleMweor, maleMweor), calculateTertiary(femaleMweor, maleMweor), calculateEye(femaleMweor, maleMweor), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
+  var mwittBreed = calculateBreed(femaleMweor, maleMweor);
+  var mwitt = new Mweor(mwittBreed, calculateBase(femaleMweor, maleMweor), calculateSecondary(femaleMweor, maleMweor), calculateTertiary(femaleMweor, maleMweor), calculateEye(femaleMweor, maleMweor), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
 
   var container = document.getElementById("cMwittInfo");
   while (container.hasChildNodes()) {
