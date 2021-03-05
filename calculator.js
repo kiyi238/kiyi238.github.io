@@ -3,6 +3,10 @@ var recessives = ["Bat Wings","Butterfly Wings","Candleflame Tabby","Classic Tab
                   "Elk Horns","Fairy Wings","Feather Wings","Giraffe","King Cheetah","Mackerel Tabby",
                   "Mane","Marbled","Neck Spikes","Ocelot","Pronghorns","Ram Horns","Saber Fangs",
                   "Snow Leopard","Spotted Tabby","Unicorn Horn"];
+var greaters = ["air","fire","water","earth","lightning","plant","ice"];
+var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Eastern Dragon","Dragon Horns","Ear Tufts","Fairy Wings",
+              "Feather Wings","Leg Feathering","Mane","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
+
 
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = document.getElementById(breed).value;
@@ -20,37 +24,29 @@ function calculateMwitt() {
   var femaleMweor = new Mweor("breed","base","secondary","tertiary","eye",getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
   var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem",getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
 
-  var mwittBreed = calculateBreed(femaleMweor, maleMweor);
-  var mwittBase = calculateBase(femaleMweor, maleMweor);
-  var mwittSeconary = calculateSecondary(femaleMweor, maleMweor);
-  var mwittTertiary = calculateTertiary(femaleMweor, maleMweor);
-  var mwittEye = calculateEye(femaleMweor, maleMweor);
-  var array = calculateMarkings(femaleMweor, maleMweor);
-  var mwittMarkings = array[0];
-  var mwittMarkingGenes = array[1];
-  var mwittMarkingColors = array[2];
-  var mwittMarkingOpacities = array[3];
+  var markingResults = calculateMarkings(femaleMweor, maleMweor);
+  var mwitt = new Mweor(calculateBreed(femaleMweor, maleMweor), calculateBase(femaleMweor, maleMweor), calculateSecondary(femaleMweor, maleMweor), calculateTertiary(femaleMweor, maleMweor), calculateEye(femaleMweor, maleMweor), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
 
-  var container = document.getElementById("containert");
+  var container = document.getElementById("cMwittInfo");
   while (container.hasChildNodes()) {
       container.removeChild(container.lastChild);
   }
 
   container.appendChild(document.createTextNode("Possible Mwitt: "));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("Breed: " + mwittBreed));
+  container.appendChild(document.createTextNode("Breed: " + mwitt.breed));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("Base Color: #" + mwittBase));
+  container.appendChild(document.createTextNode("Base Color: #" + mwitt.base));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("Secondary Color: #" + mwittSeconary));
+  container.appendChild(document.createTextNode("Secondary Color: #" + mwitt.secondary));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("Tertiary Color: #" + mwittTertiary));
+  container.appendChild(document.createTextNode("Tertiary Color: #" + mwitt.tertiary));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("Eye Color: #" + mwittEye));
+  container.appendChild(document.createTextNode("Eye Color: #" + mwitt.eye));
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createElement("br"));
   for(var i = 0; i < mwittMarkings.length; i++) {
-    container.appendChild(document.createTextNode("Marking " + (i+1) + ": " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
+    container.appendChild(document.createTextNode("Marking " + (i+1) + ": " + mwitt.markings[i] + " " + mwitt.markingGenes[i] + " #" + mwitt.markingColors[i] + " " + mwitt.markingOpacities[i] + "%"));
     container.appendChild(document.createElement("br"));
   }
 }
@@ -539,4 +535,83 @@ function getMarkingColors(con) {
     }
   }
   return colors;
+}
+
+function drawPreview(mwitt) {
+  var color = new Image();
+  color.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/color.png';
+  var lines = new Image();
+  lines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/lines.png';
+  var eyeColor = new Image();
+  eyeColor.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/eyes.png';
+  var eyeWhites = new Image();
+  eyeWhites.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/eyewhite.png';
+  var secondary = new Image();
+  secondary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary.png';
+  var tertiary = new Image();
+  if (greaters.includes(mwitt.breed)) {
+    tertiary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/tertiary.png';
+  }
+
+  var canvas = document.getElementById('prevCanvas');
+  var ctx = can.getContext('2d');
+
+  var tempCanvas = document.createElement('canvas');
+  var tempCtx = tempCanvas.getContext('2d');
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
+
+  tempCtx.fillStyle = '#' + mwitt.base;
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+  tempCtx.globalCompositeOperation = "destination-in";
+  tempCtx.drawImage(color, 0, 0);
+
+  ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(eyeWhites, 0, 0, canvas.width, canvas.height);
+
+  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+  tempCtx.fillStyle = '#' + mwitt.eyeColor;
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+  tempCtx.globalCompositeOperation = "destination-in";
+  tempCtx.drawImage(eyeColor, 0, 0);
+
+  ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+
+  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+  tempCtx.fillStyle = '#' + mwitt.secondary;
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+  tempCtx.globalCompositeOperation = "destination-in";
+  tempCtx.drawImage(secondary, 0, 0);
+
+  ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+
+  if(greaters.includes(mwitt.breed)) {
+    tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+    tempCtx.fillStyle = '#' + mwitt.tertiary;
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.drawImage(tertiary, 0, 0);
+
+    ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+
+    if(mwitt.breed == "ice") {
+      var secondaryTop = new Image();
+      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
+      var secondaryTopLines = new Image();
+      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
+
+      tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+      tempCtx.fillStyle = '#' + mwitt.secondary;
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      tempCtx.globalCompositeOperation = "destination-in";
+      tempCtx.drawImage(secondaryTop, 0, 0);
+
+      ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(secondaryTopLines, 0, 0, canvas.width, canvas.height);
+    }
+  }
+
+  //Markings
+
+  ctx.drawImage(lines, 0, 0, canvas.width, canvas.height);
 }

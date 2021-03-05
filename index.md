@@ -62,10 +62,17 @@ layout: default
   </div>
 </div>
 
-<div class="container">
-  <div class="center">
-  <br>
-  <button id="predict" onclick="calculateMwitt()">PREDICT</button><br><br>
-  <div id="containert"></div>
+<div class="row">
+  <div class="column">
+    <div class="container">
+      <div class="center"><br>
+        <button id="predict" onclick="calculateMwitt()">PREDICT</button><br><br>
+        <div id="cMwittInfo"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <canvas id="prevCanvas" width="400" height="300" style="border: 1px solid black"></canvas>
   </div>
 </div>
