@@ -31,6 +31,11 @@ function calculateMwitt() {
   var mwittMarkingColors = array[2];
   var mwittMarkingOpacities = array[3];
 
+  console.log(maleMweor.markings.toString());
+  console.log(maleMweor.markingGenes.toString());
+  console.log(maleMweor.markingColors.toString());
+  console.log(maleMweor.markingOpacities.toString());
+
   console.log(mwittBreed);
   console.log(mwittBase);
   console.log(mwittSeconary);
