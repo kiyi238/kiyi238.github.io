@@ -31,7 +31,7 @@ function calculateMwitt() {
   var mwittMarkingColors = array[2];
   var mwittMarkingOpacities = array[3];
 
-  console.log(maleMweor.markings.includes(femaleMweor.markings[0]);
+  console.log(maleMweor.markings.includes(femaleMweor.markings[0]));
   console.log(femaleMweor.markings.toString());
 
   console.log(mwittBreed);
