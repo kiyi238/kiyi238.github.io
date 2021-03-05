@@ -53,16 +53,6 @@ function calculateMwitt() {
     container.appendChild(document.createTextNode("Marking " + i+1 + ": " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
     container.appendChild(document.createElement("br"));
   }
-
-  console.log(mwittBreed);
-  console.log(mwittBase);
-  console.log(mwittSeconary);
-  console.log(mwittTertiary);
-  console.log(mwittEye);
-  console.log(mwittMarkings.toString());
-  console.log(mwittMarkingGenes.toString());
-  console.log(mwittMarkingColors.toString());
-  console.log(mwittMarkingOpacities.toString());
 }
 
 function calculateBreed(f, m) {
