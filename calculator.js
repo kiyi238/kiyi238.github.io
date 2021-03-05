@@ -38,14 +38,14 @@ function calculateMwitt() {
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("Base Color: #" + mwitt.base));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("Secondary Color: #" + mwitt.secondary));
+  container.appendChild(document.createTextNode("Secondary Color: #" + mwitt.second));
   container.appendChild(document.createElement("br"));
-  container.appendChild(document.createTextNode("Tertiary Color: #" + mwitt.tertiary));
+  container.appendChild(document.createTextNode("Tertiary Color: #" + mwitt.tert));
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("Eye Color: #" + mwitt.eye));
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createElement("br"));
-  for(var i = 0; i < mwittMarkings.length; i++) {
+  for(var i = 0; i < mwitt.markings.length; i++) {
     container.appendChild(document.createTextNode("Marking " + (i+1) + ": " + mwitt.markings[i] + " " + mwitt.markingGenes[i] + " #" + mwitt.markingColors[i] + " " + mwitt.markingOpacities[i] + "%"));
     container.appendChild(document.createElement("br"));
   }
