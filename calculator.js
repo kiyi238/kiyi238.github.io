@@ -1,4 +1,4 @@
-const recessives = initializeRecessives();
+var recessives = initializeRecessives();
 
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = document.getElementById(breed).value;
