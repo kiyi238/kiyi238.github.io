@@ -311,17 +311,17 @@ function calculateMarkings(f, m) {
             }
             m.markings[i] = "null"
           }
-        }
-        //Male does not share marking.
-        else {
-          console.log("Male does not share marking");
-          var gene = calculateGene(f.markingGenes[m], "aa");
-          //If DOMINANT marking shows.
-          if(gene == "AA" || gene == "Aa") {
-            mwittMarkings.push(f.markings[m]);
-            mwittMarkingGenes.push(gene);
-            mwittMarkingColors.push(f.markingColors[m]);
-            mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],f.markingOpacities[m]));
+          //Male does not share marking.
+          else {
+            console.log("Male does not share marking");
+            var gene = calculateGene(f.markingGenes[m], "aa");
+            //If DOMINANT marking shows.
+            if(gene == "AA" || gene == "Aa") {
+              mwittMarkings.push(f.markings[m]);
+              mwittMarkingGenes.push(gene);
+              mwittMarkingColors.push(f.markingColors[m]);
+              mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],f.markingOpacities[m]));
+            }
           }
         }
       }
