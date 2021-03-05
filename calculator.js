@@ -17,9 +17,9 @@ function calculateMwitt() {
   var recessives = initializeRecessives();
 
   console.log(femaleMweor.markings[0]);
-  console.log(femaleMweor.getMarkingGenes[0]);
-  console.log(femaleMweor.getMarkingColors[0]);
-  console.log(femaleMweor.getMarkingOpacities[0]);
+  console.log(femaleMweor.markingGenes[0]);
+  console.log(femaleMweor.markingColors[0]);
+  console.log(femaleMweor.markingOpacities[0]);
 
   var mwittBreed = calculateBreed(femaleMweor, maleMweor);
   var mwittBase = calculateBase(femaleMweor, maleMweor);
