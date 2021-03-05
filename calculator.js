@@ -50,7 +50,7 @@ function calculateMwitt() {
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createElement("br"));
   for(var i = 0; i < mwittMarkings.length; i++) {
-    container.appendChild(document.createTextNode("Marking " + i+1 + ": " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
+    container.appendChild(document.createTextNode("Marking " + (i+1) + ": " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
     container.appendChild(document.createElement("br"));
   }
 }
@@ -83,6 +83,9 @@ function calculateBreed(f, m) {
           breed = "lightning";
         }
       }
+      else if (rand < 0.5) {
+        breed = f.breed;
+      } else { breed = m.breed; }
     }
     else if(f.breed == "plant" || f.breed == "earth") {
       breed = "lesser";
@@ -125,6 +128,9 @@ function calculateBreed(f, m) {
           breed = "plant";
         }
       }
+      else if (rand < 0.5) {
+        breed = f.breed;
+      } else { breed = m.breed; }
     }
     else if(f.breed == "plant" || f.breed == "earth" || f.breed == "lightning") {
       breed = "lesser";
@@ -171,6 +177,9 @@ function calculateBreed(f, m) {
           breed = "air";
         }
       }
+      else if (rand < 0.5) {
+        breed = f.breed;
+      } else { breed = m.breed; }
     }
     else if(f.breed == "fire" || f.breed == "earth") {
       breed = "lesser";
@@ -217,6 +226,9 @@ function calculateBreed(f, m) {
           breed = "water";
         }
       }
+      else if (rand < 0.5) {
+        breed = f.breed;
+      } else { breed = m.breed; }
     }
     else if(f.breed == "fire" || f.breed == "air" || f.breed == "lightning") {
       breed = "lesser";
