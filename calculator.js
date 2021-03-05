@@ -31,7 +31,6 @@ function calculateMwitt() {
   var mwittMarkingColors = array[2];
   var mwittMarkingOpacities = array[3];
 
-  console.log(maleMweor.markings);
   console.log(maleMweor.markings.toString());
   console.log(femaleMweor.markings.toString());
 
@@ -293,6 +292,8 @@ function calculateMarkings(f, m) {
       console.log("Female marking Exists");
 ////////If marking is dominant.
       if(!recessives.includes(f.markings[m])) {
+        console.log(if(m.markings));
+        console.log(if(m.markings.length));
         console.log("Marking is dominant");
         //If male shares marking.
         if(m.markings && m.markings.length && m.markings.includes(f.markings[m])) {
