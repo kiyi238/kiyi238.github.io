@@ -34,7 +34,7 @@ function calculateMwitt() {
   console.log(maleMweor.markings.toString());
   console.log(maleMweor.markingGenes.toString());
   console.log(maleMweor.markingColors.toString());
-  console.log(maleMweor.markingOpacities.toString());
+  console.log(maleMweor.markingOpacities .toString());
 
   console.log(mwittBreed);
   console.log(mwittBase);
@@ -297,6 +297,7 @@ function calculateMarkings(f, m) {
         console.log("Marking is dominant");
         //If male shares marking.
         if(m.markings) {
+          console.log("Male has markings");
           if(m.markings.includes(f.markings[m])) {
             console.log("Male shares marking");
             var i = m.markings.indexOf(f.markings[m]);
@@ -307,10 +308,6 @@ function calculateMarkings(f, m) {
               mwittMarkingGenes.push(gene);
               mwittMarkingColors.push(blendColors(f.markingColors[m], m.markingColors[i], 0.5));
               mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[m],m.markingOpacities[i]));
-              console.log(calculateGene(mwittMarkings[m]));
-              console.log(calculateGene(mwittMarkingGenes[m]));
-              console.log(calculateGene(mwittMarkingColors[m]));
-              console.log(calculateGene(mwittMarkingOpacities[m]));
             }
             m.markings[i] = "null"
           }
