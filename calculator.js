@@ -261,7 +261,6 @@ function calculateBreed(f, m) {
   else if (rand < 0.5) {
     breed = f.breed;
   } else { breed = m.breed; }
-  console.log(breed);
   return breed;
 }
 
@@ -559,7 +558,7 @@ function drawPreview(mwitt) {
   copyright.src = 'https://kiyi238.github.io/images/copyright.png';
 
   var canvas = document.getElementById('prevCanvas');
-  var ctx = can.getContext('2d');
+  var ctx = canvas.getContext('2d');
 
   var tempCanvas = document.createElement('canvas');
   var tempCtx = tempCanvas.getContext('2d');
