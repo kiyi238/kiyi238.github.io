@@ -282,10 +282,13 @@ function calculateMarkings(f, m) {
     //FEMALE TURN.
     //If next marking exists.
     if(f.markings[m]) {
+      console.log("Female marking Exists");
       //If marking is dominant.
       if(!recessives.includes(f.markings[m])) {
+        console.log("Marking is dominant");
         //If male shares marking.
         if(m.markings.includes(f.markings[m])) {
+          console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[m]);
           var gene = calculateGene(f.markingGenes[m], m.markingGenes[m]);
           //If DOMINANT marking shows.
@@ -303,6 +306,7 @@ function calculateMarkings(f, m) {
         }
         //Male does not share marking.
         else {
+          console.log("Male does not share marking");
           var gene = calculateGene(f.markingGenes[m], "aa");
           //If DOMINANT marking shows.
           if(gene == "AA" || gene == "Aa") {
@@ -315,8 +319,10 @@ function calculateMarkings(f, m) {
       }
       //Marking is recessive.
       else {
+        console.log("Marking is recessive");
         //If male shares marking.
         if(m.markings.includes(f.markings[m])) {
+          console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[m]);
           var gene = calculateGene(f.markingGenes[m], m.markingGenes[m]);
           //If RECESSIVE marking shows or carries.
@@ -330,6 +336,7 @@ function calculateMarkings(f, m) {
         }
         //Male does not share marking.
         else {
+          console.log("Male does not share marking");
           var gene = calculateGene(f.markingGenes[m], "AA");
           //If RECESSIVE marking shows.
           if(gene == "aa" || gene == "Aa") {
@@ -344,25 +351,26 @@ function calculateMarkings(f, m) {
     //MALE TURN.
     //If next marking exists.
     if(m.markings[m]) {
+      console.log("Male marking Exists");
       //If marking is not null, and marking is not shared by female.
       if(m.markings[m] != "null" && !f.markings.includes(m.markings[m])) {
+        console.log("Male marking not null or shared");
         //If marking is dominant.
         if(!recessives.includes(m.markings[m])) {
-          //If female does not share marking.
-          if(!f.markings.includes(m.markings[m])) {
-            var gene = calculateGene(m.markingGenes[m], "aa");
-            //If DOMINANT marking shows.
-            if(gene == "AA" || gene == "Aa") {
-              mwittMarkings.push(m.markings[m]);
-              mwittMarkingGenes.push(gene);
-              mwittMarkingColors.push(m.markingColors[m]);
-              mwittMarkingOpacities.push(calculateMarkingOpacitiy(m.markingOpacities[m], m.markingOpacities[m]));
-            }
-            m.markings[m] = "null"
+          console.log("Male marking dominant");
+          var gene = calculateGene(m.markingGenes[m], "aa");
+          //If DOMINANT marking shows.
+          if(gene == "AA" || gene == "Aa") {
+            mwittMarkings.push(m.markings[m]);
+            mwittMarkingGenes.push(gene);
+            mwittMarkingColors.push(m.markingColors[m]);
+            mwittMarkingOpacities.push(calculateMarkingOpacitiy(m.markingOpacities[m], m.markingOpacities[m]));
           }
+          m.markings[m] = "null"
         }
         //Marking is recessive.
         else {
+          console.log("Male marking recessive");
           //If female does not share marking.
           if(!f.markings.includes(m.markings[m])) {
             var gene = calculateGene(m.markingGenes[m], "AA");
