@@ -494,4 +494,5 @@ function getMarkingColors(con) {
       colors.push(inputs[index].value);
     }
   }
+  return colors;
 }
