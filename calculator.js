@@ -290,6 +290,7 @@ function calculateMarkings(f, m) {
     //If next marking exists.
     if(Array.isArray(f.markings) && f.markings.length && f.markings[m]) {
       console.log("Female marking Exists");
+      console.log(m.markings.includes(f.markings[m]));
 ////////If marking is dominant.
       if(!recessives.includes(f.markings[m])) {
         //If male shares marking.
