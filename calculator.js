@@ -1,3 +1,5 @@
+const recessives = initializeRecessives();
+
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = document.getElementById(breed).value;
   this.base = document.getElementById(base).value;
@@ -13,8 +15,6 @@ function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingCo
 function calculateMwitt() {
   var femaleMweor = new Mweor("breed","base","secondary","tertiary","eye",getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
   var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem",getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
-
-  var recessives = initializeRecessives();
 
   var mwittBreed = calculateBreed(femaleMweor, maleMweor);
   var mwittBase = calculateBase(femaleMweor, maleMweor);
