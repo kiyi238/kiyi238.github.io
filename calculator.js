@@ -277,6 +277,8 @@ function calculateMarkings(f, m) {
   if(f.markings && m.markings) { Math.max(f.markings.length,m.markings.length); }
   else if(f.markings) { f.markings.length; }
   else if(m.markings) { m.markings.length; }
+  console.log(f.markings.length);
+  console.log(m.markings.length);
   console.log(len);
 
   for(var m = 0; m < len; m++) {
