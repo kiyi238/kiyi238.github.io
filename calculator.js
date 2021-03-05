@@ -260,6 +260,7 @@ function calculateBreed(f, m) {
   else if (rand < 0.5) {
     breed = f.breed;
   } else { breed = m.breed; }
+  console.log(breed);
   return breed;
 }
 
