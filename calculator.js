@@ -16,11 +16,6 @@ function calculateMwitt() {
 
   var recessives = initializeRecessives();
 
-  console.log(femaleMweor.markings[0]);
-  console.log(femaleMweor.markingGenes[0]);
-  console.log(femaleMweor.markingColors[0]);
-  console.log(femaleMweor.markingOpacities[0]);
-
   var mwittBreed = calculateBreed(femaleMweor, maleMweor);
   var mwittBase = calculateBase(femaleMweor, maleMweor);
   var mwittSeconary = calculateSecondary(femaleMweor, maleMweor);
@@ -31,6 +26,16 @@ function calculateMwitt() {
   var mwittMarkingGenes = array[1];
   var mwittMarkingColors = array[2];
   var mwittMarkingOpacities = array[3];
+
+  console.log(mwittBreed);
+  console.log(mwittBase);
+  console.log(mwittSeconary);
+  console.log(mwittTertiary);
+  console.log(mwittEye);
+  console.log(mwittMarkings.toString());
+  console.log(mwittMarkingGenes.toString());
+  console.log(mwittMarkingColors.toString());
+  console.log(mwittMarkingOpacities.toString());
 }
 
 function calculateBreed(f, m) {
@@ -450,7 +455,6 @@ function getMarkings(con) {
       }
     }
   }
-  console.log(markings[0]);
   return markings;
 }
 
