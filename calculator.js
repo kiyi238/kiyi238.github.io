@@ -358,6 +358,7 @@ function calculateMarkings(f, m) {
     }
     //MALE TURN.
     //If next marking exists.
+    if(!m.markings) { break; }
     if(m.markings[m]) {
       console.log("Male marking Exists");
       //If marking is not null, and marking is not shared by female.
