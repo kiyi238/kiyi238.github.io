@@ -50,7 +50,7 @@ function calculateMwitt() {
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createElement("br"));
   for(var i = 0; i < mwittMarkings.length; i++) {
-    container.appendChild(document.createTextNode("Marking " + i + ": " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
+    container.appendChild(document.createTextNode("Marking " + i+1 + ": " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
     container.appendChild(document.createElement("br"));
   }
 
@@ -115,6 +115,9 @@ function calculateBreed(f, m) {
         breed = "lightning";
       }
     }
+    else if (rand < 0.5) {
+      breed = f.breed;
+    } else { breed = m.breed; }
   }
 
   //Earth combos.
@@ -145,6 +148,9 @@ function calculateBreed(f, m) {
         breed = "plant";
       }
     }
+    else if (rand < 0.5) {
+      breed = f.breed;
+    } else { breed = m.breed; }
   }
 
   //Fire combos.
@@ -155,6 +161,9 @@ function calculateBreed(f, m) {
     else if(f.breed == "water" || f.breed == "plant" || f.breed == "ice") {
       breed = "lesser";
     }
+    else if (rand < 0.5) {
+      breed = f.breed;
+    } else { breed = m.breed; }
   }
 
   //Ice combos.
@@ -185,6 +194,9 @@ function calculateBreed(f, m) {
         breed = "air";
       }
     }
+    else if (rand < 0.5) {
+      breed = f.breed;
+    } else { breed = m.breed; }
   }
 
   //Lightning combos.
@@ -195,6 +207,9 @@ function calculateBreed(f, m) {
     else if(f.breed == "water" || f.breed == "plant" || f.breed == "earth") {
       breed = "lesser";
     }
+    else if (rand < 0.5) {
+      breed = f.breed;
+    } else { breed = m.breed; }
   }
 
   //Plant combos.
@@ -225,6 +240,9 @@ function calculateBreed(f, m) {
         breed = "water";
       }
     }
+    else if (rand < 0.5) {
+      breed = f.breed;
+    } else { breed = m.breed; }
   }
 
   //Water combos.
@@ -235,6 +253,9 @@ function calculateBreed(f, m) {
     else if(f.breed == "fire" || f.breed == "lightning") {
       breed = "lesser";
     }
+    else if (rand < 0.5) {
+      breed = f.breed;
+    } else { breed = m.breed; }
   }
 
   else if (rand < 0.5) {
@@ -309,12 +330,10 @@ function calculateMarkings(f, m) {
     //FEMALE TURN.
     //If next marking exists.
     if(Array.isArray(f.markings) && f.markings.length && f.markings[v]) {
-      console.log("Female marking Exists");
 ////////If marking is dominant.
       if(!recessives.includes(f.markings[v])) {
         //If male shares marking.
         if(Array.isArray(m.markings) && m.markings.length && m.markings.includes(f.markings[v])) {
-          console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[v]);
           var gene = calculateGene(f.markingGenes[v], m.markingGenes[i]);
           //If DOMINANT marking shows.
@@ -328,7 +347,6 @@ function calculateMarkings(f, m) {
         }
         //Male does not share marking.
         else {
-          console.log("Male does not share marking");
           var gene = calculateGene(f.markingGenes[v], "aa");
             //If DOMINANT marking shows.
           if(gene == "AA" || gene == "Aa") {
@@ -341,10 +359,8 @@ function calculateMarkings(f, m) {
       }
 ////////Marking is recessive.
       else {
-        console.log("Marking is recessive");
         //If male shares marking.
         if(Array.isArray(m.markings) && m.markings.length && m.markings.includes(f.markings[v])) {
-          console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[v]);
           var gene = calculateGene(f.markingGenes[v], m.markingGenes[i]);
           //If RECESSIVE marking shows or carries.
@@ -358,7 +374,6 @@ function calculateMarkings(f, m) {
         }
         //Male does not share marking.
         else {
-          console.log("Male does not share marking");
           var gene = calculateGene(f.markingGenes[v], "AA");
           //If RECESSIVE marking shows or carries.
           if(gene == "aa" || gene == "Aa") {
@@ -373,13 +388,10 @@ function calculateMarkings(f, m) {
     //MALE TURN.
     //If next marking exists.
     if(Array.isArray(m.markings) && m.markings.length && m.markings[v]) {
-      console.log("Male marking Exists");
       //If marking is not null, and marking is not shared by female.
       if(m.markings[v] != "null" && f.markings && f.markings.length && !f.markings.includes(m.markings[v])) {
-        console.log("Male marking not null or shared");
 //////////If marking is dominant.
         if(!recessives.includes(m.markings[v])) {
-          console.log("Male marking dominant");
           var gene = calculateGene(m.markingGenes[v], "aa");
           //If DOMINANT marking shows.
           if(gene == "AA" || gene == "Aa") {
@@ -392,7 +404,6 @@ function calculateMarkings(f, m) {
         }
 //////////Marking is recessive.
         else {
-          console.log("Male marking recessive");
           var gene = calculateGene(m.markingGenes[v], "AA");
           //If RECESSIVE marking shows.
           if(gene == "aa" || gene == "Aa") {
