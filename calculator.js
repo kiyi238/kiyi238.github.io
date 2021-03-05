@@ -9,11 +9,11 @@ var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Easte
 
 
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
-  this.breed = document.getElementById(breed).value;
-  this.base = document.getElementById(base).value;
-  this.second = document.getElementById(second).value;
-  this.tert = document.getElementById(tert).value;
-  this.eye = document.getElementById(eye).value;
+  this.breed = breed;
+  this.base = base;
+  this.second = second;
+  this.tert = tert;
+  this.eye = eye;
   this.markings = markings;
   this.markingGenes = markingGenes;
   this.markingColors = markingColors;
@@ -21,12 +21,11 @@ function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingCo
 }
 
 function calculateMwitt() {
-  var femaleMweor = new Mweor("breed","base","secondary","tertiary","eye",getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
+  var femaleMweor = new Mweor(document.getElementById("breed").value,document.getElementById("base").value,document.getElementById("secondary").value,document.getElementById("tertiary").value,document.getElementById("eye").value,getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
   var maleMweor = new Mweor("breedm","basem","secondarym","tertiarym","eyem",getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
 
   var markingResults = calculateMarkings(femaleMweor, maleMweor);
-  var mwittBreed = calculateBreed(femaleMweor, maleMweor);
-  var mwitt = new Mweor(mwittBreed, calculateBase(femaleMweor, maleMweor), calculateSecondary(femaleMweor, maleMweor), calculateTertiary(femaleMweor, maleMweor), calculateEye(femaleMweor, maleMweor), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
+  var mwitt = new Mweor(calculateBreed(femaleMweor, maleMweor), calculateBase(femaleMweor, maleMweor), calculateSecondary(femaleMweor, maleMweor), calculateTertiary(femaleMweor, maleMweor), calculateEye(femaleMweor, maleMweor), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
 
   var container = document.getElementById("cMwittInfo");
   while (container.hasChildNodes()) {
@@ -574,7 +573,7 @@ function drawPreview(mwitt) {
   ctx.drawImage(eyeWhites, 0, 0, canvas.width, canvas.height);
 
   tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-  tempCtx.fillStyle = '#' + mwitt.eyeColor;
+  tempCtx.fillStyle = '#' + mwitt.eye;
   tempCtx.fillRect(0, 0, canvas.width, canvas.height);
   tempCtx.globalCompositeOperation = "destination-in";
   tempCtx.drawImage(eyeColor, 0, 0);
@@ -582,7 +581,7 @@ function drawPreview(mwitt) {
   ctx.drawImage(tempCanvas, 0, 0, canvas.width, canvas.height);
 
   tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-  tempCtx.fillStyle = '#' + mwitt.secondary;
+  tempCtx.fillStyle = '#' + mwitt.second;
   tempCtx.fillRect(0, 0, canvas.width, canvas.height);
   tempCtx.globalCompositeOperation = "destination-in";
   tempCtx.drawImage(secondary, 0, 0);
@@ -591,7 +590,7 @@ function drawPreview(mwitt) {
 
   if(greaters.includes(mwitt.breed)) {
     tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-    tempCtx.fillStyle = '#' + mwitt.tertiary;
+    tempCtx.fillStyle = '#' + mwitt.tert;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
     tempCtx.globalCompositeOperation = "destination-in";
     tempCtx.drawImage(tertiary, 0, 0);
@@ -605,7 +604,7 @@ function drawPreview(mwitt) {
       secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
 
       tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-      tempCtx.fillStyle = '#' + mwitt.secondary;
+      tempCtx.fillStyle = '#' + mwitt.second;
       tempCtx.fillRect(0, 0, canvas.width, canvas.height);
       tempCtx.globalCompositeOperation = "destination-in";
       tempCtx.drawImage(secondaryTop, 0, 0);
