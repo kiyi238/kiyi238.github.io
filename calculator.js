@@ -291,6 +291,7 @@ function calculateMarkings(f, m) {
       if(!recessives.includes(f.markings[m])) {
         console.log("Marking is dominant");
         //If male shares marking.
+        if(!m.markings) { break; }
         if(m.markings.includes(f.markings[m])) {
           console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[m]);
@@ -325,6 +326,7 @@ function calculateMarkings(f, m) {
       else {
         console.log("Marking is recessive");
         //If male shares marking.
+        if(!m.markings) { break; }
         if(m.markings.includes(f.markings[m])) {
           console.log("Male shares marking");
           var i = m.markings.indexOf(f.markings[m]);
