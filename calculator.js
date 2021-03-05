@@ -50,7 +50,7 @@ function calculateMwitt() {
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createElement("br"));
   for(var i = 0; i < mwittMarkings.length; i++) {
-    container.appendChild(document.createTextNode("Marking 1: " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
+    container.appendChild(document.createTextNode("Marking " + i + ": " + mwittMarkings[i] + " " + mwittMarkingGenes[i] + " #" + mwittMarkingColors[i] + " " + mwittMarkingOpacities[i] + "%"));
     container.appendChild(document.createElement("br"));
   }
 
