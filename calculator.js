@@ -611,47 +611,6 @@ function drawPreview(mwitt) {
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-    //Color and draw the secondary.
-    tempCtx.globalCompositeOperation = "source-over";
-    tempCtx.fillStyle = '#' + mwitt.second;
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-    tempCtx.globalCompositeOperation = "destination-in";
-    tempCtx.drawImage(secondary, 0, 0);
-    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
-
-    //Clear the temporary canvas.
-    tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-
-    //If breed is a greater.
-    if(greaters.includes(mwitt.breed)) {
-      tempCtx.globalCompositeOperation = "source-over";
-      tempCtx.fillStyle = '#' + mwitt.tert;
-      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-      tempCtx.globalCompositeOperation = "destination-in";
-      tempCtx.drawImage(tertiary, 0, 0);
-      ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
-
-      //Clear the temporary canvas.
-      tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
-      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-
-      //If breed is ice.
-      if(mwitt.breed == "ice") {
-        tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.fillStyle = '#' + mwitt.second;
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-        tempCtx.globalCompositeOperation = "destination-in";
-        tempCtx.drawImage(secondaryTop, 0, 0);
-        ctx.drawImage(tempCanvas, 0, 0);           //Add to main canvas.
-        ctx.drawImage(secondaryTopLines, 0, 0);    //Add to main canvas.
-
-        //Clear the temporary canvas.
-        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-      }
-    }
-
     //Draw markings.
     var k, j;
     for (k = 0, j = 0; k < mwitt.markings.length; k++) {
@@ -685,6 +644,47 @@ function drawPreview(mwitt) {
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
       }
     }
+
+    //Color and draw the secondary.
+    tempCtx.globalCompositeOperation = "source-over";
+    tempCtx.fillStyle = '#' + mwitt.second;
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.drawImage(secondary, 0, 0);
+    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+
+    //If breed is a greater.
+    if(greaters.includes(mwitt.breed)) {
+      tempCtx.globalCompositeOperation = "source-over";
+      tempCtx.fillStyle = '#' + mwitt.tert;
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      tempCtx.globalCompositeOperation = "destination-in";
+      tempCtx.drawImage(tertiary, 0, 0);
+      ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+
+      //Clear the temporary canvas.
+      tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+      //If breed is ice.
+      if(mwitt.breed == "ice") {
+        tempCtx.globalCompositeOperation = "source-over";
+        tempCtx.fillStyle = '#' + mwitt.second;
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalCompositeOperation = "destination-in";
+        tempCtx.drawImage(secondaryTop, 0, 0);
+        ctx.drawImage(tempCanvas, 0, 0);           //Add to main canvas.
+        ctx.drawImage(secondaryTopLines, 0, 0);    //Add to main canvas.
+
+        //Clear the temporary canvas.
+        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    //Clear the temporary canvas.
+    tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
     //Draw lines.
     ctx.drawImage(lines, 0, 0);      //Add to main canvas.
