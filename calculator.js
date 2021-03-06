@@ -654,7 +654,7 @@ function drawPreview(mwitt) {
 
     //Draw markings.
     var k, j;
-    for (k = 0, j = 0; i < mwitt.markings.length; i++) {
+    for (k = 0, j = 0; k < mwitt.markings.length; k++) {
       if(growths.includes(mwitt.markings[k])) {
         //Draw growth.
         tempCtx.globalCompositeOperation = "source-over";
