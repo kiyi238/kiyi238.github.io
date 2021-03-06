@@ -624,7 +624,7 @@ function drawPreview(mwitt) {
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-    console.log(mwitt.eye;
+    console.log(mwitt.eye);
     //Color and draw the eyes.
     tempCtx.fillStyle = '#' + mwitt.eye;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
