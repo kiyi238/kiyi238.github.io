@@ -604,8 +604,8 @@ function drawPreview(mwitt) {
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-    console.log(mwitt.eye);
     //Color and draw the eyes.
+    tempCtx.globalCompositeOperation = "source-over";
     tempCtx.fillStyle = '#' + mwitt.eye;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
     tempCtx.globalCompositeOperation = "destination-in";
@@ -617,8 +617,8 @@ function drawPreview(mwitt) {
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-    console.log(mwitt.second);
     //Color and draw the secondary.
+    tempCtx.globalCompositeOperation = "source-over";
     tempCtx.fillStyle = '#' + mwitt.second;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
     tempCtx.globalCompositeOperation = "destination-in";
@@ -631,6 +631,7 @@ function drawPreview(mwitt) {
 
     //If breed is a greater.
     if(greaters.includes(mwitt.breed)) {
+      tempCtx.globalCompositeOperation = "source-over";
       tempCtx.fillStyle = '#' + mwitt.tert;
       tempCtx.fillRect(0, 0, canvas.width, canvas.height);
       tempCtx.globalCompositeOperation = "destination-in";
@@ -643,6 +644,7 @@ function drawPreview(mwitt) {
 
       //If breed is ice.
       if(mwitt.breed == "ice") {
+        tempCtx.globalCompositeOperation = "source-over";
         tempCtx.fillStyle = '#' + mwitt.second;
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
@@ -661,6 +663,7 @@ function drawPreview(mwitt) {
     for (k = 0, j = 0; i < mwitt.markings.length; i++) {
       if(growths.includes(mwitt.markings[k])) {
         //Draw growth.
+        tempCtx.globalCompositeOperation = "source-over";
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
@@ -675,6 +678,7 @@ function drawPreview(mwitt) {
       }
       else {
         //Draw marking.
+        tempCtx.globalCompositeOperation = "source-over";
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
