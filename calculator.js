@@ -598,19 +598,6 @@ function drawPreview(mwitt) {
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
-    //Color and draw the eyes.
-    tempCtx.globalCompositeOperation = "source-over";
-    tempCtx.fillStyle = '#' + mwitt.eye;
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-    tempCtx.globalCompositeOperation = "destination-in";
-    tempCtx.drawImage(eyeColor, 0, 0);
-    ctx.drawImage(eyeWhites, 0, 0);   //Add to main canvas.
-    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
-
-    //Clear the temporary canvas.
-    tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-
     //Draw markings.
     var k, j;
     for (k = 0, j = 0; k < mwitt.markings.length; k++) {
@@ -681,6 +668,19 @@ function drawPreview(mwitt) {
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
       }
     }
+
+    //Clear the temporary canvas.
+    tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+    //Color and draw the eyes.
+    tempCtx.globalCompositeOperation = "source-over";
+    tempCtx.fillStyle = '#' + mwitt.eye;
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.drawImage(eyeColor, 0, 0);
+    ctx.drawImage(eyeWhites, 0, 0);   //Add to main canvas.
+    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
 
     //Clear the temporary canvas.
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
