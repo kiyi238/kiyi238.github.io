@@ -540,8 +540,10 @@ function getMarkingColors(con) {
 }
 
 function drawPreview(mwitt) {
-  var test = new Image();
-  test.src = 'https://kiyi238.github.io/images/air/marking_centered.png';
+  var canvas = document.getElementById('prevCanvas');
+  var ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
   var color = new Image();
   color.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/color.png';
   var lines = new Image();
@@ -559,8 +561,68 @@ function drawPreview(mwitt) {
   var copyright = new Image();
   copyright.src = 'https://kiyi238.github.io/images/copyright.png';
 
-  var canvas = document.getElementById('prevCanvas');
-  var ctx = canvas.getContext('2d');
+  var tempCanvas = document.createElement('canvas');
+  var tempCtx = tempCanvas.getContext('2d');
+  tempCanvas.width = canvas.width;
+  tempCanvas.height = canvas.height;
 
-  ctx.drawImage(test, 0, 0);
+  tempCtx.fillStyle = '#' + mwitt.base;
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+  tempCtx.globalCompositeOperation = "destination-in";
+  tempCtx.drawImage(color, 0, 0);
+
+  ctx.drawImage(tempCanvas, 0, 0);
+  ctx.drawImage(eyeWhites, 0, 0);
+}
+
+function temp() {
+  ctx.drawImage(tempCanvas, 0, 0);
+  ctx.drawImage(eyeWhites, 0, 0);
+
+  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+  tempCtx.fillStyle = '#' + mwitt.eye;
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+  tempCtx.globalCompositeOperation = "destination-in";
+  tempCtx.drawImage(eyeColor, 0, 0);
+
+  ctx.drawImage(tempCanvas, 0, 0);
+
+  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+  tempCtx.fillStyle = '#' + mwitt.second;
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+  tempCtx.globalCompositeOperation = "destination-in";
+  tempCtx.drawImage(secondary, 0, 0);
+
+  ctx.drawImage(tempCanvas, 0, 0);
+
+  if(greaters.includes(mwitt.breed)) {
+    tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+    tempCtx.fillStyle = '#' + mwitt.tert;
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.drawImage(tertiary, 0, 0);
+
+    ctx.drawImage(tempCanvas, 0, 0);
+
+    if(mwitt.breed == "ice") {
+      var secondaryTop = new Image();
+      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
+      var secondaryTopLines = new Image();
+      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
+
+      tempCtx.clearRect(0, 0, canvas.width, canvas.height);
+      tempCtx.fillStyle = '#' + mwitt.second;
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      tempCtx.globalCompositeOperation = "destination-in";
+      tempCtx.drawImage(secondaryTop, 0, 0);
+
+      ctx.drawImage(tempCanvas, 0, 0);
+      ctx.drawImage(secondaryTopLines, 0, 0);
+    }
+  }
+
+  //Markings
+
+  ctx.drawImage(lines, 0, 0);
+  ctx.drawImage(copyright, 0, 0);
 }
