@@ -540,6 +540,8 @@ function getMarkingColors(con) {
 }
 
 function drawPreview(mwitt) {
+  var test = new Image();
+  test.src = 'https://kiyi238.github.io/images/air/marking_centered.png';
   var color = new Image();
   color.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/color.png';
   var lines = new Image();
@@ -559,19 +561,6 @@ function drawPreview(mwitt) {
 
   var canvas = document.getElementById('prevCanvas');
   var ctx = canvas.getContext('2d');
-  canvas.width = "400";
-  canvas.height = "300";
 
-  var tempCanvas = document.createElement('canvas');
-  var tempCtx = tempCanvas.getContext('2d');
-  tempCanvas.width = canvas.width;
-  tempCanvas.height = canvas.height;
-
-  tempCtx.fillStyle = '#' + mwitt.base;
-  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-  tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.drawImage(color, 0, 0);
-
-  ctx.drawImage(tempCanvas, 0, 0);
-  ctx.drawImage(eyeWhites, 0, 0);
+  ctx.drawImage(test, 0, 0);
 }
