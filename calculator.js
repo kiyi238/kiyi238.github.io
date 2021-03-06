@@ -609,6 +609,9 @@ function drawPreview(mwitt) {
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
 
+    //Draw copyright first cause it's not transparent for some fuckin reason.
+    ctx.drawImage(copyright, 0, 0);  //Add to main canvas.
+
     //Color and draw the base.
     tempCtx.fillStyle = '#' + mwitt.base;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
@@ -701,9 +704,8 @@ function drawPreview(mwitt) {
       }
     }
 
-    //Draw lines and copyright.
+    //Draw lines.
     ctx.drawImage(lines, 0, 0);      //Add to main canvas.
-    ctx.drawImage(copyright, 0, 0);  //Add to main canvas.
   };
 
   //Attach callbacks.
@@ -721,8 +723,4 @@ function drawPreview(mwitt) {
   eyeWhites.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/eyewhite.png';
   secondary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary.png';
   copyright.src = 'https://kiyi238.github.io/images/copyright.png';
-}
-
-function temp() {
-
 }
