@@ -7,7 +7,6 @@ var greaters = ["air","fire","water","earth","lightning","plant","ice"];
 var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Eastern Dragon","Dragon Horns","Ear Tufts","Fairy Wings",
               "Feather Wings","Leg Feathering","Mane","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
 
-
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = breed;
   this.base = base;
@@ -542,39 +541,91 @@ function getMarkingColors(con) {
 function drawPreview(mwitt) {
   var canvas = document.getElementById('prevCanvas');
   var ctx = canvas.getContext('2d');
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(0, 0, 0, 0)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+  var counter = 0;
+  var totalImages = 6;
   var color = new Image();
-  color.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/color.png';
   var lines = new Image();
-  lines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/lines.png';
   var eyeColor = new Image();
-  eyeColor.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/eyes.png';
   var eyeWhites = new Image();
-  eyeWhites.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/eyewhite.png';
   var secondary = new Image();
-  secondary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary.png';
   var tertiary = new Image();
+  var copyright = new Image();
+  var markingImages = [];
+  var growthImages = [];
+
+  //If mweor is a greater breed, load tertiary image.
   if (greaters.includes(mwitt.breed)) {
+    totalImages++;
+    tertiary.onload = onloadCallback;
     tertiary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/tertiary.png';
   }
-  var copyright = new Image();
+
+  //Load marking and growth images.
+  for (var i = 0; i < mwitt.markings.length; i++) {
+    if(growths.includes(mwitt.markings[i])) {
+      totalImages += 2;
+      var img = new Image();
+      var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+      img.onload = onloadCallback;
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str;
+      growthImages.push(img);
+      var img2 = new Image();
+      img2.onload = onloadCallback;
+      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + "_base";
+      growthImages.push(img2);
+    }
+    else {
+      totalImages++;
+      var img = new Image();
+      img.onload = onloadCallback;
+      var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str;
+      markingImages.push(img);
+    }
+  }
+
+  var onloadCallback = function() {
+    counter++;
+    if (counter < totalImages) { return; }
+    allLoadedCallback();
+  };
+
+  var allLoadedCallback = function() {
+    var tempCanvas = document.createElement('canvas');
+    var tempCtx = tempCanvas.getContext('2d');
+    tempCanvas.width = canvas.width;
+    tempCanvas.height = canvas.height;
+
+    tempCtx.fillStyle = '#' + mwitt.base;
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.drawImage(color, 0, 0);
+
+    ctx.drawImage(tempCanvas, 0, 0);
+    ctx.drawImage(eyeWhites, 0, 0);
+
+    tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+  };
+
+  //Attach callbacks.
+  color.onload = onloadCallback;
+  lines.onload = onloadCallback;
+  eyeColor.onload = onloadCallback;
+  eyeWhites.onload = onloadCallback;
+  secondary.onload = onloadCallback;
+  copyright.onload = onloadCallback;
+
+  //Load remaining images.
+  color.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/color.png';
+  lines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/lines.png';
+  eyeColor.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/eyes.png';
+  eyeWhites.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/eyewhite.png';
+  secondary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary.png';
   copyright.src = 'https://kiyi238.github.io/images/copyright.png';
-
-  var tempCanvas = document.createElement('canvas');
-  var tempCtx = tempCanvas.getContext('2d');
-  tempCanvas.width = canvas.width;
-  tempCanvas.height = canvas.height;
-
-  tempCtx.fillStyle = '#' + mwitt.base;
-  tempCtx.drawImage(color, 0, 0);
-  tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.drawImage(tempCanvas, 0, 0);
-  ctx.drawImage(eyeWhites, 0, 0);
-
-  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function temp() {
