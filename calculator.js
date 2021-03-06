@@ -545,6 +545,7 @@ function drawPreview(mwitt) {
   //Clear the main canvas.
   ctx.fillStyle = "rgba(0, 0, 0, 0)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.globalCompositeOperation = "source-over";
 
   var counter = 0;
   var totalImages = 6;
