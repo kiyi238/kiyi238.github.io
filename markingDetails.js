@@ -3,7 +3,7 @@ function addFields(num, con){
                       "Calico","CandelFlame Tabby","Cardinal","Centered","Cheetah","Chest Splash","Classic Tabby","Clouded Leopard","Crown","Dalmation",
                       "Deer Antlers","Doberman","Dragon Horns","Ear Rims","Ear Tufts","Eastern Dragon","Elk Antlers","Eye Mask","Fairy Wings","Fawn Spots",
                       "Feather Wings","Forehead Diamond","Freckles","Front Fade","German Sheperd","Giraffe","Half","Head","Holstein","House Sparrow",
-                      "Husky","Irish","Irish (Cheekless)","King Cheetah","Leg Blotches","Leg Feathering","Leg Stripes","Legwarmers","Leopard","Lower Fade",
+                      "Husky","Irish","Irish Cheekless","King Cheetah","Leg Blotches","Leg Feathering","Leg Stripes","Legwarmers","Leopard","Lower Fade",
                       "Mackerel Tabby","Mane","Marbled","Merle","Modern Stripes","Muzzle","Neck Spikes","Ocelot","Okapi","Panda","Piebald","Pitbull",
                       "Poison Dart Frog","Pronghorns","Ram Horns","Red Panda","Roan","Runes","Saber Fangs","Shine","Siamese","Skunk","Snow Leopard","Somali",
                       "Song Sparrow","Spotted Tabby","Tabby","Tail","Tail Blotches","Tail Stripes","Tailtip","Thylacine","Tiger","Tobiano","Toes","Turkish Van",
