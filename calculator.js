@@ -50,6 +50,7 @@ function calculateMwitt() {
   }
 
   drawPreview(mwitt);
+  console.log("HELLO!!!");
 }
 
 function calculateBreed(f, m) {
@@ -554,56 +555,34 @@ function drawPreview(mwitt) {
   var secondary = new Image();
   var secondaryTop = new Image();       //Only ice.
   var secondaryTopLines = new Image();  //Only ice.
-  var tertiary = new Image();
+  var tertiary = new Image();           //Only greaters.
   var copyright = new Image();
   var markingImages = [];
   var growthImages = [];
 
-  //If mweor is a greater breed, load tertiary image.
+  //Calculate image count.
   if (greaters.includes(mwitt.breed)) {
     totalImages++;
-    tertiary.onload = onloadCallback;
-    tertiary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/tertiary.png';
-
-    if(mwitt.breed == "ice") {
-      totalImages += 2;
-      secondaryTop.onload = onloadCallback;
-      secondaryTopLines.onload = onloadCallback;
-      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
-      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
-    }
+    if(mwitt.breed == "ice") { totalImages += 2; }
   }
 
-  //Load marking and growth images.
   for (var i = 0; i < mwitt.markings.length; i++) {
-    if(growths.includes(mwitt.markings[i])) {
-      totalImages += 2;
-      var img = new Image();
-      var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-      img.onload = onloadCallback;
-      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str;
-      markingImages.push(img);
-      var img2 = new Image();
-      img2.onload = onloadCallback;
-      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + "_base";
-      growthImages.push(img2);
-    }
-    else {
-      totalImages++;
-      var img = new Image();
-      img.onload = onloadCallback;
-      var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str;
-      markingImages.push(img);
-    }
+    if(growths.includes(mwitt.markings[i])) { totalImages += 2; }
+    else { totalImages++; }
   }
 
+  console.log(totalImages);
+
+  //Image load check.
   var onloadCallback = function() {
     counter++;
+    console.log(counter);
     if (counter < totalImages) { return; }
+    console.log("all loaded");
     allLoadedCallback();
   };
 
+  //MAIN DRAW FUNCTION.
   var allLoadedCallback = function() {
     var tempCanvas = document.createElement('canvas');
     var tempCtx = tempCanvas.getContext('2d');
@@ -710,6 +689,42 @@ function drawPreview(mwitt) {
     //Draw lines.
     ctx.drawImage(lines, 0, 0);      //Add to main canvas.
   };
+
+  //IMAGE LOADING.
+  //Load tertiary if greater, and ice extras if ice.
+  if (greaters.includes(mwitt.breed)) {
+    tertiary.onload = onloadCallback;
+    tertiary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/tertiary.png';
+
+    if(mwitt.breed == "ice") {
+      secondaryTop.onload = onloadCallback;
+      secondaryTopLines.onload = onloadCallback;
+      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
+      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
+    }
+  }
+
+  //Load marking and growth images.
+  for (var i = 0; i < mwitt.markings.length; i++) {
+    if(growths.includes(mwitt.markings[i])) {
+      var img = new Image();
+      var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+      img.onload = onloadCallback;
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str;
+      markingImages.push(img);
+      var img2 = new Image();
+      img2.onload = onloadCallback;
+      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + "_base";
+      growthImages.push(img2);
+    }
+    else {
+      var img = new Image();
+      img.onload = onloadCallback;
+      var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str;
+      markingImages.push(img);
+    }
+  }
 
   //Attach callbacks.
   color.onload = onloadCallback;
