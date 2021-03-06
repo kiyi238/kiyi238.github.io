@@ -628,8 +628,8 @@ function drawPreview(mwitt) {
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
     tempCtx.globalCompositeOperation = "destination-in";
     tempCtx.drawImage(eyeColor, 0, 0);
-    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
     ctx.drawImage(eyeWhites, 0, 0);   //Add to main canvas.
+    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
 
     //Clear the temporary canvas.
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
