@@ -50,7 +50,6 @@ function calculateMwitt() {
   }
 
   drawPreview(mwitt);
-  console.log("HELLO!!!");
 }
 
 function calculateBreed(f, m) {
@@ -566,20 +565,15 @@ function drawPreview(mwitt) {
     totalImages++;
     if(mwitt.breed == "ice") { totalImages += 2; }
   }
-
   for (var i = 0; i < mwitt.markings.length; i++) {
     if(growths.includes(mwitt.markings[i])) { totalImages += 2; }
     else { totalImages++; }
   }
 
-  console.log(totalImages);
-
   //Image load check.
   var onloadCallback = function() {
     counter++;
-    console.log(counter);
     if (counter < totalImages) { return; }
-    console.log("all loaded");
     allLoadedCallback();
   };
 
@@ -679,6 +673,7 @@ function drawPreview(mwitt) {
       else {
         //Draw marking.
         tempCtx.globalCompositeOperation = "source-over";
+        tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
@@ -704,8 +699,8 @@ function drawPreview(mwitt) {
     if(mwitt.breed == "ice") {
       secondaryTop.onload = onloadCallback;
       secondaryTopLines.onload = onloadCallback;
-      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
-      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
+      secondaryTop.src = 'https://kiyi238.github.io/images/ice/secondary_top.png';
+      secondaryTopLines.src = 'https://kiyi238.github.io/images/ice/secondary_top_lines.png';
     }
   }
 
@@ -715,18 +710,18 @@ function drawPreview(mwitt) {
       var img = new Image();
       var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
       img.onload = onloadCallback;
-      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str;
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + ".png";
       markingImages.push(img);
       var img2 = new Image();
       img2.onload = onloadCallback;
-      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + "_base";
+      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + "_base.png";
       growthImages.push(img2);
     }
     else {
       var img = new Image();
       img.onload = onloadCallback;
       var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str;
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + ".png";
       markingImages.push(img);
     }
   }
