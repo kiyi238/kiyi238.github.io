@@ -541,6 +541,7 @@ function getMarkingColors(con) {
 function drawPreview(mwitt) {
   var canvas = document.getElementById('prevCanvas');
   var ctx = canvas.getContext('2d');
+  //Clear the main canvas.
   ctx.fillStyle = "rgba(0, 0, 0, 0)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -623,6 +624,7 @@ function drawPreview(mwitt) {
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
+    console.log(mwitt.eye;
     //Color and draw the eyes.
     tempCtx.fillStyle = '#' + mwitt.eye;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
@@ -635,6 +637,7 @@ function drawPreview(mwitt) {
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
+    console.log(mwitt.second);
     //Color and draw the secondary.
     tempCtx.fillStyle = '#' + mwitt.second;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
