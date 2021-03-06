@@ -567,12 +567,14 @@ function drawPreview(mwitt) {
   tempCanvas.height = canvas.height;
 
   tempCtx.fillStyle = '#' + mwitt.base;
-  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-  tempCtx.globalCompositeOperation = "destination-in";
   tempCtx.drawImage(color, 0, 0);
+  tempCtx.globalCompositeOperation = "destination-in";
+  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
   ctx.drawImage(tempCanvas, 0, 0);
   ctx.drawImage(eyeWhites, 0, 0);
+
+  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function temp() {
