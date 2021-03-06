@@ -551,6 +551,8 @@ function drawPreview(mwitt) {
   var eyeColor = new Image();
   var eyeWhites = new Image();
   var secondary = new Image();
+  var secondaryTop = new Image();       //Only ice.
+  var secondaryTopLines = new Image();  //Only ice.
   var tertiary = new Image();
   var copyright = new Image();
   var markingImages = [];
@@ -561,6 +563,14 @@ function drawPreview(mwitt) {
     totalImages++;
     tertiary.onload = onloadCallback;
     tertiary.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/tertiary.png';
+
+    if(mwitt.breed == "ice") {
+      totalImages += 2;
+      secondaryTop.onload = onloadCallback;
+      secondaryTopLines.onload = onloadCallback;
+      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
+      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
+    }
   }
 
   //Load marking and growth images.
@@ -571,7 +581,7 @@ function drawPreview(mwitt) {
       var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
       img.onload = onloadCallback;
       img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str;
-      growthImages.push(img);
+      markingImages.push(img);
       var img2 = new Image();
       img2.onload = onloadCallback;
       img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + "_base";
@@ -599,16 +609,101 @@ function drawPreview(mwitt) {
     tempCanvas.width = canvas.width;
     tempCanvas.height = canvas.height;
 
+    //Color and draw the base.
     tempCtx.fillStyle = '#' + mwitt.base;
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
     tempCtx.globalCompositeOperation = "destination-in";
     tempCtx.drawImage(color, 0, 0);
+    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
 
-    ctx.drawImage(tempCanvas, 0, 0);
-    ctx.drawImage(eyeWhites, 0, 0);
-
+    //Clear the temporary canvas.
     tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+    //Color and draw the eyes.
+    tempCtx.fillStyle = '#' + mwitt.eye;
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.drawImage(eyeColor, 0, 0);
+    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+    ctx.drawImage(eyeWhites, 0, 0);   //Add to main canvas.
+
+    //Clear the temporary canvas.
+    tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+    //Color and draw the secondary.
+    tempCtx.fillStyle = '#' + mwitt.second;
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    tempCtx.globalCompositeOperation = "destination-in";
+    tempCtx.drawImage(secondary, 0, 0);
+    ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+
+    //Clear the temporary canvas.
+    tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+    //If breed is a greater.
+    if(greaters.includes(mwitt.breed)) {
+      tempCtx.fillStyle = '#' + mwitt.tert;
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      tempCtx.globalCompositeOperation = "destination-in";
+      tempCtx.drawImage(tertiary, 0, 0);
+      ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+
+      //Clear the temporary canvas.
+      tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+      //If breed is ice.
+      if(mwitt.breed == "ice") {
+        tempCtx.fillStyle = '#' + mwitt.second;
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalCompositeOperation = "destination-in";
+        tempCtx.drawImage(secondaryTop, 0, 0);
+        ctx.drawImage(tempCanvas, 0, 0);           //Add to main canvas.
+        ctx.drawImage(secondaryTopLines, 0, 0);    //Add to main canvas.
+
+        //Clear the temporary canvas.
+        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    //Draw markings.
+    var k, j;
+    for (k = 0, j = 0; i < mwitt.markings.length; i++) {
+      if(growths.includes(mwitt.markings[k])) {
+        //Draw growth.
+        tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalCompositeOperation = "destination-in";
+        tempCtx.drawImage(markingImages[k], 0, 0);
+        ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
+        ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
+        j++;
+
+        //Clear the temporary canvas.
+        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      else {
+        //Draw marking.
+        tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalCompositeOperation = "destination-in";
+        tempCtx.drawImage(markingImages[k], 0, 0);
+        ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+
+        //Clear the temporary canvas.
+        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    //Draw lines and copyright.
+    ctx.drawImage(lines, 0, 0);      //Add to main canvas.
+    ctx.drawImage(copyright, 0, 0);  //Add to main canvas.
   };
 
   //Attach callbacks.
@@ -629,53 +724,5 @@ function drawPreview(mwitt) {
 }
 
 function temp() {
-  ctx.drawImage(tempCanvas, 0, 0);
-  ctx.drawImage(eyeWhites, 0, 0);
 
-  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-  tempCtx.fillStyle = '#' + mwitt.eye;
-  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-  tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.drawImage(eyeColor, 0, 0);
-
-  ctx.drawImage(tempCanvas, 0, 0);
-
-  tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-  tempCtx.fillStyle = '#' + mwitt.second;
-  tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-  tempCtx.globalCompositeOperation = "destination-in";
-  tempCtx.drawImage(secondary, 0, 0);
-
-  ctx.drawImage(tempCanvas, 0, 0);
-
-  if(greaters.includes(mwitt.breed)) {
-    tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-    tempCtx.fillStyle = '#' + mwitt.tert;
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-    tempCtx.globalCompositeOperation = "destination-in";
-    tempCtx.drawImage(tertiary, 0, 0);
-
-    ctx.drawImage(tempCanvas, 0, 0);
-
-    if(mwitt.breed == "ice") {
-      var secondaryTop = new Image();
-      secondaryTop.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top.png';
-      var secondaryTopLines = new Image();
-      secondaryTopLines.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/secondary_top_lines.png';
-
-      tempCtx.clearRect(0, 0, canvas.width, canvas.height);
-      tempCtx.fillStyle = '#' + mwitt.second;
-      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-      tempCtx.globalCompositeOperation = "destination-in";
-      tempCtx.drawImage(secondaryTop, 0, 0);
-
-      ctx.drawImage(tempCanvas, 0, 0);
-      ctx.drawImage(secondaryTopLines, 0, 0);
-    }
-  }
-
-  //Markings
-
-  ctx.drawImage(lines, 0, 0);
-  ctx.drawImage(copyright, 0, 0);
 }
