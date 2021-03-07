@@ -620,9 +620,9 @@ function drawPreview(mwitt) {
     for (k = 0, j = 0; k < mwitt.markings.length; k++) {
       //Recessive markings.
       if(recessives.includes(mwitt.markings[i])) {
-        if(mwitt.markingGenes[i] == "aa") {
+        if(mwitt.markingGenes[k] == "aa") {
           //Recessive growths.
-          if(growths.includes(mwitt.markings[i])) {
+          if(growths.includes(mwitt.markings[k])) {
             //Draw growth.
             tempCtx.globalCompositeOperation = "source-over";
             tempCtx.fillStyle = '#' + mwitt.markingColors[k];
@@ -656,7 +656,7 @@ function drawPreview(mwitt) {
       }
       //Leg feathering.
       //NEEDS CODE FOR OPACITIES.!!
-      else if(mwitt.markings[i] == "Leg Feathering") {
+      else if(mwitt.markings[k] == "Leg Feathering") {
         //Draw front feathering.
         tempCtx.globalCompositeOperation = "source-over";
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
