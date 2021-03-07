@@ -452,6 +452,10 @@ function calculateGene(fGene, mGene) {
   else if((fGene == "AA" && mGene == "aa") || (fGene == "aa" && mGene == "AA")) {
     mwittGene = "Aa";
   }
+  //aaxaa
+  else if(fGene == "aa" && mGene == "aa") {
+    mwittGene = "aa";
+  }
   return mwittGene;
 }
 
@@ -561,12 +565,22 @@ function drawPreview(mwitt) {
   var growthImages = [];
 
   //Calculate image count.
-  if (greaters.includes(mwitt.breed)) {
+  if(greaters.includes(mwitt.breed)) {
     totalImages++;
     if(mwitt.breed == "ice") { totalImages += 2; }
   }
-  for (var i = 0; i < mwitt.markings.length; i++) {
-    if(growths.includes(mwitt.markings[i])) { totalImages += 2; }
+  for(var i = 0; i < mwitt.markings.length; i++) {
+    //Recessive markings.
+    if(recessives.includes(mwitt.markings[i])) {
+      if(mwitt.markingGenes[i] == "aa") {
+        //Recessive growths.
+        if(growths.includes(mwitt.markings[i])) { totalImages += 2; }
+        else { totalImages++; }
+      }
+    }
+    //Leg feathering.
+    else if(mwitt.markings[i] == "Leg Feathering") { totalImages += 4; }
+    //Dominant markings.
     else { totalImages++; }
   }
 
@@ -601,8 +615,46 @@ function drawPreview(mwitt) {
     //Draw markings.
     var k, j;
     for (k = 0, j = 0; k < mwitt.markings.length; k++) {
-      if(growths.includes(mwitt.markings[k])) {
-        //Draw growth.
+      //Recessive markings.
+      if(recessives.includes(mwitt.markings[i])) {
+        if(mwitt.markingGenes[i] == "aa") {
+          //Recessive growths.
+          if(growths.includes(mwitt.markings[i])) {
+            //Draw growth.
+            tempCtx.globalCompositeOperation = "source-over";
+            tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+            tempCtx.globalCompositeOperation = "destination-in";
+            tempCtx.drawImage(markingImages[k], 0, 0);
+            ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
+            ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
+            j++;
+
+            //Clear the temporary canvas.
+            tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+          }
+          else {
+            //Draw marking.
+            tempCtx.globalCompositeOperation = "source-over";
+            tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
+            tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+            tempCtx.globalCompositeOperation = "destination-in";
+            tempCtx.drawImage(markingImages[k], 0, 0);
+            ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+
+            //Clear the temporary canvas.
+            tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+            tempCtx.globalAlpha = 1;
+          }
+        }
+      }
+      //Leg feathering.
+      //NEEDS CODE FOR OPACITIES.!!
+      else if(mwitt.markings[i] == "Leg Feathering") {
+        //Draw front feathering.
         tempCtx.globalCompositeOperation = "source-over";
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
@@ -615,7 +667,23 @@ function drawPreview(mwitt) {
         //Clear the temporary canvas.
         tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+        //Draw back feathering.
+        tempCtx.globalCompositeOperation = "source-over";
+        tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalCompositeOperation = "destination-in";
+        tempCtx.drawImage(growthImages[j], 0, 0);
+        j++;
+        ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
+        ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
+        j++;
+
+        //Clear the temporary canvas.
+        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
       }
+      //Dominant markings.
       else {
         //Draw marking.
         tempCtx.globalCompositeOperation = "source-over";
@@ -707,22 +775,56 @@ function drawPreview(mwitt) {
 
   //Load marking and growth images.
   for (var i = 0; i < mwitt.markings.length; i++) {
-    if(growths.includes(mwitt.markings[i])) {
-      var img = new Image();
-      var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-      img.onload = onloadCallback;
-      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + ".png";
-      markingImages.push(img);
-      var img2 = new Image();
-      img2.onload = onloadCallback;
-      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + "_base.png";
-      growthImages.push(img2);
+    //Recessive markings.
+    if(recessives.includes(mwitt.markings[i])) {
+      if(mwitt.markingGenes[i] == "aa") {
+        //Recessive growths.
+        if(growths.includes(mwitt.markings[i])) {
+          var img = new Image();
+          var img2 = new Image();
+          var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+          img.onload = onloadCallback;
+          img2.onload = onloadCallback;
+          img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '.png';
+          img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '_base.png';
+          markingImages.push(img);
+          growthImages.push(img2);
+        }
+        else {
+          var img = new Image();
+          img.onload = onloadCallback;
+          var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+          img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + '.png';
+          markingImages.push(img);
+        }
+      }
     }
+    //Leg feathering.
+    else if(mwitt.markings[i] == "Leg Feathering") {
+      var img = new Image();
+      var img2 = new Image();
+      var img3 = new Image();
+      var img4 = new Image();
+      var str = "legfeathering";
+      img.onload = onloadCallback;
+      img2.onload = onloadCallback;
+      img3.onload = onloadCallback;
+      img4.onload = onloadCallback;
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_front.png';
+      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_front_base.png';
+      img3.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_back.png';
+      img4.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_back_base.png';
+      markingImages.push(img);
+      growthImages.push(img2);
+      growthImages.push(img3);
+      growthImages.push(img4);
+    }
+    //Dominant markings.
     else {
       var img = new Image();
       img.onload = onloadCallback;
       var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + ".png";
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + '.png';
       markingImages.push(img);
     }
   }
