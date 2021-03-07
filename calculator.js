@@ -629,6 +629,7 @@ function drawPreview(mwitt) {
         //Clear the temporary canvas.
         tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalAlpha = 1;
       }
     }
 
