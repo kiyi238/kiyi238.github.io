@@ -63,18 +63,18 @@ function calculateBreed(f, m) {
         breed = "lesser";
       }
       else if(m.breed == "water") {
-        if(rand < 1 && rand > 0.64) {
+        if(rand < 1 && rand > 0.36) {
           breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
+        } else if(rand < 0.36 && rand > 0.05) {
           breed = m.breed;
         } else {
           breed = "ice";
         }
       }
       else if(m.breed == "fire") {
-        if(rand < 1 && rand > 0.64) {
+        if(rand < 1 && rand > 0.36) {
           breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
+        } else if(rand < 0.36 && rand > 0.05) {
           breed = m.breed;
         } else {
           breed = "lightning";
@@ -88,18 +88,18 @@ function calculateBreed(f, m) {
       breed = "lesser";
     }
     else if(f.breed == "water") {
-      if(rand < 1 && rand > 0.64) {
+      if(rand < 1 && rand > 0.36) {
         breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
+      } else if(rand < 0.36 && rand > 0.05) {
         breed = m.breed;
       } else {
         breed = "ice";
       }
     }
     else if(f.breed == "fire") {
-      if(rand < 1 && rand > 0.64) {
+      if(rand < 1 && rand > 0.36) {
           breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
+      } else if(rand < 0.36 && rand > 0.05) {
         breed = m.breed;
       } else {
         breed = "lightning";
@@ -117,9 +117,9 @@ function calculateBreed(f, m) {
         breed = "lesser";
       }
       else if(m.breed == "water") {
-        if(rand < 1 && rand > 0.64) {
+        if(rand < 1 && rand > 0.36) {
           breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
+        } else if(rand < 0.36 && rand > 0.05) {
           breed = m.breed;
         } else {
           breed = "plant";
@@ -133,9 +133,9 @@ function calculateBreed(f, m) {
       breed = "lesser";
     }
     else if(f.breed == "water") {
-      if(rand < 1 && rand > 0.64) {
+      if(rand < 1 && rand > 0.36) {
         breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
+      } else if(rand < 0.36 && rand > 0.05) {
         breed = m.breed;
       } else {
         breed = "plant";
@@ -166,9 +166,9 @@ function calculateBreed(f, m) {
         breed = "lesser";
       }
       else if(m.breed == "lightning") {
-        if(rand < 1 && rand > 0.64) {
+        if(rand < 1 && rand > 0.36) {
           breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
+        } else if(rand < 0.36 && rand > 0.05) {
           breed = m.breed;
         } else {
           breed = "air";
@@ -182,9 +182,9 @@ function calculateBreed(f, m) {
       breed = "lesser";
     }
     else if(f.breed == "lightning") {
-      if(rand < 1 && rand > 0.64) {
+      if(rand < 1 && rand > 0.36) {
         breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
+      } else if(rand < 0.36 && rand > 0.05) {
         breed = m.breed;
       } else {
         breed = "air";
@@ -215,9 +215,9 @@ function calculateBreed(f, m) {
         breed = "lesser";
       }
       else if(m.breed == "ice") {
-        if(rand < 1 && rand > 0.64) {
+        if(rand < 1 && rand > 0.36) {
           breed = f.breed;
-        } else if(rand < 0.64 && rand > 0.31) {
+        } else if(rand < 0.36 && rand > 0.05) {
           breed = m.breed;
         } else {
           breed = "water";
@@ -231,9 +231,9 @@ function calculateBreed(f, m) {
       breed = "lesser";
     }
     else if(f.breed == "ice") {
-      if(rand < 1 && rand > 0.64) {
+      if(rand < 1 && rand > 0.36) {
         breed = f.breed;
-      } else if(rand < 0.64 && rand > 0.31) {
+      } else if(rand < 0.36 && rand > 0.05) {
         breed = m.breed;
       } else {
         breed = "water";
