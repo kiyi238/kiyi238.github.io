@@ -793,8 +793,8 @@ function drawPreview(mwitt) {
           var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
           img.onload = onloadCallback;
           img2.onload = onloadCallback;
-          img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '.png';
-          img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '_base.png';
+          img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '_base.png';
+          img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '.png';
           markingImages.push(img);
           growthImages.push(img2);
         }
@@ -818,10 +818,10 @@ function drawPreview(mwitt) {
       img2.onload = onloadCallback;
       img3.onload = onloadCallback;
       img4.onload = onloadCallback;
-      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_front.png';
-      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_front_base.png';
-      img3.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_back.png';
-      img4.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_back_base.png';
+      img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_front_base.png';
+      img2.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_front.png';
+      img3.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_back_base.png';
+      img4.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_legfeathering_back.png';
       markingImages.push(img);
       growthImages.push(img2);
       growthImages.push(img3);
