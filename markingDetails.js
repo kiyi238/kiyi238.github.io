@@ -1,6 +1,6 @@
 function addFields(num, con){
     var markingList = ["Agouti Tabby","Appaloosa","Backstripe","Badger","Barring","Bat Wings","Blaze","Blush","Body Stripe","Butterfly Wings","Caiman",
-                      "Calico","CandelFlame Tabby","Cardinal","Centered","Cheetah","Chest Splash","Classic Tabby","Clouded Leopard","Crown","Dalmation",
+                      "Calico","CandleFlame Tabby","Cardinal","Centered","Cheetah","Chest Splash","Classic Tabby","Clouded Leopard","Crown","Dalmation",
                       "Deer Antlers","Doberman","Dragon Horns","Ear Rims","Ear Tufts","Eastern Dragon","Elk Antlers","Eye Mask","Fairy Wings","Fawn Spots",
                       "Feather Wings","Forehead Diamond","Freckles","Front Fade","German Sheperd","Giraffe","Half","Head","Holstein","House Sparrow",
                       "Husky","Irish","Irish Cheekless","King Cheetah","Leg Blotches","Leg Feathering","Leg Stripes","Legwarmers","Leopard","Lower Fade",
