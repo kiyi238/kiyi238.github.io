@@ -1,4 +1,4 @@
-var recessives = ["Bat Wings","Butterfly Wings","Candleflame Tabby","Classic Tabby",
+var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tabby",
                   "Clouded Leopard","Deer Antlers","Dragon Horns","Ear Tufts","Eastern Dragon",
                   "Elk Horns","Fairy Wings","Feather Wings","Giraffe","King Cheetah","Mackerel Tabby",
                   "Mane","Marbled","Neck Spikes","Ocelot","Pronghorns","Ram Horns","Saber Fangs",
@@ -616,28 +616,11 @@ function drawPreview(mwitt) {
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
     //Draw markings.
-    var k, j;
-    for (k = 0, j = 0; k < mwitt.markings.length; k++) {
+    for (var k = 0; k < mwitt.markings.length; k++) {
       //Recessive markings.
       if(recessives.includes(mwitt.markings[k])) {
         if(mwitt.markingGenes[k] == "aa") {
-          //Recessive growths.
-          if(growths.includes(mwitt.markings[k])) {
-            //Draw growth.
-            tempCtx.globalCompositeOperation = "source-over";
-            tempCtx.fillStyle = '#' + mwitt.markingColors[k];
-            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-            tempCtx.globalCompositeOperation = "destination-in";
-            tempCtx.drawImage(markingImages[k], 0, 0);
-            ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
-            ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
-            j++;
-
-            //Clear the temporary canvas.
-            tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
-            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-          }
-          else {
+          if(!growths.includes(mwitt.markings[k])) {
             //Draw marking.
             tempCtx.globalCompositeOperation = "source-over";
             tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
@@ -653,38 +636,6 @@ function drawPreview(mwitt) {
             tempCtx.globalAlpha = 1;
           }
         }
-      }
-      //Leg feathering.
-      //NEEDS CODE FOR OPACITIES.!!
-      else if(mwitt.markings[k] == "Leg Feathering") {
-        //Draw front feathering.
-        tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.fillStyle = '#' + mwitt.markingColors[k];
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-        tempCtx.globalCompositeOperation = "destination-in";
-        tempCtx.drawImage(markingImages[k], 0, 0);
-        ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
-        ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
-        j++;
-
-        //Clear the temporary canvas.
-        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-
-        //Draw back feathering.
-        tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.fillStyle = '#' + mwitt.markingColors[k];
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
-        tempCtx.globalCompositeOperation = "destination-in";
-        tempCtx.drawImage(growthImages[j], 0, 0);
-        j++;
-        ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
-        ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
-        j++;
-
-        //Clear the temporary canvas.
-        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
       }
       //Dominant markings.
       else {
@@ -760,6 +711,60 @@ function drawPreview(mwitt) {
 
     //Draw lines.
     ctx.drawImage(lines, 0, 0);      //Add to main canvas.
+
+    //Draw growths.
+    for (var t = 0, j = 0; t < mwitt.markings.length; t++) {
+      //Leg feathering.
+      //NEEDS CODE FOR OPACITIES.!!
+      if(mwitt.markings[t] == "Leg Feathering") {
+        //Draw front feathering.
+        tempCtx.globalCompositeOperation = "source-over";
+        tempCtx.fillStyle = '#' + mwitt.markingColors[t];
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalCompositeOperation = "destination-in";
+        tempCtx.drawImage(markingImages[t], 0, 0);
+        ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
+        ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
+        j++;
+
+        //Clear the temporary canvas.
+        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+
+        //Draw back feathering.
+        tempCtx.globalCompositeOperation = "source-over";
+        tempCtx.fillStyle = '#' + mwitt.markingColors[t];
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        tempCtx.globalCompositeOperation = "destination-in";
+        tempCtx.drawImage(growthImages[j], 0, 0);
+        j++;
+        ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
+        ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
+        j++;
+
+        //Clear the temporary canvas.
+        tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+      //Recessive markings.
+      else if(growths.includes(mwitt.markings[t])) {
+        if(mwitt.markingGenes[t] == "aa") {
+          //Draw growth.
+          tempCtx.globalCompositeOperation = "source-over";
+          tempCtx.fillStyle = '#' + mwitt.markingColors[t];
+          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+          tempCtx.globalCompositeOperation = "destination-in";
+          tempCtx.drawImage(markingImages[t], 0, 0);
+          ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
+          ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
+          j++;
+
+          //Clear the temporary canvas.
+          tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
+          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+      }
+    }
   };
 
   //IMAGE LOADING.
