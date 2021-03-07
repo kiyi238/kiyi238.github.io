@@ -619,7 +619,7 @@ function drawPreview(mwitt) {
     var k, j;
     for (k = 0, j = 0; k < mwitt.markings.length; k++) {
       //Recessive markings.
-      if(recessives.includes(mwitt.markings[i])) {
+      if(recessives.includes(mwitt.markings[k])) {
         if(mwitt.markingGenes[k] == "aa") {
           //Recessive growths.
           if(growths.includes(mwitt.markings[k])) {
