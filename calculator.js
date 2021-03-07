@@ -363,7 +363,6 @@ function calculateMarkings(f, m) {
           var i = m.markings.indexOf(f.markings[v]);
           var gene = calculateGene(f.markingGenes[v], m.markingGenes[i]);
           //If RECESSIVE marking shows or carries.
-          console.log(gene);
           if(gene == "aa" || gene == "Aa") {
             mwittMarkings.push(f.markings[v]);
             mwittMarkingGenes.push(gene);
@@ -573,9 +572,7 @@ function drawPreview(mwitt) {
   for(var i = 0; i < mwitt.markings.length; i++) {
     //Recessive markings.
     if(recessives.includes(mwitt.markings[i])) {
-      console.log("recessive");
       if(mwitt.markingGenes[i] == "aa") {
-        console.log(mwitt.markingGenes[i]);
         //Recessive growths.
         if(growths.includes(mwitt.markings[i])) { totalImages += 2; }
         else { totalImages++; }
