@@ -750,7 +750,7 @@ function drawPreview(mwitt) {
       else if(growths.includes(mwitt.markings[t])) {
         if(mwitt.markingGenes[t] == "aa") {
           //Draw growth.
-          console.log("draw" + mwitt.markings[k]));
+          console.log("draw" + mwitt.markings[t]);
           tempCtx.globalCompositeOperation = "source-over";
           tempCtx.fillStyle = '#' + mwitt.markingColors[t];
           tempCtx.fillRect(0, 0, canvas.width, canvas.height);
