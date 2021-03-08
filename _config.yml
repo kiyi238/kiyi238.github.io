@@ -1,5 +1,5 @@
 title: Mwitt Predictor
-description: A work in progress! This program uses genetic information purely provided by the community, and as such may not always be 100% accurate. 
+description: A work in progress! This program uses genetic information purely provided by the community, and as such may not always be 100% accurate. Due to the way opacity is handled in this program, markings may appear slightly off when at low opacities. Legfeathering opacity differences are not yet implemented. Patterns such as rainbow, grayscale, and star, are not yet implemented, but I am working on it!
 show_downloads: false
 google_analytics:
 theme: jekyll-theme-cayman
