@@ -1,19 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
-
-    <script type='text/javascript' src="https://kiyi238.github.io/calculator.js"></script>
-    <script type='text/javascript' src="https://kiyi238.github.io/markingDetails.js">></script>
-
-    {% if site.google_analytics %}
-      <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', '{{ site.google_analytics }}');
-      </script>
-    {% endif %}
+    <script type='text/javascript' src="https://kiyi238.github.io/scripts/calculator.js"></script>
+    <script type='text/javascript' src="https://kiyi238.github.io/scripts/markingDetails.js">></script>
     <meta charset="UTF-8">
 
 {% seo %}
@@ -23,9 +12,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
   </head>
-  <body>
-    <a id="skip-to-content" href="#content">Skip to the content.</a>
 
+  <body>
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       <h2 class="project-tagline">{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
