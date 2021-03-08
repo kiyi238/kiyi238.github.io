@@ -10,18 +10,12 @@ function addFields(num, con){
                       "Tuxedo","Undereye","Underside","Unicorn Horn","Upperside","Urajiro","Wild Cat","Wolf","Zebra"];
     var opacityList = ["100","90","80","70","60","50","40","30","20","10"];
     var geneList = ["AA","Aa","aa"];
-    // Number of inputs to create
     var number = document.getElementById(num).value;
-    // Container <div> where dynamic content will be placed
     var container = document.getElementById(con);
-    // Clear previous contents of the container
     while (container.hasChildNodes()) {
         container.removeChild(container.lastChild);
     }
     for (var i = 0; i < number; i++){
-        // Append a node with a random text
-        container.appendChild(document.createTextNode("Marking " + (i+1) + ": "));
-        // Create an <input> element, set its type and name attributes
         var marking = document.createElement("select");
         marking.type = "select";
         marking.name = "marking" + i;
