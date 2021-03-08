@@ -619,7 +619,7 @@ function drawPreview(mwitt) {
         if(mwitt.markingGenes[k] == "aa") {
           if(!growths.includes(mwitt.markings[k])) {
             //Draw marking.
-            console.log("draw" + mwitt.markings[k]));
+            console.log("draw" + mwitt.markings[k]);
             tempCtx.globalCompositeOperation = "source-over";
             tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
             tempCtx.fillStyle = '#' + mwitt.markingColors[k];
