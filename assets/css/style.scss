@@ -3,6 +3,28 @@
 
 @import 'jekyll-theme-cayman';
 
+.textblock {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #bacfdb;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.buttonblock {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #4CAF50;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
 .box {
     background-color: #fff;
     border-radius: 6px;
