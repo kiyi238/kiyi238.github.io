@@ -619,7 +619,7 @@ function drawPreview(mwitt) {
         if(mwitt.markingGenes[k] == "aa") {
           if(!growths.includes(mwitt.markings[k])) {
             //Draw marking.
-            console.log("draw" + mwitt.markingGenes[k]);
+            console.log("draw" + mwitt.markings[k]));
             tempCtx.globalCompositeOperation = "source-over";
             tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
             tempCtx.fillStyle = '#' + mwitt.markingColors[k];
@@ -638,7 +638,7 @@ function drawPreview(mwitt) {
       //Dominant markings.
       else {
         //Draw marking.
-        console.log("draw" + mwitt.markingGenes[k]);
+        console.log("draw" + mwitt.markings[k]));
         tempCtx.globalCompositeOperation = "source-over";
         tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
@@ -750,7 +750,7 @@ function drawPreview(mwitt) {
       else if(growths.includes(mwitt.markings[t])) {
         if(mwitt.markingGenes[t] == "aa") {
           //Draw growth.
-          console.log("draw" + mwitt.markingGenes[t]);
+          console.log("draw" + mwitt.markings[k]));
           tempCtx.globalCompositeOperation = "source-over";
           tempCtx.fillStyle = '#' + mwitt.markingColors[t];
           tempCtx.fillRect(0, 0, canvas.width, canvas.height);
