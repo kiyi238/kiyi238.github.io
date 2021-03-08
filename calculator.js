@@ -619,6 +619,7 @@ function drawPreview(mwitt) {
         if(mwitt.markingGenes[k] == "aa") {
           if(!growths.includes(mwitt.markings[k])) {
             //Draw marking.
+            console.log("draw" + mwitt.markingGenes[k]);
             tempCtx.globalCompositeOperation = "source-over";
             tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
             tempCtx.fillStyle = '#' + mwitt.markingColors[k];
@@ -637,6 +638,7 @@ function drawPreview(mwitt) {
       //Dominant markings.
       else {
         //Draw marking.
+        console.log("draw" + mwitt.markingGenes[k]);
         tempCtx.globalCompositeOperation = "source-over";
         tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
@@ -710,7 +712,8 @@ function drawPreview(mwitt) {
     ctx.drawImage(lines, 0, 0);      //Add to main canvas.
 
     //Draw growths.
-    for (var t = 0, j = 0; t < mwitt.markings.length; t++) {
+    var t, j;
+    for (t = 0, j = 0; t < mwitt.markings.length; t++) {
       //Leg feathering.
       //NEEDS CODE FOR OPACITIES.!!
       if(mwitt.markings[t] == "Leg Feathering") {
@@ -747,6 +750,7 @@ function drawPreview(mwitt) {
       else if(growths.includes(mwitt.markings[t])) {
         if(mwitt.markingGenes[t] == "aa") {
           //Draw growth.
+          console.log("draw" + mwitt.markingGenes[t]);
           tempCtx.globalCompositeOperation = "source-over";
           tempCtx.fillStyle = '#' + mwitt.markingColors[t];
           tempCtx.fillRect(0, 0, canvas.width, canvas.height);
@@ -788,6 +792,7 @@ function drawPreview(mwitt) {
           var img = new Image();
           var img2 = new Image();
           var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+          console.log("load" + str);
           img.onload = onloadCallback;
           img2.onload = onloadCallback;
           img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '_base.png';
@@ -799,6 +804,7 @@ function drawPreview(mwitt) {
           var img = new Image();
           img.onload = onloadCallback;
           var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+          console.log("load" + str);
           img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + '.png';
           markingImages.push(img);
         }
@@ -829,6 +835,7 @@ function drawPreview(mwitt) {
       var img = new Image();
       img.onload = onloadCallback;
       var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
+      console.log("load" + str);
       img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + '.png';
       markingImages.push(img);
     }
