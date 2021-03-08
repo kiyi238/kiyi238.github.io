@@ -613,20 +613,21 @@ function drawPreview(mwitt) {
     tempCtx.fillRect(0, 0, canvas.width, canvas.height);
 
     //Draw markings.
-    for (var k = 0; k < mwitt.markings.length; k++) {
+    var k, n;
+    for (k = 0, n = 0; k < mwitt.markings.length; k++) {
       //Recessive markings.
       if(recessives.includes(mwitt.markings[k])) {
         if(mwitt.markingGenes[k] == "aa") {
           if(!growths.includes(mwitt.markings[k])) {
             //Draw marking.
-            console.log("draw" + mwitt.markings[k]);
             tempCtx.globalCompositeOperation = "source-over";
             tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
             tempCtx.fillStyle = '#' + mwitt.markingColors[k];
             tempCtx.fillRect(0, 0, canvas.width, canvas.height);
             tempCtx.globalCompositeOperation = "destination-in";
-            tempCtx.drawImage(markingImages[k], 0, 0);
+            tempCtx.drawImage(markingImages[n], 0, 0);
             ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+            n++;
 
             //Clear the temporary canvas.
             tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
@@ -638,14 +639,14 @@ function drawPreview(mwitt) {
       //Dominant markings.
       else {
         //Draw marking.
-        console.log("draw" + mwitt.markings[k]);
         tempCtx.globalCompositeOperation = "source-over";
         tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
-        tempCtx.drawImage(markingImages[k], 0, 0);
+        tempCtx.drawImage(markingImages[n], 0, 0);
         ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
+        n++;
 
         //Clear the temporary canvas.
         tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
@@ -712,20 +713,21 @@ function drawPreview(mwitt) {
     ctx.drawImage(lines, 0, 0);      //Add to main canvas.
 
     //Draw growths.
-    var t, j;
-    for (t = 0, j = 0; t < mwitt.markings.length; t++) {
+    var i, j, n;
+    for (i = 0, j = 0, n = 0; i < mwitt.markings.length; i++) {
       //Leg feathering.
       //NEEDS CODE FOR OPACITIES.!!
-      if(mwitt.markings[t] == "Leg Feathering") {
+      if(mwitt.markings[i] == "Leg Feathering") {
         //Draw front feathering.
         tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.fillStyle = '#' + mwitt.markingColors[t];
+        tempCtx.fillStyle = '#' + mwitt.markingColors[i];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
-        tempCtx.drawImage(markingImages[t], 0, 0);
+        tempCtx.drawImage(markingImages[i], 0, 0);
         ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
         ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
         j++;
+        n++;
 
         //Clear the temporary canvas.
         tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
@@ -733,7 +735,7 @@ function drawPreview(mwitt) {
 
         //Draw back feathering.
         tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.fillStyle = '#' + mwitt.markingColors[t];
+        tempCtx.fillStyle = '#' + mwitt.markingColors[i];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
         tempCtx.drawImage(growthImages[j], 0, 0);
@@ -747,18 +749,18 @@ function drawPreview(mwitt) {
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
       }
       //Recessive markings.
-      else if(growths.includes(mwitt.markings[t])) {
-        if(mwitt.markingGenes[t] == "aa") {
+      else if(growths.includes(mwitt.markings[i])) {
+        if(mwitt.markingGenes[i] == "aa") {
           //Draw growth.
-          console.log("draw" + mwitt.markings[t]);
           tempCtx.globalCompositeOperation = "source-over";
-          tempCtx.fillStyle = '#' + mwitt.markingColors[t];
+          tempCtx.fillStyle = '#' + mwitt.markingColors[i];
           tempCtx.fillRect(0, 0, canvas.width, canvas.height);
           tempCtx.globalCompositeOperation = "destination-in";
-          tempCtx.drawImage(markingImages[t], 0, 0);
+          tempCtx.drawImage(markingImages[n], 0, 0);
           ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
           ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
           j++;
+          n++;
 
           //Clear the temporary canvas.
           tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
@@ -792,7 +794,6 @@ function drawPreview(mwitt) {
           var img = new Image();
           var img2 = new Image();
           var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-          console.log("load" + str);
           img.onload = onloadCallback;
           img2.onload = onloadCallback;
           img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/growth_' + str + '_base.png';
@@ -804,7 +805,6 @@ function drawPreview(mwitt) {
           var img = new Image();
           img.onload = onloadCallback;
           var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-          console.log("load" + str);
           img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + '.png';
           markingImages.push(img);
         }
@@ -835,7 +835,6 @@ function drawPreview(mwitt) {
       var img = new Image();
       img.onload = onloadCallback;
       var str = mwitt.markings[i].toLowerCase().replace(/\s/g, '');
-      console.log("load" + str);
       img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + '.png';
       markingImages.push(img);
     }
