@@ -723,7 +723,7 @@ function drawPreview(mwitt) {
         tempCtx.fillStyle = '#' + mwitt.markingColors[i];
         tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         tempCtx.globalCompositeOperation = "destination-in";
-        tempCtx.drawImage(markingImages[i], 0, 0);
+        tempCtx.drawImage(markingImages[n], 0, 0);
         ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
         ctx.drawImage(growthImages[j], 0, 0);   //Add to main canvas.
         j++;
@@ -766,6 +766,14 @@ function drawPreview(mwitt) {
           tempCtx.fillStyle = "rgba(0, 0, 0, 0)";
           tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         }
+      }
+      else if(recessives.includes(mwitt.markings[i])) {
+        if(mwitt.markingGenes[i] == "aa") {
+          n++;
+        }
+      }
+      else {
+        n++;
       }
     }
   };
