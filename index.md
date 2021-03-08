@@ -64,12 +64,11 @@ layout: default
   </div>
   <br><button id="predict" type="button" class="buttonblock" onclick="calculateMwitt()"><b>PREDICT</b></button>
 </div>
-<br>
 <div class="box">
   <div class="row">
     <div class="column">
       <div class="container">
-        <div class="textblock"><b>Mwitt Info:</b></div>
+        <br><div class="textblock"><b>Mwitt Info:</b></div>
         <div id="cMwittInfo"></div>
       </div>
     </div>
