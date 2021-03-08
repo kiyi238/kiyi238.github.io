@@ -638,7 +638,7 @@ function drawPreview(mwitt) {
       //Dominant markings.
       else {
         //Draw marking.
-        console.log("draw" + mwitt.markings[k]));
+        console.log("draw" + mwitt.markings[k]);
         tempCtx.globalCompositeOperation = "source-over";
         tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
         tempCtx.fillStyle = '#' + mwitt.markingColors[k];
