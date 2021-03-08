@@ -31,8 +31,6 @@ function calculateMwitt() {
       container.removeChild(container.lastChild);
   }
 
-  container.appendChild(document.createTextNode("Possible Mwitt: "));
-  container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("Breed: " + mwitt.breed));
   container.appendChild(document.createElement("br"));
   container.appendChild(document.createTextNode("Base Color: #" + mwitt.base));
