@@ -4,7 +4,7 @@ layout: default
 
 <div class="box">
   <div class="row">
-    <div class="column">Mweor acting as <b>Female</b>:<br><br>
+    <div class="column"><div class="textblock">Mweor acting as <b>Female</b>:</div><br><br>
 
     <label for="breedl">Breed: </label>
       <select name="breed" id="breed">
@@ -33,7 +33,7 @@ layout: default
       <div id="containerf"></div>
     </div>
 
-    <div class="column">Mweor acting as <b>Male</b>:<br><br>
+    <div class="column"><div class="textblock">Mweor acting as <b>Male</b>:</div><br><br>
 
     <label for="breedm">Breed: </label>
       <select name="breedm" id="breedm">
@@ -62,18 +62,20 @@ layout: default
       <div id="containerm"></div>
     </div>
   </div>
+  <button id="predict" type="button" class="buttonblock" onclick="calculateMwitt()">PREDICT</button><br><br>
 </div>
-
+<br><br>
 <div class="box">
   <div class="row">
     <div class="column">
       <div class="container"><br>
-        <button id="predict" onclick="calculateMwitt()">PREDICT</button><br><br>
+        <div class="textblock"><b>Mwitt Info:</b>:</div>
         <div id="cMwittInfo"></div>
       </div>
     </div>
 
     <div class="column"><br><br>
+      <div class="textblock"><b>Mwitt Preview:</b>:</div>
       <canvas id="prevCanvas" width="400" height="300"></canvas>
     </div>
   </div>
