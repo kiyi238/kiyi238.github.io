@@ -118,7 +118,7 @@ layout: default
         <input type="checkbox" title="Lock Value" id="tertiaryCheck" name="tertiaryCheck"><br>
       <label for="eyel">Eye Color: #</label>
         <input type="text" id="eyer" name="eyer" maxlength="6" size="6">
-        <input type="checkbox" title="Lock Value" id="eyeCheck" name="eyeCheck">
+        <input type="checkbox" title="Lock Value" id="eyeCheck" name="eyeCheck"><br>
         <input type="checkbox" id="mutCheck" name="mutCheck"> Disable Mutations<br><br>
       <label for="mlr">Number of Markings:</label>
         <input type="text" id="mlr" name="mlr" maxlength="2" size="2">
