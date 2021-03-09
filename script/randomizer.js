@@ -49,13 +49,22 @@ function calculateRandomMarkings() {
   var markings = [];
   var colors = [];
   var opacities = [];
+  var checks = [];
   var container = document.getElementById("containerr");
   var inputs = container.getElementsByTagName("select");
 
   if(typeof inputs[0] != 'undefined') {
     for (var index = 0; index < inputs.length; ++index) {
+      if(inputs[index].name.includes("check")) {
+        checks.push(inputs[index]);
+      }
+    }
+  }
+
+  if(typeof inputs[0] != 'undefined') {
+    for (var index = 0; index < inputs.length; ++index) {
       if(inputs[index].name.includes("marking")) {
-        if(document.getElementById("markingCheck" + index).checked) { markings.push(inputs[index].value); }
+        if(checks[index].checked) { markings.push(inputs[index].value); }
         else {
           var marking = markingList[Math.floor(Math.random() * markingList.length)];
           markings.push(marking);
@@ -63,7 +72,7 @@ function calculateRandomMarkings() {
         }
       }
       if(inputs[index].name.includes("color")) {
-        if(document.getElementById("markingCheck" + index).checked) { colors.push(inputs[index].value); }
+        if(checks[index].checked) { colors.push(inputs[index].value); }
         else {
           var color = Math.floor(Math.random()*16777215).toString(16);
           colors.push(color);
@@ -71,7 +80,7 @@ function calculateRandomMarkings() {
         }
       }
       if(inputs[index].name.includes("opacity")) {
-        if(document.getElementById("markingCheck" + index).checked) { opacities.push(inputs[index].value); }
+        if(checks[index].checked) { opacities.push(inputs[index].value); }
         else {
           var opac = opacityList[Math.floor(Math.random() * opacityList.length)];
           opacities.push(opac);
