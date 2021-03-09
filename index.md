@@ -3,12 +3,11 @@ layout: default
 ---
 
 <div class="tab">
-  <button class="tablinks" onclick="changeTab(event, 'Mwitt Predictor')">Mwitt Predictor</button>
+  <button class="tablinks" onclick="changeTab(event, 'Mwitt Predictor')" id="defaultOpen">Mwitt Predictor</button>
   <button class="tablinks" onclick="changeTab(event, 'Randomizer')">Randomizer</button>
 </div>
 
 <div id="Mwitt Predictor" class="tabcontent">
-
   <div class="box">
     <div class="row">
       <div class="column"><div class="textblock">Mweor acting as <b>Female</b>:</div><br><br>
@@ -87,7 +86,6 @@ layout: default
       </div>
     </div>
   </div>
-
 </div>
 
 <div id="Randomizer" class="tabcontent">
