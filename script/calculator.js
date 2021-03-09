@@ -553,6 +553,7 @@ function drawPreview(mwitt) {
     //Recessive markings.
     if(mwitt.markingColors[i] == "star" && !star) {
       star = true;
+      console.log("checked");
       totalImages++;
     }
     if(mwitt.markingColors[i] == "grsc" && !grsc) {
@@ -887,6 +888,7 @@ function drawPreview(mwitt) {
     starImg.onload = onloadCallback;
     starImg.src = 'https://kiyi238.github.io/images/patterns/starry_sky.png';
     patternMap.set("star", starImg);
+    console.log("star");
   }
   if(grsc) {
     var grscImg = new Image();
