@@ -632,8 +632,7 @@ function drawPreview(mwitt) {
             tempCtx.globalCompositeOperation = "source-over";
             if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
               var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
-              console.log(patternValues.get(mwitt.markingOpacities));
-              tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities), 0);
+              tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities[k]), 0);
             }
             else {
               tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
@@ -656,9 +655,15 @@ function drawPreview(mwitt) {
       else {
         //Draw marking.
         tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
-        tempCtx.fillStyle = '#' + mwitt.markingColors[k];
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
+          var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
+          tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities[k]), 0);
+        }
+        else {
+          tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
+          tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        }
         tempCtx.globalCompositeOperation = "destination-in";
         tempCtx.drawImage(markingImages[n], 0, 0);
         ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
