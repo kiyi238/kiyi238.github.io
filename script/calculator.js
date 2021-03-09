@@ -550,20 +550,20 @@ function drawPreview(mwitt) {
     if(mwitt.breed == "ice") { totalImages += 2; }
   }
   for(var i = 0; i < mwitt.markings.length; i++) {
-    //Recessive markings.
-    if(mwitt.markingColors[i] == "star" && !star) {
+    if(mwitt.markingColors[i] == "star" && star == false) {
       star = true;
       console.log("checked");
       totalImages++;
     }
-    if(mwitt.markingColors[i] == "grsc" && !grsc) {
+    if(mwitt.markingColors[i] == "grsc" && grsc == false) {
       grsc = true;
       totalImages++;
     }
-    if(mwitt.markingColors[i] == "rnbw" && !rnbw) {
+    if(mwitt.markingColors[i] == "rnbw" && rnbw == false) {
       rnbw = true;
       totalImages++;
     }
+    //Recessive markings.
     if(recessives.includes(mwitt.markings[i])) {
       if(mwitt.markingGenes[i] == "aa") {
         //Recessive growths.
