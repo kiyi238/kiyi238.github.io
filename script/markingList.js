@@ -59,7 +59,7 @@ function addFields(num, con){
           var checkBox = document.createElement("input");
           checkBox.type = "checkbox";
           checkBox.title = "Lock Value";
-          checkBox.name = "markingCheck" + i;
+          checkBox.name = "check" + i;
           container.appendChild(checkBox);
         }
 
