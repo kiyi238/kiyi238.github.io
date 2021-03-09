@@ -7,6 +7,12 @@ var markingList = ["Agouti Tabby","Appaloosa","Backstripe","Badger","Barring","B
                   "Poison Dart Frog","Pronghorns","Ram Horns","Red Panda","Roan","Rune","Saber Fangs","Shine","Siamese","Skunk","Snow Leopard","Somali",
                   "Song Sparrow","Spotted Tabby","Tabby","Tail","Tail Blotches","Tail Stripes","Tailtip","Thylacine","Tiger","Tobiano","Toes","Turkish Van",
                   "Tuxedo","Undereye","Underside","Unicorn Horn","Upperside","Urajiro","Wild Cat","Wolf","Zebra"];
+var markingListNoGrowths = ["Agouti Tabby","Appaloosa","Backstripe","Badger","Barring","Blaze","Blush","Body Stripe","Caiman","Calico","CandleFlame Tabby",
+                            "Cardinal","Centered","Cheetah","Chest Splash","Classic Tabby","Clouded Leopard","Crown","Dalmatian","Doberman","Ear Rims","Eye Mask","Fawn Spots","Forehead Diamond",
+                            "Freckles","Front Fade","German Sheperd","Giraffe","Half","Head","Holstein","House Sparrow","Husky","Irish","Irish Cheekless","King Cheetah","Leg Blotches","Leg Stripes",
+                            "Legwarmers","Leopard","Lower Fade","Mackerel Tabby","Mane","Marbled","Merle","Modern Stripes","Muzzle","Ocelot","Okapi","Panda","Piebald","Pitbull","Poison Dart Frog",
+                            "Red Panda","Roan","Rune","Shine","Siamese","Skunk","Snow Leopard","Somali","Song Sparrow","Spotted Tabby","Tabby","Tail","Tail Blotches","Tail Stripes","Tailtip","Thylacine",
+                            "Tiger","Tobiano","Toes","Turkish Van","Tuxedo","Undereye","Underside","Upperside","Urajiro","Wild Cat","Wolf","Zebra"];
 var opacityList = ["100","90","80","70","60","50","40","30","20","10"];
 var geneList = ["AA","Aa","aa"];
 var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tabby",

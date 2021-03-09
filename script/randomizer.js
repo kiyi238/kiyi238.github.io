@@ -53,6 +53,7 @@ function calculateRandomMarkings() {
   var markingElements = [];
   var colorElements = [];
   var opacityElements = [];
+  var mutcheck = document.getElementById("mutCheck");
   var container = document.getElementById("containerr");
   var inputsSelect = container.getElementsByTagName("select");
   var inputs = container.getElementsByTagName("input");
@@ -87,7 +88,9 @@ function calculateRandomMarkings() {
         opacities.push(opacityElements[index].value);
       }
       else {
-        var marking = markingList[Math.floor(Math.random() * markingList.length)];
+        var marking;
+        if(mutCheck.checked) { marking = markingListNoGrowths[Math.floor(Math.random() * markingListNoGrowths.length)]; }
+        else { marking = markingList[Math.floor(Math.random() * markingList.length)]; }
         markings.push(marking);
         markingElements[index].value = marking;
 
