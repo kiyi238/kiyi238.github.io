@@ -632,6 +632,7 @@ function drawPreview(mwitt) {
             tempCtx.globalCompositeOperation = "source-over";
             if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
               var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
+              console.log(patternValues.get(mwitt.markingOpacities));
               tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities), 0);
             }
             else {
@@ -774,7 +775,7 @@ function drawPreview(mwitt) {
           //Draw growth.
           tempCtx.globalCompositeOperation = "source-over";
           if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
-            tempCtx.drawImage(patternMap.get(mwitt.markings[i]), 0, 0);
+            tempCtx.drawImage(patternMap.get(mwitt.markingColors[i]), 0, 0);
           }
           else {
             tempCtx.fillStyle = '#' + mwitt.markingsColors[i];
