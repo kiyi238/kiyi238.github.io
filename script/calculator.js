@@ -6,6 +6,8 @@ var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tab
 var greaters = ["air","fire","water","earth","lightning","plant","ice"];
 var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Eastern Dragon","Dragon Horns","Ear Tufts","Fairy Wings",
               "Feather Wings","Leg Feathering","Mane","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
+let patternValues = new Map();map.set("100", 0);map.set("90", 40);map.set("80", 80);map.set("70", 120);map.set("60", 160);map.set("50", 200);
+                              map.set("40", 240);map.set("40", 280);map.set("30", 320);map.set("20", 360);map.set("10", 400);
 
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = breed;
@@ -24,7 +26,7 @@ function calculateMwitt() {
   var maleMweor = new Mweor(document.getElementById("breedm").value,document.getElementById("basem").value,document.getElementById("secondarym").value,document.getElementById("tertiarym").value,document.getElementById("eyem").value,getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
 
   var markingResults = calculateMarkings(femaleMweor, maleMweor);
-  var mwitt = new Mweor(calculateBreed(femaleMweor, maleMweor), calculateBase(femaleMweor, maleMweor), calculateSecondary(femaleMweor, maleMweor), calculateTertiary(femaleMweor, maleMweor), calculateEye(femaleMweor, maleMweor), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
+  var mwitt = new Mweor(calculateBreed(femaleMweor, maleMweor), calculateColor(femaleMweor.base, maleMweor.base), calculateColor(femaleMweor.second, maleMweor.second), calculateColor(femaleMweor.tert, maleMweor.tert), calculateColor(femaleMweor.eye, maleMweor.eye), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
 
   var container = document.getElementById("cMwittInfo");
   while (container.hasChildNodes()) {
@@ -261,58 +263,6 @@ function calculateBreed(f, m) {
   return breed;
 }
 
-function calculateBase(f, m) {
-  var color;
-  var rand = Math.random();
-  if(rand < 1 && rand > 0.66) {
-    color = f.base;
-  } else if(rand < 0.66 && rand > 0.33) {
-    color = m.base;
-  } else {
-    color = blendColors(f.base, m.base, 0.5);
-  }
-  return color;
-}
-
-function calculateSecondary(f, m) {
-  var color;
-  var rand = Math.random();
-  if(rand < 1 && rand > 0.66) {
-    color = f.second;
-  } else if(rand < 0.66 && rand > 0.33) {
-    color = m.second;
-  } else {
-    color = blendColors(f.second, m.second, 0.5);
-  }
-  return color;
-}
-
-function calculateTertiary(f, m) {
-  var color;
-  var rand = Math.random();
-  if(rand < 1 && rand > 0.66) {
-    color = f.tert;
-  } else if(rand < 0.66 && rand > 0.33) {
-    color = m.tert;
-  } else {
-    color = blendColors(f.tert, m.tert, 0.5);
-  }
-  return color;
-}
-
-function calculateEye(f, m) {
-  var color;
-  var rand = Math.random();
-  if(rand < 1 && rand > 0.66) {
-    color = f.eye;
-  } else if(rand < 0.66 && rand > 0.33) {
-    color = m.eye;
-  } else {
-    color = blendColors(f.eye, m.eye, 0.5);
-  }
-  return color;
-}
-
 function calculateMarkings(f, m) {
   var mwittMarkings = [];
   var mwittMarkingGenes = [];
@@ -337,7 +287,7 @@ function calculateMarkings(f, m) {
           if(gene == "AA" || gene == "Aa") {
             mwittMarkings.push(f.markings[v]);
             mwittMarkingGenes.push(gene);
-            mwittMarkingColors.push(blendColors(f.markingColors[v], m.markingColors[i], 0.5));
+            mwittMarkingColors.push(calculateMarkingColor(f.markingColors[v], m.markingColors[i]));
             mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[v],m.markingOpacities[i]));
           }
           m.markings[i] = "null"
@@ -364,7 +314,7 @@ function calculateMarkings(f, m) {
           if(gene == "aa" || gene == "Aa") {
             mwittMarkings.push(f.markings[v]);
             mwittMarkingGenes.push(gene);
-            mwittMarkingColors.push(blendColors(f.markingColors[v], m.markingColors[i], 0.5));
+            mwittMarkingColors.push(calculateMarkingColor(f.markingColors[v], m.markingColors[i]));
             mwittMarkingOpacities.push(calculateMarkingOpacitiy(f.markingOpacities[v],m.markingOpacities[i]));
           }
           m.markings[i] = "null"
@@ -417,6 +367,50 @@ function calculateMarkings(f, m) {
   return [mwittMarkings, mwittMarkingGenes, mwittMarkingColors, mwittMarkingOpacities];
 }
 
+function calculateColor(fC, mC) {
+  var color;
+  var rand = Math.random();
+  if(fC == "star" || fC == "grsc" || fC == "rnbw" || mC == "star" || mC == "grsc" || mC == "rnbw") {
+    if(rand < 0.5) { color = mC; }
+    else { color = fC; }
+  }
+  else {
+    if(rand < 1 && rand > 0.66) { color = fC; }
+    else if(rand < 0.66 && rand > 0.33) { color = mC; }
+    else { color = blendColors(fC, mC, 0.5); }
+  }
+  return color;
+}
+
+function calculateMarkingColor(fC, mC) {
+  var color;
+  var rand = Math.random();
+  if(fC == "star" || fC == "grsc" || fC == "rnbw" || mC == "star" || mC == "grsc" || mC == "rnbw") {
+    if(rand < 0.5) { color = mC; }
+    else { color = fC; }
+  }
+  else {
+    color = blendColors(fC, mC, 0.5);
+  }
+  return color;
+}
+
+function calculateMarkingOpacitiy(fOp, mOp) {
+  var biggest = Math.max(parseInt(fOp), parseInt(mOp));
+  var smallest = Math.min(parseInt(fOp), parseInt(mOp));
+  var index = smallest;
+  var array = [];
+  if (index - 10 > 0) { array.push(index - 10); }
+  while(index < biggest && index < 100) {
+    array.push(index);
+    index = index + 10;
+  }
+  array.push(index);
+  if (index + 10 < 100) { array.push(index + 10); }
+  var opacity = array[Math.floor(Math.random() * array.length)];
+  return opacity;
+}
+
 function calculateGene(fGene, mGene) {
   var mwittGene;
   var rand = Math.random();
@@ -455,22 +449,6 @@ function calculateGene(fGene, mGene) {
     mwittGene = "aa";
   }
   return mwittGene;
-}
-
-function calculateMarkingOpacitiy(fOp, mOp) {
-  var biggest = Math.max(parseInt(fOp), parseInt(mOp));
-  var smallest = Math.min(parseInt(fOp), parseInt(mOp));
-  var index = smallest;
-  var array = [];
-  if (index - 10 > 0) { array.push(index - 10); }
-  while(index < biggest && index < 100) {
-    array.push(index);
-    index = index + 10;
-  }
-  array.push(index);
-  if (index + 10 < 100) { array.push(index + 10); }
-  var opacity = array[Math.floor(Math.random() * array.length)];
-  return opacity;
 }
 
 function blendColors(colorA, colorB, amount) {
@@ -561,6 +539,12 @@ function drawPreview(mwitt) {
   var copyright = new Image();
   var markingImages = [];
   var growthImages = [];
+  var starImg;
+  var grscImg;
+  var rnbwImg;
+  var star = false;
+  var grsc = false;
+  var rnbw = false;
 
   //Calculate image count.
   if(greaters.includes(mwitt.breed)) {
@@ -569,6 +553,18 @@ function drawPreview(mwitt) {
   }
   for(var i = 0; i < mwitt.markings.length; i++) {
     //Recessive markings.
+    if(mwitt.markingColors[i] == star && !star) {
+      star = true;
+      totalImages++;
+    }
+    if(mwitt.markingColors[i] == grsc && !grsc) {
+      grsc = true;
+      totalImages++;
+    }
+    if(mwitt.markingColors[i] == rnbw && !rnbw) {
+      grsc = rnbw;
+      totalImages++;
+    }
     if(recessives.includes(mwitt.markings[i])) {
       if(mwitt.markingGenes[i] == "aa") {
         //Recessive growths.
@@ -600,8 +596,17 @@ function drawPreview(mwitt) {
     ctx.drawImage(copyright, 0, 0);  //Add to main canvas.
 
     //Color and draw the base.
-    tempCtx.fillStyle = '#' + mwitt.base;
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    if(mwitt.base == "star" || mwitt.base == "grsc" || mwitt.base == "rnbw") {
+      var tempImg;
+      if(mwitt.base == "star") { tempImg = starImg; }
+      else if(mwitt.base == "grsc") { tempImg = grscImg; }
+      else { tempImg = rnbwImg; }
+      tempCtx.drawImage(tempImg, 0, 0);
+    }
+    else {
+      tempCtx.fillStyle = '#' + mwitt.base;
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    }
     tempCtx.globalCompositeOperation = "destination-in";
     tempCtx.drawImage(color, 0, 0);
     ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
@@ -619,9 +624,19 @@ function drawPreview(mwitt) {
           if(!growths.includes(mwitt.markings[k])) {
             //Draw marking.
             tempCtx.globalCompositeOperation = "source-over";
-            tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
-            tempCtx.fillStyle = '#' + mwitt.markingColors[k];
-            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+            if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
+              var tempImg;
+              if(mwitt.markingColors[k] == "star") { tempImg = starImg; }
+              else if(mwitt.markingColors[k] == "grsc") { tempImg = grscImg; }
+              else { tempImg = rnbwImg; }
+              var pattern = tempCtx.createPattern(tempImg, "repeat-x");
+              tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities), 0);
+            }
+            else {
+              tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
+              tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+              tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+            }
             tempCtx.globalCompositeOperation = "destination-in";
             tempCtx.drawImage(markingImages[n], 0, 0);
             ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
@@ -655,8 +670,17 @@ function drawPreview(mwitt) {
 
     //Color and draw the secondary.
     tempCtx.globalCompositeOperation = "source-over";
-    tempCtx.fillStyle = '#' + mwitt.second;
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    if(mwitt.second == "star" || mwitt.second == "grsc" || mwitt.second == "rnbw") {
+      var tempImg;
+      if(mwitt.second == "star") { tempImg = starImg; }
+      else if(mwitt.second == "grsc") { tempImg = grscImg; }
+      else { tempImg = rnbwImg; }
+      tempCtx.drawImage(tempImg, 0, 0);
+    }
+    else {
+      tempCtx.fillStyle = '#' + mwitt.second;
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    }
     tempCtx.globalCompositeOperation = "destination-in";
     tempCtx.drawImage(secondary, 0, 0);
     ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
@@ -664,8 +688,17 @@ function drawPreview(mwitt) {
     //If breed is a greater.
     if(greaters.includes(mwitt.breed)) {
       tempCtx.globalCompositeOperation = "source-over";
-      tempCtx.fillStyle = '#' + mwitt.tert;
-      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      if(mwitt.tert == "star" || mwitt.tert == "grsc" || mwitt.tert == "rnbw") {
+        var tempImg;
+        if(mwitt.tert == "star") { tempImg = starImg; }
+        else if(mwitt.tert == "grsc") { tempImg = grscImg; }
+        else { tempImg = rnbwImg; }
+        tempCtx.drawImage(tempImg, 0, 0);
+      }
+      else {
+        tempCtx.fillStyle = '#' + mwitt.tert;
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      }
       tempCtx.globalCompositeOperation = "destination-in";
       tempCtx.drawImage(tertiary, 0, 0);
       ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
@@ -681,8 +714,17 @@ function drawPreview(mwitt) {
 
     //Color and draw the eyes.
     tempCtx.globalCompositeOperation = "source-over";
-    tempCtx.fillStyle = '#' + mwitt.eye;
-    tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    if(mwitt.eye == "star" || mwitt.eye == "grsc" || mwitt.eye == "rnbw") {
+      var tempImg;
+      if(mwitt.eye == "star") { tempImg = starImg; }
+      else if(mwitt.eye == "grsc") { tempImg = grscImg; }
+      else { tempImg = rnbwImg; }
+      tempCtx.drawImage(tempImg, 0, 0);
+    }
+    else {
+      tempCtx.fillStyle = '#' + mwitt.eye;
+      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+    }
     tempCtx.globalCompositeOperation = "destination-in";
     tempCtx.drawImage(eyeColor, 0, 0);
     ctx.drawImage(eyeWhites, 0, 0);   //Add to main canvas.
@@ -703,8 +745,17 @@ function drawPreview(mwitt) {
       if(mwitt.markings[i] == "Leg Feathering") {
         //Draw front feathering.
         tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.fillStyle = '#' + mwitt.markingColors[i];
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
+          var tempImg;
+          if(mwitt.markings[i] == "star") { tempImg = starImg; }
+          else if(mwitt.markings[i] == "grsc") { tempImg = grscImg; }
+          else { tempImg = rnbwImg; }
+          tempCtx.drawImage(tempImg, 0, 0);
+        }
+        else {
+          tempCtx.fillStyle = '#' + mwitt.markings[i];
+          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        }
         tempCtx.globalCompositeOperation = "destination-in";
         tempCtx.drawImage(markingImages[n], 0, 0);
         ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
@@ -736,8 +787,17 @@ function drawPreview(mwitt) {
         if(mwitt.markingGenes[i] == "aa") {
           //Draw growth.
           tempCtx.globalCompositeOperation = "source-over";
-          tempCtx.fillStyle = '#' + mwitt.markingColors[i];
-          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+          if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
+            var tempImg;
+            if(mwitt.markings[i] == "star") { tempImg = starImg; }
+            else if(mwitt.markings[i] == "grsc") { tempImg = grscImg; }
+            else { tempImg = rnbwImg; }
+            tempCtx.drawImage(tempImg, 0, 0);
+          }
+          else {
+            tempCtx.fillStyle = '#' + mwitt.markings[i];
+            tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+          }
           tempCtx.globalCompositeOperation = "destination-in";
           tempCtx.drawImage(markingImages[n], 0, 0);
           ctx.drawImage(tempCanvas, 0, 0);        //Add to main canvas.
@@ -763,8 +823,17 @@ function drawPreview(mwitt) {
     //If breed is ice.
     if(mwitt.breed == "ice") {
       tempCtx.globalCompositeOperation = "source-over";
-      tempCtx.fillStyle = '#' + mwitt.second;
-      tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      if(mwitt.second == "star" || mwitt.second == "grsc" || mwitt.second == "rnbw") {
+        var tempImg;
+        if(mwitt.second == "star") { tempImg = starImg; }
+        else if(mwitt.second == "grsc") { tempImg = grscImg; }
+        else { tempImg = rnbwImg; }
+        tempCtx.drawImage(tempImg, 0, 0);
+      }
+      else {
+        tempCtx.fillStyle = '#' + mwitt.second;
+        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+      }
       tempCtx.globalCompositeOperation = "destination-in";
       tempCtx.drawImage(secondaryTop, 0, 0);
       ctx.drawImage(tempCanvas, 0, 0);           //Add to main canvas.
@@ -844,6 +913,23 @@ function drawPreview(mwitt) {
       img.src = 'https://kiyi238.github.io/images/' + mwitt.breed + '/marking_' + str + '.png';
       markingImages.push(img);
     }
+  }
+
+  //Load patterns if any are used.
+  if(star) {
+    starImg = new Image();
+    starImg.onload = onloadCallback;
+    starImg.src = 'https://kiyi238.github.io/images/patterns/rainbow.png';
+  }
+  if(grsc) {
+    grscImg = new Image();
+    grscImg.onload = onloadCallback;
+    grscImg.src = 'https://kiyi238.github.io/images/patterns/grayscale.png';
+  }
+  if(rnbw) {
+    rnbwImg = new Image();
+    rnbwImg.onload = onloadCallback;
+    rnbwImg.src = 'https://kiyi238.github.io/images/patterns/rainbow.png';
   }
 
   //Attach callbacks.
