@@ -6,7 +6,7 @@ var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tab
 var greaters = ["air","fire","water","earth","lightning","plant","ice"];
 var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Eastern Dragon","Dragon Horns","Ear Tufts","Fairy Wings",
               "Feather Wings","Leg Feathering","Mane","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
-let patternValues = new Map();
+var patternValues = new Map();
 
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = breed;
@@ -560,7 +560,7 @@ function drawPreview(mwitt) {
   setupPatternValues();
 
   console.log(mwitt.markingOpacities[0] + "");
-  console.log(patternValues.get(mwitt.markingOpacities[0]) + "");
+  console.log(patternValues.get(mwitt.markingOpacities[0] + ""));
 
   //Calculate image count.
   if(greaters.includes(mwitt.breed)) {
