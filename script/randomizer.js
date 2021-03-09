@@ -99,6 +99,7 @@ function calculateRandomMarkings() {
         opacities.push(opac);
         opacityElements[index].value = opac;
       }
+    }
   }
   return [markings, colors, opacities];
 }
