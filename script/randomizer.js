@@ -80,6 +80,8 @@ function calculateRandomMarkings() {
           inputs[index].value = color;
         }
       }
+    }
+    for (var index = 0; index < inputsSelect.length; ++index) {
       if(inputsSelect[index].name.includes("opacity")) {
         if(checks[index].checked) { opacities.push(inputsSelect[index].value); }
         else {
