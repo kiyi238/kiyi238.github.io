@@ -1,13 +1,3 @@
-var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tabby",
-                  "Clouded Leopard","Deer Antlers","Dragon Horns","Ear Tufts","Eastern Dragon",
-                  "Elk Horns","Fairy Wings","Feather Wings","Giraffe","King Cheetah","Mackerel Tabby",
-                  "Mane","Marbled","Neck Spikes","Ocelot","Pronghorns","Ram Horns","Saber Fangs",
-                  "Snow Leopard","Spotted Tabby","Unicorn Horn"];
-var greaters = ["air","fire","water","earth","lightning","plant","ice"];
-var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Eastern Dragon","Dragon Horns","Ear Tufts","Fairy Wings",
-              "Feather Wings","Leg Feathering","Mane","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
-var patternValues = new Map();
-
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = breed;
   this.base = base;
@@ -48,7 +38,7 @@ function calculateMwitt() {
     container.appendChild(document.createElement("br"));
   }
 
-  drawPreview(mwitt);
+  drawPreview(mwitt, "prevCanvas");
 }
 
 function calculateBreed(f, m) {
@@ -517,22 +507,8 @@ function getMarkingColors(con) {
   return colors;
 }
 
-function setupPatternValues() {
-  patternValues.set("100", 0);
-  patternValues.set("90", 40);
-  patternValues.set("80", 80);
-  patternValues.set("70", 120);
-  patternValues.set("60", 160);
-  patternValues.set("50", 200);
-  patternValues.set("40", 240);
-  patternValues.set("40", 280);
-  patternValues.set("30", 320);
-  patternValues.set("20", 360);
-  patternValues.set("10", 400);
-}
-
-function drawPreview(mwitt) {
-  var canvas = document.getElementById('prevCanvas');
+function drawPreview(mwitt, canv) {
+  var canvas = document.getElementById(canv);
   var ctx = canvas.getContext('2d');
   //Clear the main canvas.
   ctx.fillStyle = "rgba(0, 0, 0, 0)";
@@ -591,7 +567,7 @@ function drawPreview(mwitt) {
     }
     //Recessive markings.
     if(recessives.includes(mwitt.markings[i])) {
-      if(mwitt.markingGenes[i] == "aa") {
+      if(typeof mwitt.markingGenes[i] == 'undefined' || mwitt.markingGenes[i] == "aa") {
         //Recessive growths.
         if(growths.includes(mwitt.markings[i])) { totalImages += 2; }
         else { totalImages++; }
@@ -642,7 +618,7 @@ function drawPreview(mwitt) {
       var matrix = new DOMMatrix([1, .2, .8, 1, 0, 0]);
       //Recessive markings.
       if(recessives.includes(mwitt.markings[k])) {
-        if(mwitt.markingGenes[k] == "aa") {
+        if(typeof mwitt.markingGenes[k] == 'undefined' || mwitt.markingGenes[k] == "aa") {
           if(!growths.includes(mwitt.markings[k])) {
             //Draw marking.
             tempCtx.globalCompositeOperation = "source-over";
@@ -796,7 +772,7 @@ function drawPreview(mwitt) {
       }
       //Recessive markings.
       else if(growths.includes(mwitt.markings[i])) {
-        if(mwitt.markingGenes[i] == "aa") {
+        if(typeof mwitt.markingGenes[i] == 'undefined' || mwitt.markingGenes[i] == "aa") {
           //Draw growth.
           tempCtx.globalCompositeOperation = "source-over";
           if(mwitt.markingColors[i] == "star" || mwitt.markingColors[i] == "grsc" || mwitt.markingColors[i] == "rnbw") {
@@ -867,7 +843,7 @@ function drawPreview(mwitt) {
   for (var i = 0; i < mwitt.markings.length; i++) {
     //Recessive markings.
     if(recessives.includes(mwitt.markings[i])) {
-      if(mwitt.markingGenes[i] == "aa") {
+      if(typeof mwitt.markingGenes[i] == 'undefined' || mwitt.markingGenes[i] == "aa") {
         //Recessive growths.
         if(growths.includes(mwitt.markings[i])) {
           var img = new Image();

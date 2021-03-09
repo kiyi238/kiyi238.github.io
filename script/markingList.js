@@ -1,15 +1,3 @@
-var markingList = ["Agouti Tabby","Appaloosa","Backstripe","Badger","Barring","Bat Wings","Blaze","Blush","Body Stripe","Butterfly Wings","Caiman",
-                  "Calico","CandleFlame Tabby","Cardinal","Centered","Cheetah","Chest Splash","Classic Tabby","Clouded Leopard","Crown","Dalmatian",
-                  "Deer Antlers","Doberman","Dragon Horns","Ear Rims","Ear Tufts","Eastern Dragon","Elk Antlers","Eye Mask","Fairy Wings","Fawn Spots",
-                  "Feather Wings","Forehead Diamond","Freckles","Front Fade","German Sheperd","Giraffe","Half","Head","Holstein","House Sparrow",
-                  "Husky","Irish","Irish Cheekless","King Cheetah","Leg Blotches","Leg Feathering","Leg Stripes","Legwarmers","Leopard","Lower Fade",
-                  "Mackerel Tabby","Mane","Marbled","Merle","Modern Stripes","Muzzle","Neck Spikes","Ocelot","Okapi","Panda","Piebald","Pitbull",
-                  "Poison Dart Frog","Pronghorns","Ram Horns","Red Panda","Roan","Runes","Saber Fangs","Shine","Siamese","Skunk","Snow Leopard","Somali",
-                  "Song Sparrow","Spotted Tabby","Tabby","Tail","Tail Blotches","Tail Stripes","Tailtip","Thylacine","Tiger","Tobiano","Toes","Turkish Van",
-                  "Tuxedo","Undereye","Underside","Unicorn Horn","Upperside","Urajiro","Wild Cat","Wolf","Zebra"];
-var opacityList = ["100","90","80","70","60","50","40","30","20","10"];
-var geneList = ["AA","Aa","aa"];
-
 function addFields(num, con){
     var number = document.getElementById(num).value;
     var container = document.getElementById(con);
@@ -30,18 +18,20 @@ function addFields(num, con){
 
         container.appendChild(marking);
 
-        var gene = document.createElement("select");
-        gene.type = "select";
-        gene.name = "gene" + i;
+        if(container.id != "containerr") {
+          var gene = document.createElement("select");
+          gene.type = "select";
+          gene.name = "gene" + i;
 
-        for (var k = 0; k < geneList.length; k++) {
-          var g = document.createElement("option");
-          g.value = geneList[k];
-          g.text = geneList[k];
-          gene.appendChild(g);
+          for (var k = 0; k < geneList.length; k++) {
+            var g = document.createElement("option");
+            g.value = geneList[k];
+            g.text = geneList[k];
+            gene.appendChild(g);
+          }
+
+          container.appendChild(gene);
         }
-
-        container.appendChild(gene);
         container.appendChild(document.createTextNode(" #"));
 
         var color = document.createElement("input");
