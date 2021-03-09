@@ -595,7 +595,7 @@ function drawPreview(mwitt) {
 
     //Color and draw the base.
     if(mwitt.base == "star" || mwitt.base == "grsc" || mwitt.base == "rnbw") {
-      tempCtx.drawImage(patternMap.get(mwitt.base), 0, 0);
+      tempCtx.drawImage(patternMap.get("star"), 0, 0);
     }
     else {
       tempCtx.fillStyle = '#' + mwitt.base;
