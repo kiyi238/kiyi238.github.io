@@ -7,35 +7,35 @@ function randomize() {
 
 function calculateRandomBasics() {
   var basics = [];
-  if(document.getElementById("breedCheck").checked) { basics.push(document.getElementById("breedr")); }
+  if(document.getElementById("breedCheck").checked) { basics.push(document.getElementById("breedr").value); }
   else {
     var breed = breeds[Math.floor(Math.random() * breeds.length)];
     basics.push(breed);
     document.getElementById("breedr").value = breed;
   }
 
-  if(document.getElementById("baseCheck").checked) { basics.push(document.getElementById("baser")); }
+  if(document.getElementById("baseCheck").checked) { basics.push(document.getElementById("baser").value); }
   else {
     var base = Math.floor(Math.random()*16777215).toString(16);
     basics.push(base);
     document.getElementById("baser").value = base;
   }
 
-  if(document.getElementById("secondaryCheck").checked) { basics.push(document.getElementById("secondaryr")); }
+  if(document.getElementById("secondaryCheck").checked) { basics.push(document.getElementById("secondaryr").value); }
   else {
     var second = Math.floor(Math.random()*16777215).toString(16);
     basics.push(second);
     document.getElementById("secondaryr").value = second;
   }
 
-  if(document.getElementById("tertiaryCheck").checked) { basics.push(document.getElementById("tertiaryr")); }
+  if(document.getElementById("tertiaryCheck").checked) { basics.push(document.getElementById("tertiaryr").value); }
   else {
     var tert = Math.floor(Math.random()*16777215).toString(16);
     basics.push(tert);
     document.getElementById("tertiaryr").value = tert;
   }
 
-  if(document.getElementById("eyeCheck").checked) { basics.push(document.getElementById("eyer")); }
+  if(document.getElementById("eyeCheck").checked) { basics.push(document.getElementById("eyer").value); }
   else {
     var eye = Math.floor(Math.random()*16777215).toString(16);
     basics.push(eye);
