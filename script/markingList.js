@@ -64,12 +64,13 @@ function addFields(num, con){
 
         container.appendChild(opacity);
         container.appendChild(document.createTextNode("%"));
-        console.log(container.id);
+
         if(container.id == "containerr") {
           var checkBox = document.createElement("input");
           checkBox.type = "checkbox";
           checkBox.title = "Lock Value";
           checkBox.name = "markingCheck" + i;
+          container.appendChild(checkBox);
         }
 
         // Append a line break
