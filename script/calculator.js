@@ -540,6 +540,7 @@ function drawPreview(mwitt) {
   var markingImages = [];
   var growthImages = [];
   let patternMap = new Map();
+  var starImg;
   var star = false;
   var grsc = false;
   var rnbw = false;
@@ -595,7 +596,7 @@ function drawPreview(mwitt) {
 
     //Color and draw the base.
     if(mwitt.base == "star" || mwitt.base == "grsc" || mwitt.base == "rnbw") {
-      tempCtx.drawImage(patternMap.get("star"), 0, 0);
+      tempCtx.drawImage(starImg, 0, 0);
     }
     else {
       tempCtx.fillStyle = '#' + mwitt.base;
@@ -911,7 +912,7 @@ function drawPreview(mwitt) {
 
   //Load patterns if any are used.
   if(star) {
-    var starImg = new Image();
+    starImg = new Image();
     starImg.onload = onloadCallback;
     starImg.src = 'https://kiyi238.github.io/images/patterns/starry_sky.png';
     patternMap.set("star", starImg);
