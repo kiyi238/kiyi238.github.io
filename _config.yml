@@ -1,4 +1,4 @@
-title: Mwitt Predictor
-description: A work in progress! This program uses genetic information purely provided by the community, and as such may not always be 100% accurate. Due to the way opacity is handled in this program, markings may appear slightly off when at low opacities. Legfeathering opacity differences are not yet implemented.
+title: Mweor Utilities
+description: This program uses genetic information purely provided by the community, and as such may not always be 100% accurate. Due to the way opacity is handled in this program, markings may appear slightly different when at low opacities. Legfeathering opacity differences are not implemented.
 show_downloads: false
 theme: jekyll-theme-cayman
