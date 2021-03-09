@@ -6,8 +6,7 @@ var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tab
 var greaters = ["air","fire","water","earth","lightning","plant","ice"];
 var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Eastern Dragon","Dragon Horns","Ear Tufts","Fairy Wings",
               "Feather Wings","Leg Feathering","Mane","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
-let patternValues = new Map();patternValues.set("100", 0);patternValues.set("90", 40);patternValues.set("80", 80);patternValues.set("70", 120);patternValues.set("60", 160);patternValues.set("50", 200);
-                              patternValues.set("40", 240);patternValues.set("40", 280);patternValues.set("30", 320);patternValues.set("20", 360);patternValues.set("10", 400);
+var patternValues = new Map();
 
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = breed;
@@ -518,6 +517,20 @@ function getMarkingColors(con) {
   return colors;
 }
 
+function setupPatternValues() {
+  patternValues.set("100", 0);
+  patternValues.set("90", 40);
+  patternValues.set("80", 80);
+  patternValues.set("70", 120);
+  patternValues.set("60", 160);
+  patternValues.set("50", 200);
+  patternValues.set("40", 240);
+  patternValues.set("40", 280);
+  patternValues.set("30", 320);
+  patternValues.set("20", 360);
+  patternValues.set("10", 400);
+}
+
 function drawPreview(mwitt) {
   var canvas = document.getElementById('prevCanvas');
   var ctx = canvas.getContext('2d');
@@ -543,6 +556,11 @@ function drawPreview(mwitt) {
   var star = false;
   var grsc = false;
   var rnbw = false;
+
+  setupPatternValues();
+
+  console.log(mwitt.markingOpacities[0] + "");
+  console.log(patternValues.get(mwitt.markingOpacities[0]) + "");
 
   //Calculate image count.
   if(greaters.includes(mwitt.breed)) {
@@ -624,6 +642,7 @@ function drawPreview(mwitt) {
     //Draw markings.
     var k, n;
     for (k = 0, n = 0; k < mwitt.markings.length; k++) {
+      var matrix = new DOMMatrix([1, .2, .8, 1, 0, 0]);
       //Recessive markings.
       if(recessives.includes(mwitt.markings[k])) {
         if(mwitt.markingGenes[k] == "aa") {
@@ -632,8 +651,9 @@ function drawPreview(mwitt) {
             tempCtx.globalCompositeOperation = "source-over";
             if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
               var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
-              console.log(patternValues.get(mwitt.markingOpacities[k]));
-              tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities[k]), 0);
+              pattern.setTransform(matrix.translate(patternValues.get(mwitt.markingOpacities[k]),0,0));
+              tempCtx.fillStyle = pattern;
+              tempCtx.fillRect(0, 0, canvas.width, canvas.height);
             }
             else {
               tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
@@ -656,9 +676,17 @@ function drawPreview(mwitt) {
       else {
         //Draw marking.
         tempCtx.globalCompositeOperation = "source-over";
-        tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
-        tempCtx.fillStyle = '#' + mwitt.markingColors[k];
-        tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
+          var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
+          pattern.setTransform(matrix.translate(patternValues.get(mwitt.markingOpacities[k]),0,0));
+          tempCtx.fillStyle = pattern;
+          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        else {
+          tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
+          tempCtx.fillStyle = '#' + mwitt.markingColors[k];
+          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
+        }
         tempCtx.globalCompositeOperation = "destination-in";
         tempCtx.drawImage(markingImages[n], 0, 0);
         ctx.drawImage(tempCanvas, 0, 0);  //Add to main canvas.
@@ -737,7 +765,7 @@ function drawPreview(mwitt) {
         //Draw front feathering.
         tempCtx.globalCompositeOperation = "source-over";
         if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
-          tempCtx.drawImage(patternMap.get(mwitt.markingsColors[i]), 0, 0);
+          tempCtx.drawImage(patternMap.get(mwitt.markingColors[i]), 0, 0);
         }
         else {
           tempCtx.fillStyle = '#' + mwitt.markingsColors[i];
@@ -774,7 +802,7 @@ function drawPreview(mwitt) {
         if(mwitt.markingGenes[i] == "aa") {
           //Draw growth.
           tempCtx.globalCompositeOperation = "source-over";
-          if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
+          if(mwitt.markingColors[i] == "star" || mwitt.markingColors[i] == "grsc" || mwitt.markingColors[i] == "rnbw") {
             tempCtx.drawImage(patternMap.get(mwitt.markingColors[i]), 0, 0);
           }
           else {
