@@ -50,6 +50,9 @@ function calculateRandomMarkings() {
   var colors = [];
   var opacities = [];
   var checks = [];
+  var markingElements = [];
+  var colorElements = [];
+  var opacityElements = [];
   var container = document.getElementById("containerr");
   var inputsSelect = container.getElementsByTagName("select");
   var inputs = container.getElementsByTagName("input");
@@ -59,38 +62,43 @@ function calculateRandomMarkings() {
       if(inputs[index].name.includes("check")) {
         checks.push(inputs[index]);
       }
+      if(inputs[index].name.includes("color")) {
+        colorElements.push(inputs[index]);
+      }
     }
   }
 
-  if(typeof inputs[0] != 'undefined') {
-    for (var index = 0; index < inputs.length; ++index) {
-      if(inputsSelect[index].name.includes("marking")) {
-        if(checks[index].checked) { markings.push(inputsSelect[index].value); }
-        else {
-          var marking = markingList[Math.floor(Math.random() * markingList.length)];
-          markings.push(marking);
-          inputsSelect[index].value = marking;
-        }
-      }
-      if(inputs[index].name.includes("color")) {
-        if(checks[index].checked) { colors.push(inputs[index].value); }
-        else {
-          var color = Math.floor(Math.random()*16777215).toString(16);
-          colors.push(color);
-          inputs[index].value = color;
-        }
-      }
-    }
+  if(typeof inputsSelect[0] != 'undefined') {
     for (var index = 0; index < inputsSelect.length; ++index) {
+      if(inputsSelect[index].name.includes("marking")) {
+        markingElements.push(inputsSelect[index]);
+      }
       if(inputsSelect[index].name.includes("opacity")) {
-        if(checks[index].checked) { opacities.push(inputsSelect[index].value); }
-        else {
-          var opac = opacityList[Math.floor(Math.random() * opacityList.length)];
-          opacities.push(opac);
-          inputsSelect[index].value = opac;
-        }
+        opacityElements.push(inputsSelect[index]);
       }
     }
+  }
+
+  if(typeof markingElements[0] != 'undefined') {
+    for (var index = 0; index < markingElements.length; ++index) {
+      if(checks[index].checked) {
+        markings.push(markingElements[index].value);
+        colors.push(colorElements[index].value);
+        opacities.push(opacityElements[index].value);
+      }
+      else {
+        var marking = markingList[Math.floor(Math.random() * markingList.length)];
+        markings.push(marking);
+        markingElements[index].value = marking;
+
+        var color = Math.floor(Math.random()*16777215).toString(16);
+        colors.push(color);
+        colorElements[index].value = color;
+
+        var opac = opacityList[Math.floor(Math.random() * opacityList.length)];
+        opacities.push(opac);
+        opacityElements[index].value = opac;
+      }
   }
   return [markings, colors, opacities];
 }
