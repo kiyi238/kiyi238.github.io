@@ -91,3 +91,7 @@ layout: default
 <div id="Randomizer" class="tabcontent">
   //content//
 </div>
+
+<script>
+  document.getElementById("defaultOpen").click();
+</script>
