@@ -634,7 +634,7 @@ function drawPreview(mwitt) {
               var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
               console.log(mwitt.markingColors[k]);
               console.log(patternMap.get(mwitt.markingColors[k]));
-              tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities[k]), 0);
+              tempCtx.drawImage(pattern, 0, 0);
             }
             else {
               tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
@@ -659,7 +659,7 @@ function drawPreview(mwitt) {
         tempCtx.globalCompositeOperation = "source-over";
         if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
           var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
-          tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities[k]), 0);
+          tempCtx.drawImage(pattern, 40, 0);
         }
         else {
           tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
@@ -744,7 +744,7 @@ function drawPreview(mwitt) {
         //Draw front feathering.
         tempCtx.globalCompositeOperation = "source-over";
         if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
-          tempCtx.drawImage(patternMap.get(mwitt.markingsColors[i]), 0, 0);
+          tempCtx.drawImage(patternMap.get(mwitt.markingColors[i]), 0, 0);
         }
         else {
           tempCtx.fillStyle = '#' + mwitt.markingsColors[i];
