@@ -16,28 +16,28 @@ function calculateRandomBasics() {
 
   if(document.getElementById("baseCheck").checked) { basics.push(document.getElementById("baser").value); }
   else {
-    var base = Math.floor(Math.random()*16777215).toString(16);
+    var base = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0';
     basics.push(base);
     document.getElementById("baser").value = base;
   }
 
   if(document.getElementById("secondaryCheck").checked) { basics.push(document.getElementById("secondaryr").value); }
   else {
-    var second = Math.floor(Math.random()*16777215).toString(16);
+    var second = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0';
     basics.push(second);
     document.getElementById("secondaryr").value = second;
   }
 
   if(document.getElementById("tertiaryCheck").checked) { basics.push(document.getElementById("tertiaryr").value); }
   else {
-    var tert = Math.floor(Math.random()*16777215).toString(16);
+    var tert = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0';
     basics.push(tert);
     document.getElementById("tertiaryr").value = tert;
   }
 
   if(document.getElementById("eyeCheck").checked) { basics.push(document.getElementById("eyer").value); }
   else {
-    var eye = Math.floor(Math.random()*16777215).toString(16);
+    var eye = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0';
     basics.push(eye);
     document.getElementById("eyer").value = eye;
   }
@@ -94,7 +94,7 @@ function calculateRandomMarkings() {
         markings.push(marking);
         markingElements[index].value = marking;
 
-        var color = Math.floor(Math.random()*16777215).toString(16);
+        var color = Math.floor(Math.random()*16777215).toString(16).padStart(6, '0';
         colors.push(color);
         colorElements[index].value = color;
 
