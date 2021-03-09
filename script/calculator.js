@@ -539,9 +539,7 @@ function drawPreview(mwitt) {
   var copyright = new Image();
   var markingImages = [];
   var growthImages = [];
-  var starImg;
-  var grscImg;
-  var rnbwImg;
+  let patternMap = new Map();
   var star = false;
   var grsc = false;
   var rnbw = false;
@@ -597,11 +595,7 @@ function drawPreview(mwitt) {
 
     //Color and draw the base.
     if(mwitt.base == "star" || mwitt.base == "grsc" || mwitt.base == "rnbw") {
-      var tempImg;
-      if(mwitt.base == "star") { tempImg = starImg; }
-      else if(mwitt.base == "grsc") { tempImg = grscImg; }
-      else { tempImg = rnbwImg; }
-      tempCtx.drawImage(tempImg, 0, 0);
+      tempCtx.drawImage(patternMap.get(mwitt.base), 0, 0);
     }
     else {
       tempCtx.fillStyle = '#' + mwitt.base;
@@ -917,19 +911,22 @@ function drawPreview(mwitt) {
 
   //Load patterns if any are used.
   if(star) {
-    starImg = new Image();
+    var starImg = new Image();
     starImg.onload = onloadCallback;
-    starImg.src = 'https://kiyi238.github.io/images/patterns/rainbow.png';
+    starImg.src = 'https://kiyi238.github.io/images/patterns/starry_sky.png';
+    patternMap.set("star", starImg);
   }
   if(grsc) {
-    grscImg = new Image();
+    var grscImg = new Image();
     grscImg.onload = onloadCallback;
     grscImg.src = 'https://kiyi238.github.io/images/patterns/grayscale.png';
+    patternMap.set("grsc", grscImg);
   }
   if(rnbw) {
-    rnbwImg = new Image();
+    var rnbwImg = new Image();
     rnbwImg.onload = onloadCallback;
     rnbwImg.src = 'https://kiyi238.github.io/images/patterns/rainbow.png';
+    patternMap.set("rnbw", rnbwImg);
   }
 
   //Attach callbacks.
