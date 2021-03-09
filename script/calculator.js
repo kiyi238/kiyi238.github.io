@@ -518,7 +518,7 @@ function getMarkingColors(con) {
 }
 
 function setupPatternValues() {
-  patternValues.set(100, 0);
+  patternValues.set("100", 0);
   patternValues.set("90", 40);
   patternValues.set("80", 80);
   patternValues.set("70", 120);
@@ -559,8 +559,8 @@ function drawPreview(mwitt) {
 
   setupPatternValues();
 
-  console.log(mwitt.markingOpacities[0]);
-  console.log(patternValues.get(mwitt.markingOpacities[0]));
+  console.log(mwitt.markingOpacities[0] + "");
+  console.log(patternValues.get(mwitt.markingOpacities[0]) + "");
 
   //Calculate image count.
   if(greaters.includes(mwitt.breed)) {
