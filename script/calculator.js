@@ -533,8 +533,6 @@ function drawPreview(mwitt, canv) {
   var grsc = false;
   var rnbw = false;
 
-  setupPatternValues();
-
   //Calculate image count.
   if(greaters.includes(mwitt.breed)) {
     totalImages++;
