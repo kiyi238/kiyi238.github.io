@@ -534,6 +534,9 @@ function drawPreview(mwitt, canv) {
   var rnbw = false;
 
   //Calculate image count.
+  console.log(mwitt.markings.toString());
+  console.log(mwitt.markingColors.toString());
+  console.log(mwitt.markingOpacities.toString());
   if(greaters.includes(mwitt.breed)) {
     totalImages++;
     if(mwitt.breed == "ice") { totalImages += 2; }
