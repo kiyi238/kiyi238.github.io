@@ -639,6 +639,7 @@ function drawPreview(mwitt) {
     //Draw markings.
     var k, n;
     for (k = 0, n = 0; k < mwitt.markings.length; k++) {
+      var matrix = new DOMMatrix([1, .2, .8, 1, 0, 0]);
       //Recessive markings.
       if(recessives.includes(mwitt.markings[k])) {
         if(mwitt.markingGenes[k] == "aa") {
