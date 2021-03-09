@@ -89,7 +89,49 @@ layout: default
 </div>
 
 <div id="Randomizer" class="tabcontent">
-  //content//
+  <div class="box">
+    <div class="row">
+      <div class="column"><div class="textblock"><b>Mweor Info</b>:</div><br><br>
+
+      <label for="breedl">Breed: </label>
+        <select name="breedr" id="breedr">
+          <option value="lesser">Lesser</option>
+          <option value="longhair">Longhair</option>
+          <option value="munchkin">Munchkin</option>
+          <option value="fire">Fire</option>
+          <option value="air">Air</option>
+          <option value="earth">Earth</option>
+          <option value="water">Water</option>
+          <option value="lightning">Lightning</option>
+          <option value="plant">Plant</option>
+          <option value="ice">Ice</option>
+        </select>
+        <input type="checkbox" title="Lock Value" id="breedCheck" name="breedCheck"><br>
+      <label for="basel">Base Color: #</label>
+        <input type="text" id="baser" name="baser" maxlength="6" size="6">
+        <input type="checkbox" title="Lock Value" id="baseCheck" name="baseCheck"><br>
+      <label for="secondaryl">Secondary Color: #</label>
+        <input type="text" id="secondaryr" name="secondaryr" maxlength="6" size="6">
+        <input type="checkbox" title="Lock Value" id="secondaryCheck" name="secondaryCheck"><br>
+      <label for="tertiaryl">Tertiary Color: #</label>
+        <input type="text" id="tertiaryr" name="tertiaryr" maxlength="6" size="6">
+        <input type="checkbox" title="Lock Value" id="tertiaryCheck" name="tertiaryCheck"><br>
+      <label for="eyel">Eye Color: #</label>
+        <input type="text" id="eyer" name="eyer" maxlength="6" size="6">
+        <input type="checkbox" title="Lock Value" id="eyeCheck" name="eyeCheck"><br><br>
+      <label for="mlr">Number of Markings:</label>
+        <input type="text" id="mlr" name="mlr" maxlength="2" size="2">
+        <button id="markinglistr" onclick="addFields('mlr','containerr');">GO</button><br>
+      <div id="containerr"></div>
+      </div>  
+
+      <div class="column"><div class="textblock"><b>Mweor Preview:</b></div>
+        //image
+      </div>
+
+    </div>
+    <br><button id="predict" type="button" class="buttonblock" onclick="randomize()"><b>RANDOMIZE</b></button>
+  </div>
 </div>
 
 <script>
