@@ -1,10 +1,7 @@
 function randomize() {
   var basics = calculateRandomBasics();
   var markings = calculateRandomMarkings();
-  console.log(markings[0].toString());
-  console.log(markings[1].toString());
-  console.log(markings[2].toString());
-  var mw = new Mweor(basics[0],basics[1],basics[2],basics[3],markings[0],[],markings[1],markings[2]);
+  var mw = new Mweor(basics[0],basics[1],basics[2],basics[3],basics[4],markings[0],[],markings[1],markings[2]);
   drawPreview(mw, "randCanvas");
 }
 

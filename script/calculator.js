@@ -534,9 +534,6 @@ function drawPreview(mwitt, canv) {
   var rnbw = false;
 
   //Calculate image count.
-  console.log(mwitt.markings.toString());
-  console.log(mwitt.markingColors.toString());
-  console.log(mwitt.markingOpacities.toString());
   if(greaters.includes(mwitt.breed)) {
     totalImages++;
     if(mwitt.breed == "ice") { totalImages += 2; }
@@ -568,8 +565,6 @@ function drawPreview(mwitt, canv) {
     }
     //Recessive markings.
     if(recessives.includes(mwitt.markings[i])) {
-      console.log(mwitt.markingGenes[0]);
-      console.log(mwitt.markingGenes);
       if(typeof mwitt.markingGenes[i] == 'undefined' || mwitt.markingGenes[i] == "aa") {
         //Recessive growths.
         if(growths.includes(mwitt.markings[i])) { totalImages += 2; }
