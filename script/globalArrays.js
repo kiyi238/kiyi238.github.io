@@ -11,7 +11,7 @@ var opacityList = ["100","90","80","70","60","50","40","30","20","10"];
 var geneList = ["AA","Aa","aa"];
 var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tabby",
                  "Clouded Leopard","Deer Antlers","Dragon Horns","Ear Tufts","Eastern Dragon",
-                 "Elk Horns","Fairy Wings","Feather Wings","Giraffe","King Cheetah","Mackerel Tabby",
+                 "Elk Antlers","Fairy Wings","Feather Wings","Giraffe","King Cheetah","Mackerel Tabby",
                  "Mane","Marbled","Neck Spikes","Ocelot","Pronghorns","Ram Horns","Saber Fangs",
                  "Snow Leopard","Spotted Tabby","Unicorn Horn"];
 var greaters = ["air","fire","water","earth","lightning","plant","ice"];
