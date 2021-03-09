@@ -793,7 +793,7 @@ function drawPreview(mwitt, canv) {
         }
       }
       else if(recessives.includes(mwitt.markings[i])) {
-        if(mwitt.markingGenes[i] == "aa") {
+        if(typeof mwitt.markingGenes[i] == 'undefined' || mwitt.markingGenes[i] == "aa") {
           n++;
         }
       }
