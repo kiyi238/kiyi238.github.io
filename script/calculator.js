@@ -6,8 +6,8 @@ var recessives = ["Bat Wings","Butterfly Wings","CandleFlame Tabby","Classic Tab
 var greaters = ["air","fire","water","earth","lightning","plant","ice"];
 var growths = ["Deer Antlers","Elk Antlers","Bat Wings","Butterfly Wings","Eastern Dragon","Dragon Horns","Ear Tufts","Fairy Wings",
               "Feather Wings","Leg Feathering","Mane","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
-let patternValues = new Map();map.set("100", 0);map.set("90", 40);map.set("80", 80);map.set("70", 120);map.set("60", 160);map.set("50", 200);
-                              map.set("40", 240);map.set("40", 280);map.set("30", 320);map.set("20", 360);map.set("10", 400);
+let patternValues = new Map();patternValues.set("100", 0);patternValues.set("90", 40);patternValues.set("80", 80);patternValues.set("70", 120);patternValues.set("60", 160);patternValues.set("50", 200);
+                              patternValues.set("40", 240);patternValues.set("40", 280);patternValues.set("30", 320);patternValues.set("20", 360);patternValues.set("10", 400);
 
 function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingColors, markingOpacities) {
   this.breed = breed;
