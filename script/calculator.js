@@ -739,7 +739,7 @@ function drawPreview(mwitt, canv) {
           tempCtx.drawImage(patternMap.get(mwitt.markingColors[i]), 0, 0);
         }
         else {
-          tempCtx.fillStyle = '#' + mwitt.markingsColors[i];
+          tempCtx.fillStyle = '#' + mwitt.markingColors[i];
           tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         }
         tempCtx.globalCompositeOperation = "destination-in";
