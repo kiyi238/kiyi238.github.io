@@ -540,7 +540,6 @@ function drawPreview(mwitt) {
   var markingImages = [];
   var growthImages = [];
   let patternMap = new Map();
-  var starImg;
   var star = false;
   var grsc = false;
   var rnbw = false;
@@ -552,16 +551,16 @@ function drawPreview(mwitt) {
   }
   for(var i = 0; i < mwitt.markings.length; i++) {
     //Recessive markings.
-    if(mwitt.markingColors[i] == star && !star) {
+    if(mwitt.markingColors[i] == "star" && !star) {
       star = true;
       totalImages++;
     }
-    if(mwitt.markingColors[i] == grsc && !grsc) {
+    if(mwitt.markingColors[i] == "grsc" && !grsc) {
       grsc = true;
       totalImages++;
     }
-    if(mwitt.markingColors[i] == rnbw && !rnbw) {
-      grsc = rnbw;
+    if(mwitt.markingColors[i] == "rnbw" && !rnbw) {
+      rnbw = true;
       totalImages++;
     }
     if(recessives.includes(mwitt.markings[i])) {
@@ -596,7 +595,7 @@ function drawPreview(mwitt) {
 
     //Color and draw the base.
     if(mwitt.base == "star" || mwitt.base == "grsc" || mwitt.base == "rnbw") {
-      tempCtx.drawImage(starImg, 0, 0);
+      tempCtx.drawImage(patternMap.get(mwitt.base), 0, 0);
     }
     else {
       tempCtx.fillStyle = '#' + mwitt.base;
@@ -620,11 +619,7 @@ function drawPreview(mwitt) {
             //Draw marking.
             tempCtx.globalCompositeOperation = "source-over";
             if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
-              var tempImg;
-              if(mwitt.markingColors[k] == "star") { tempImg = starImg; }
-              else if(mwitt.markingColors[k] == "grsc") { tempImg = grscImg; }
-              else { tempImg = rnbwImg; }
-              var pattern = tempCtx.createPattern(tempImg, "repeat-x");
+              var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
               tempCtx.drawImage(pattern, patternValues.get(mwitt.markingOpacities), 0);
             }
             else {
@@ -666,11 +661,7 @@ function drawPreview(mwitt) {
     //Color and draw the secondary.
     tempCtx.globalCompositeOperation = "source-over";
     if(mwitt.second == "star" || mwitt.second == "grsc" || mwitt.second == "rnbw") {
-      var tempImg;
-      if(mwitt.second == "star") { tempImg = starImg; }
-      else if(mwitt.second == "grsc") { tempImg = grscImg; }
-      else { tempImg = rnbwImg; }
-      tempCtx.drawImage(tempImg, 0, 0);
+      tempCtx.drawImage(patternMap.get(mwitt.second), 0, 0);
     }
     else {
       tempCtx.fillStyle = '#' + mwitt.second;
@@ -684,11 +675,7 @@ function drawPreview(mwitt) {
     if(greaters.includes(mwitt.breed)) {
       tempCtx.globalCompositeOperation = "source-over";
       if(mwitt.tert == "star" || mwitt.tert == "grsc" || mwitt.tert == "rnbw") {
-        var tempImg;
-        if(mwitt.tert == "star") { tempImg = starImg; }
-        else if(mwitt.tert == "grsc") { tempImg = grscImg; }
-        else { tempImg = rnbwImg; }
-        tempCtx.drawImage(tempImg, 0, 0);
+        tempCtx.drawImage(patternMap.get(mwitt.tert), 0, 0);
       }
       else {
         tempCtx.fillStyle = '#' + mwitt.tert;
@@ -710,11 +697,7 @@ function drawPreview(mwitt) {
     //Color and draw the eyes.
     tempCtx.globalCompositeOperation = "source-over";
     if(mwitt.eye == "star" || mwitt.eye == "grsc" || mwitt.eye == "rnbw") {
-      var tempImg;
-      if(mwitt.eye == "star") { tempImg = starImg; }
-      else if(mwitt.eye == "grsc") { tempImg = grscImg; }
-      else { tempImg = rnbwImg; }
-      tempCtx.drawImage(tempImg, 0, 0);
+      tempCtx.drawImage(patternMap.get(mwitt.eye), 0, 0);
     }
     else {
       tempCtx.fillStyle = '#' + mwitt.eye;
@@ -741,14 +724,10 @@ function drawPreview(mwitt) {
         //Draw front feathering.
         tempCtx.globalCompositeOperation = "source-over";
         if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
-          var tempImg;
-          if(mwitt.markings[i] == "star") { tempImg = starImg; }
-          else if(mwitt.markings[i] == "grsc") { tempImg = grscImg; }
-          else { tempImg = rnbwImg; }
-          tempCtx.drawImage(tempImg, 0, 0);
+          tempCtx.drawImage(patternMap.get(mwitt.markingsColors[i]), 0, 0);
         }
         else {
-          tempCtx.fillStyle = '#' + mwitt.markings[i];
+          tempCtx.fillStyle = '#' + mwitt.markingsColors[i];
           tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         }
         tempCtx.globalCompositeOperation = "destination-in";
@@ -783,14 +762,10 @@ function drawPreview(mwitt) {
           //Draw growth.
           tempCtx.globalCompositeOperation = "source-over";
           if(mwitt.markings[i] == "star" || mwitt.markings[i] == "grsc" || mwitt.markings[i] == "rnbw") {
-            var tempImg;
-            if(mwitt.markings[i] == "star") { tempImg = starImg; }
-            else if(mwitt.markings[i] == "grsc") { tempImg = grscImg; }
-            else { tempImg = rnbwImg; }
-            tempCtx.drawImage(tempImg, 0, 0);
+            tempCtx.drawImage(patternMap.get(mwitt.markings[i]), 0, 0);
           }
           else {
-            tempCtx.fillStyle = '#' + mwitt.markings[i];
+            tempCtx.fillStyle = '#' + mwitt.markingsColors[i];
             tempCtx.fillRect(0, 0, canvas.width, canvas.height);
           }
           tempCtx.globalCompositeOperation = "destination-in";
@@ -819,11 +794,7 @@ function drawPreview(mwitt) {
     if(mwitt.breed == "ice") {
       tempCtx.globalCompositeOperation = "source-over";
       if(mwitt.second == "star" || mwitt.second == "grsc" || mwitt.second == "rnbw") {
-        var tempImg;
-        if(mwitt.second == "star") { tempImg = starImg; }
-        else if(mwitt.second == "grsc") { tempImg = grscImg; }
-        else { tempImg = rnbwImg; }
-        tempCtx.drawImage(tempImg, 0, 0);
+        tempCtx.drawImage(patternMap.get(mwitt.second), 0, 0);
       }
       else {
         tempCtx.fillStyle = '#' + mwitt.second;
@@ -912,7 +883,7 @@ function drawPreview(mwitt) {
 
   //Load patterns if any are used.
   if(star) {
-    starImg = new Image();
+    var starImg = new Image();
     starImg.onload = onloadCallback;
     starImg.src = 'https://kiyi238.github.io/images/patterns/starry_sky.png';
     patternMap.set("star", starImg);
