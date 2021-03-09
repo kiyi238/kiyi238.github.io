@@ -64,7 +64,7 @@ function addFields(num, con){
 
         container.appendChild(opacity);
         container.appendChild(document.createTextNode("%"));
-
+        console.log(containerr.id);
         if(container.id == "containerr") {
           var checkBox = document.createElement("input");
           checkBox.type = "checkbox";

@@ -10,7 +10,7 @@ layout: default
 <div id="Mwitt Predictor" class="tabcontent">
   <div class="box">
     <div class="row">
-      <div class="column"><div class="textblock">Mweor acting as <b>Female</b>:</div><br><br>
+      <div class="column"><div class="textblock">Mweor acting as <b>Female</b>:</div><br>
 
       <label for="breedl">Breed: </label>
         <select name="breed" id="breed">
@@ -39,7 +39,7 @@ layout: default
         <div id="containerf"></div>
       </div>
 
-      <div class="column"><div class="textblock">Mweor acting as <b>Male</b>:</div><br><br>
+      <div class="column"><div class="textblock">Mweor acting as <b>Male</b>:</div><br>
 
       <label for="breedm">Breed: </label>
         <select name="breedm" id="breedm">
@@ -91,7 +91,7 @@ layout: default
 <div id="Randomizer" class="tabcontent">
   <div class="box">
     <div class="row">
-      <div class="column"><div class="textblock"><b>Mweor Info</b>:</div><br><br>
+      <div class="column"><div class="textblock"><b>Mweor Info</b>:</div><br>
 
       <label for="breedl">Breed: </label>
         <select name="breedr" id="breedr">
@@ -126,7 +126,7 @@ layout: default
       </div>  
 
       <div class="column"><div class="textblock"><b>Mweor Preview:</b></div>
-        //image
+        <canvas id="randCanvas" width="400" height="300"></canvas>
       </div>
 
     </div>
