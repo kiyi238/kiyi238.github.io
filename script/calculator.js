@@ -633,7 +633,7 @@ function drawPreview(mwitt) {
             if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
               var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
               tempCtx.fillStyle = pattern;
-              tempCtx.fillRect(patternValues.get(mwitt.markingOpacities[k]), 0, canvas.width, canvas.height);
+              tempCtx.fillRect(0, 0, canvas.width, canvas.height);
             }
             else {
               tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
@@ -659,7 +659,7 @@ function drawPreview(mwitt) {
         if(mwitt.markingColors[k] == "star" || mwitt.markingColors[k] == "grsc" || mwitt.markingColors[k] == "rnbw") {
           var pattern = tempCtx.createPattern(patternMap.get(mwitt.markingColors[k]), "repeat-x");
           tempCtx.fillStyle = pattern;
-          tempCtx.fillRect(patternValues.get(mwitt.markingOpacities[k]), 0, canvas.width, canvas.height);
+          tempCtx.fillRect(0, 0, canvas.width, canvas.height);
         }
         else {
           tempCtx.globalAlpha = (mwitt.markingOpacities[k]/100);
