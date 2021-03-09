@@ -549,18 +549,28 @@ function drawPreview(mwitt) {
     totalImages++;
     if(mwitt.breed == "ice") { totalImages += 2; }
   }
+  if(mwitt.base == "star" || mwitt.second == "star" || mwitt.tert == "star" || mwitt.eye == "star") {
+    star = true;
+    totalImages++;
+  }
+  if(mwitt.base == "grsc" || mwitt.second == "grsc" || mwitt.tert == "grsc" || mwitt.eye == "grsc") {
+    grsc = true;
+    totalImages++;
+  }
+  if(mwitt.base == "rnbw" || mwitt.second == "rnbw" || mwitt.tert == "rnbw" || mwitt.eye == "rnbw") {
+    rnbw = true;
+    totalImages++;
+  }
   for(var i = 0; i < mwitt.markings.length; i++) {
-    console.log(mwitt.markingColors[i]);
-    if(mwitt.markingColors[i] == "star" && star == false) {
+    if(mwitt.markingColors[i] == "star" && !star) {
       star = true;
-      console.log("checked");
       totalImages++;
     }
-    if(mwitt.markingColors[i] == "grsc" && grsc == false) {
+    if(mwitt.markingColors[i] == "grsc" && !grsc) {
       grsc = true;
       totalImages++;
     }
-    if(mwitt.markingColors[i] == "rnbw" && rnbw == false) {
+    if(mwitt.markingColors[i] == "rnbw" && !rnbw) {
       rnbw = true;
       totalImages++;
     }
@@ -889,7 +899,6 @@ function drawPreview(mwitt) {
     starImg.onload = onloadCallback;
     starImg.src = 'https://kiyi238.github.io/images/patterns/starry_sky.png';
     patternMap.set("star", starImg);
-    console.log("star");
   }
   if(grsc) {
     var grscImg = new Image();
