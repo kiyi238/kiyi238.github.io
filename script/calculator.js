@@ -550,6 +550,7 @@ function drawPreview(mwitt) {
     if(mwitt.breed == "ice") { totalImages += 2; }
   }
   for(var i = 0; i < mwitt.markings.length; i++) {
+    console.log(mwitt.markingColors[i]);
     if(mwitt.markingColors[i] == "star" && star == false) {
       star = true;
       console.log("checked");
