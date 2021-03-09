@@ -518,7 +518,7 @@ function getMarkingColors(con) {
 }
 
 function setupPatternValues() {
-  patternValues.set("100", 0);
+  patternValues.set(100, 0);
   patternValues.set("90", 40);
   patternValues.set("80", 80);
   patternValues.set("70", 120);
