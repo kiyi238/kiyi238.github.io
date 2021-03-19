@@ -2,9 +2,17 @@ function addFields(num, con){
   var number = document.getElementById(num).value;
   var container = document.getElementById(con);
   var markingElements = container.getElementsByTagName("input");
+  var markingCount = 0;
   var count = number;
 
-  while(count < markingElements.length) {
+  for(var n = 0; n < markingElements.length) {
+    if(markingElements[n].name.includes("marking")) {
+      markingCount++;
+    }
+  }
+
+  while(count < markingCount && container.id == "containerr") {
+    container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
@@ -15,7 +23,18 @@ function addFields(num, con){
     count++;
   }
 
-  if(number > markingElements.length) {
+  while(count < markingCount && container.id == "containerf") {
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    count++;
+  }
+
+  if(number > markingCount) {
     var add = number - markingElements.length;
     for (var i = 0; i < add; i++){
       var marking = document.createElement("select");
