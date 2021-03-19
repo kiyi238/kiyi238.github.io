@@ -23,7 +23,7 @@ function addFields(num, con){
     count++;
   }
 
-  while(count < markingCount && container.id == "containerf") {
+  while(count < markingCount && container.id == "containerf" || container.id == "containerm ") {
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
