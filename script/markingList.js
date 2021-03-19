@@ -5,7 +5,7 @@ function addFields(num, con){
   var markingCount = 0;
   var count = number;
 
-  for(var n = 0; n < markingElements.length) {
+  for(var n = 0; n < markingElements.length; n++) {
     if(markingElements[n].name.includes("marking")) {
       markingCount++;
     }
