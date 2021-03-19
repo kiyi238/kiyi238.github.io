@@ -23,7 +23,7 @@ function addFields(num, con){
     count++;
   }
 
-  while(count < markingCount && container.id == "containerf" || container.id == "containerm ") {
+  while(count < markingCount && (container.id == "containerf" || container.id == "containerm")) {
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
@@ -35,7 +35,7 @@ function addFields(num, con){
   }
 
   if(number > markingCount) {
-    var add = number - markingElements.length;
+    var add = number - count;
     for (var i = 0; i < add; i++){
       var marking = document.createElement("select");
       marking.type = "select";
