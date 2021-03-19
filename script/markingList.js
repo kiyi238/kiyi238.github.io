@@ -12,7 +12,6 @@ function addFields(num, con){
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
     count++;
   }
 
