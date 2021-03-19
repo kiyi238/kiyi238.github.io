@@ -2,15 +2,11 @@ function addFields(num, con){
   var number = document.getElementById(num).value;
   var container = document.getElementById(con);
   var markingElements = container.getElementsByTagName("input");
+  var count = number;
 
-  while(number < markingElements.length) {
+  while(count < markingElements.length) {
     container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    number--;
+    count--;
   }
 
   if(number > markingElements.length) {
