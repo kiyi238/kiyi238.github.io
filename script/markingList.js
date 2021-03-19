@@ -6,6 +6,11 @@ function addFields(num, con){
 
   while(count < markingElements.length) {
     container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
     count++;
   }
 
