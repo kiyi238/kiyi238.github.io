@@ -35,7 +35,7 @@ function addFields(num, con){
   }
 
   if(number > markingCount) {
-    var add = number - count;
+    var add = number - markingCount;
     for (var i = 0; i < add; i++){
       var marking = document.createElement("select");
       marking.type = "select";
