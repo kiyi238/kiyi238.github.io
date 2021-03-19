@@ -6,11 +6,12 @@ function addFields(num, con){
 
   while(count < markingElements.length) {
     container.removeChild(container.lastChild);
-    count--;
+    count++;
   }
 
   if(number > markingElements.length) {
-    for (var i = 0; i < number; i++){
+    var add = number - markingElements.length;
+    for (var i = 0; i < add; i++){
       var marking = document.createElement("select");
       marking.type = "select";
       marking.name = "marking" + i;
