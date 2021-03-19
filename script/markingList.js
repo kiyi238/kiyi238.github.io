@@ -11,19 +11,7 @@ function addFields(num, con){
     }
   }
 
-  while(count < markingCount && container.id == "containerr") {
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    container.removeChild(container.lastChild);
-    count++;
-  }
-
-  while(count < markingCount && (container.id == "containerf" || container.id == "containerm")) {
+  while(count < markingCount) {
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
     container.removeChild(container.lastChild);
