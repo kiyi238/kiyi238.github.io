@@ -1,78 +1,78 @@
 function addFields(num, con){
-    var number = document.getElementById(num).value;
-    var container = document.getElementById(con);
-    var markingElements = container.getElementsByTagName("input");
+  var number = document.getElementById(num).value;
+  var container = document.getElementById(con);
+  var markingElements = container.getElementsByTagName("input");
 
-    while(number < markingElements.length) {
-      container.removeChild(container.lastChild);
-      container.removeChild(container.lastChild);
-      container.removeChild(container.lastChild);
-      container.removeChild(container.lastChild);
-      container.removeChild(container.lastChild);
-      container.removeChild(container.lastChild);
-      number--;
-    }
+  while(number < markingElements.length) {
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    container.removeChild(container.lastChild);
+    number--;
+  }
 
+  if(number > markingElements.length) {
     for (var i = 0; i < number; i++){
-        var marking = document.createElement("select");
-        marking.type = "select";
-        marking.name = "marking" + i;
+      var marking = document.createElement("select");
+      marking.type = "select";
+      marking.name = "marking" + i;
+      for (var j = 0; j < markingList.length; j++) {
+        var mark = document.createElement("option");
+        mark.value = markingList[j];
+        mark.text = markingList[j];
+        marking.appendChild(mark);
+      }
+      container.appendChild(marking);
 
-        for (var j = 0; j < markingList.length; j++) {
-          var mark = document.createElement("option");
-          mark.value = markingList[j];
-          mark.text = markingList[j];
-          marking.appendChild(mark);
+      if(container.id != "containerr") {
+        var gene = document.createElement("select");
+        gene.type = "select";
+        gene.name = "gene" + i;
+
+        for (var k = 0; k < geneList.length; k++) {
+          var g = document.createElement("option");
+          g.value = geneList[k];
+          g.text = geneList[k];
+          gene.appendChild(g);
         }
 
-        container.appendChild(marking);
+        container.appendChild(gene);
+      }
+      container.appendChild(document.createTextNode(" #"));
 
-        if(container.id != "containerr") {
-          var gene = document.createElement("select");
-          gene.type = "select";
-          gene.name = "gene" + i;
+      var color = document.createElement("input");
+      color.type = "text";
+      color.name = "color" + i;
+      color.maxlength = "6";
+      color.size = "6";
+      container.appendChild(color);
 
-          for (var k = 0; k < geneList.length; k++) {
-            var g = document.createElement("option");
-            g.value = geneList[k];
-            g.text = geneList[k];
-            gene.appendChild(g);
-          }
+      var opacity = document.createElement("select");
+      opacity.type = "select";
+      opacity.name = "opacity" + i;
 
-          container.appendChild(gene);
-        }
-        container.appendChild(document.createTextNode(" #"));
+      for (var n = 0; n < opacityList.length; n++) {
+        var opac = document.createElement("option");
+        opac.value = opacityList[n];
+        opac.text = opacityList[n];
+        opacity.appendChild(opac);
+      }
 
-        var color = document.createElement("input");
-        color.type = "text";
-        color.name = "color" + i;
-        color.maxlength = "6";
-        color.size = "6";
-        container.appendChild(color);
+      container.appendChild(opacity);
+      container.appendChild(document.createTextNode("%"));
 
-        var opacity = document.createElement("select");
-        opacity.type = "select";
-        opacity.name = "opacity" + i;
+      if(container.id == "containerr") {
+        var checkBox = document.createElement("input");
+        checkBox.type = "checkbox";
+        checkBox.title = "Lock Value";
+        checkBox.name = "check" + i;
+        container.appendChild(checkBox);
+      }
 
-        for (var n = 0; n < opacityList.length; n++) {
-          var opac = document.createElement("option");
-          opac.value = opacityList[n];
-          opac.text = opacityList[n];
-          opacity.appendChild(opac);
-        }
-
-        container.appendChild(opacity);
-        container.appendChild(document.createTextNode("%"));
-
-        if(container.id == "containerr") {
-          var checkBox = document.createElement("input");
-          checkBox.type = "checkbox";
-          checkBox.title = "Lock Value";
-          checkBox.name = "check" + i;
-          container.appendChild(checkBox);
-        }
-
-        // Append a line break
-        container.appendChild(document.createElement("br"));
+      // Append a line break
+      container.appendChild(document.createElement("br"));
     }
+  }
 }
