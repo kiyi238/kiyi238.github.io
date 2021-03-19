@@ -1,9 +1,18 @@
 function addFields(num, con){
     var number = document.getElementById(num).value;
     var container = document.getElementById(con);
-    while (container.hasChildNodes()) {
-        container.removeChild(container.lastChild);
+    var markingElements = container.getElementsByTagName("input");
+
+    while(number < markingElements.length) {
+      container.removeChild(container.lastChild);
+      container.removeChild(container.lastChild);
+      container.removeChild(container.lastChild);
+      container.removeChild(container.lastChild);
+      container.removeChild(container.lastChild);
+      container.removeChild(container.lastChild);
+      number--;
     }
+
     for (var i = 0; i < number; i++){
         var marking = document.createElement("select");
         marking.type = "select";
