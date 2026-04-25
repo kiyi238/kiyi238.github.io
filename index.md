@@ -12,11 +12,12 @@ layout: default
     <div class="row">
       <div class="column"><div class="textblock">Mweor acting as <b>Female</b>:</div><br>
       
-      <label for="breedl">Breed: </label>
-        <div id="containerBreedListF"></div>
+      <div id="containerBreedListF">
+        <label for="breedl">Breed: </label>
         <script>
           breedList('containerBreedListF');
         </script><br>
+      </div>
       <label for="basel">Base Color: #</label>
         <input type="text" id="base" name="base" maxlength="6" size="6"><br>
       <label for="secondaryl">Secondary Color: #</label>
@@ -27,15 +28,19 @@ layout: default
         <input type="text" id="eye" name="eye" maxlength="6" size="6"><br>
 
       <label for="charl">Characteristic: </label>
-        <div id="containercharl"></div>
+      <div id="containercharl">
         <script>
           charList('containercharl');
         </script>
-         #<input type="text" id="charcl" name="charcl" maxlength="6" size="6">
-        <div id="containercharol"></div>
-        <script>
-          opacList('containercharol');
-        </script>%<br><br>
+        #<input type="text" id="charcl" name="charcl" maxlength="6" size="6">
+        <div id="containercharo">
+          <script>
+            opacList('containercharo');
+          </script>
+          %
+        </div>
+      </div>
+      <br><br>
 
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
@@ -45,11 +50,12 @@ layout: default
 
       <div class="column"><div class="textblock">Mweor acting as <b>Male</b>:</div><br>
 
-      <label for="breedm">Breed: </label>
-        <div id="containerBreedListM"></div>
+      <div id="containerBreedListM">
+        <label for="breedm">Breed: </label>
         <script>
           breedList('containerBreedListM');
         </script><br>
+      </div>
       <label for="baseml">Base Color: #</label>
         <input type="text" id="basem" name="basem" maxlength="6" size="6"><br>
       <label for="secondaryml">Secondary Color: #</label>
@@ -60,15 +66,19 @@ layout: default
           <input type="text" id="eyem" name="eyem" maxlength="6" size="6"><br><br>
 
       <label for="charml">Characteristic: </label>
-        <div id="containercharl"></div>
+      <div id="containercharm">
         <script>
-          charList('containercharl');
-        </script><br>
-         #<input type="text" id="charcm" name="charcm" maxlength="6" size="6">
-        <div id="containercharom"></div>
-        <script>
-          opacList('containercharom');
-        </script>%<br><br>
+          charList('containercharm');
+        </script>
+        #<input type="text" id="charcm" name="charcm" maxlength="6" size="6">
+        <div id="containercharom">
+          <script>
+            opacList('containercharom');
+          </script>
+          %
+        </div>
+      </div>
+      <br><br>
 
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
