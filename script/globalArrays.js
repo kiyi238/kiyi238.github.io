@@ -26,8 +26,8 @@ var recessives = ["Back Spikes","Bat Wings","Butterfly Wings","CandleFlame Tabby
                  "Snow Leopard","Spotted Tabby","Unicorn Horn"];
 var opacityList = ["100","90","80","70","60","50","40","30","20","10"];
 var geneList = ["AA","Aa","aa"];
-var greaters = ["air","fire","water","earth","lightning","plant","ice"];
-var breeds = ["lesser","air","longhair","water","fire","munchkin","earth","lightning","plant","ice"];
+var greaters = ["Fire","Air","Earth","Water","Lightning","Plant","Ice","Magma"];
+var breeds = ["Lesser","Longhair","Munchkin","Curl","Fire","Air","Earth","Water","Lightning","Plant","Ice","Magma"];
 var growths = ["Abada Horns","Back Spikes","Bat Wings","Budding Horns","Butterfly Antennae","Butterfly Wings","Deer Antlers","Dragon Horns","Elk Antlers","Eastern Dragon","Ear Tufts","Fairy Wings",
               "Feather Wings","Fiend Horns","Gemstones","Head Feather Wings","Igneous Horns","Leg Feathering","Mane","Moth Wings","Neck Spikes","Pronghorns","Ram Horns","Saber Fangs","Unicorn Horn"];
 var characteristicList = ["None","Bioluminous","Fade","Orante","Outline","Tiger"];
