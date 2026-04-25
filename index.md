@@ -25,7 +25,7 @@ layout: default
       <label for="tertiaryl">Tertiary Color: #</label>
         <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br>
       <label for="eyel">Eye Color: #</label>
-        <input type="text" id="eye" name="eye" maxlength="6" size="6"><br>
+        <input type="text" id="eye" name="eye" maxlength="6" size="6"><br><br>
 
       <label for="charl">Characteristic: </label>
       <div id="containercharl">
@@ -36,8 +36,7 @@ layout: default
         <div id="containercharo">
           <script>
             opacList('containercharo');
-          </script>
-          %
+          </script>%
         </div>
       </div>
       <br><br>
@@ -71,12 +70,11 @@ layout: default
           charList('containercharm');
         </script>
         #<input type="text" id="charcm" name="charcm" maxlength="6" size="6">
-        <div id="containercharom">
+        <span id="containercharom">
           <script>
             opacList('containercharom');
-          </script>
-          %
-        </div>
+          </script>%
+        </span>
       </div>
       <br><br>
 
