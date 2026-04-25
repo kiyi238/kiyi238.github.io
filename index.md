@@ -110,11 +110,12 @@ layout: default
       <div class="column"><div class="textblock"><b>Mweor Info</b>:</div><br>
 
       <label for="breedl">Breed: </label>
-        <div id="containerBreedListR"></div>
-        <script>
-          breedList('containerBreedListR');
-        </script>
-        <input type="checkbox" title="Lock Value" id="breedCheck" name="breedCheck"><br>
+        <div id="containerBreedListR">
+          <script>
+            breedList('containerBreedListR');
+          </script>
+          <input type="checkbox" title="Lock Value" id="breedCheck" name="breedCheck"><br>
+        </div>
       <label for="basel">Base Color: #</label>
         <input type="text" id="baser" name="baser" maxlength="6" size="6">
         <input type="checkbox" title="Lock Value" id="baseCheck" name="baseCheck"><br>
