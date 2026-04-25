@@ -11,7 +11,7 @@ function calculateRandomBasics() {
   else {
     var breed = breeds[Math.floor(Math.random() * breeds.length)];
     basics.push(breed);
-    document.getElementById("containerBreedListR").getElementsByTagName("select").value = breed;
+    document.getElementById("breedr").value = breed;
   }
 
   if(document.getElementById("baseCheck").checked) { basics.push(document.getElementById("baser").value); }

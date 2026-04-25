@@ -11,13 +11,20 @@ layout: default
   <div class="box">
     <div class="row">
       <div class="column"><div class="textblock">Mweor acting as <b>Female</b>:</div><br>
-      
-      <div id="containerBreedListF">
-        <label for="breedl">Breed: </label>
-        <script>
-          breedList('containerBreedListF');
-        </script><br>
-      </div>
+
+      <label for="breedl">Breed: </label>
+        <select name="breed" id="breed">
+          <option value="lesser">Lesser</option>
+          <option value="longhair">Longhair</option>
+          <option value="munchkin">Munchkin</option>
+          <option value="fire">Fire</option>
+          <option value="air">Air</option>
+          <option value="earth">Earth</option>
+          <option value="water">Water</option>
+          <option value="lightning">Lightning</option>
+          <option value="plant">Plant</option>
+          <option value="ice">Ice</option>
+        </select><br>
       <label for="basel">Base Color: #</label>
         <input type="text" id="base" name="base" maxlength="6" size="6"><br>
       <label for="secondaryl">Secondary Color: #</label>
@@ -26,21 +33,6 @@ layout: default
         <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br>
       <label for="eyel">Eye Color: #</label>
         <input type="text" id="eye" name="eye" maxlength="6" size="6"><br><br>
-
-      <label for="charl">Characteristic: </label>
-      <div id="containercharl">
-        <script>
-          charList('containercharl');
-        </script>
-        #<input type="text" id="charcl" name="charcl" maxlength="6" size="6">
-        <span id="containercharo">
-          <script>
-            opacList('containercharo');
-          </script>%
-        </span>
-      </div>
-      <br>
-
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
         <button id="markinglistf" onclick="addFields('mlf','containerf');">GO</button><br>
@@ -49,35 +41,27 @@ layout: default
 
       <div class="column"><div class="textblock">Mweor acting as <b>Male</b>:</div><br>
 
-      <div id="containerBreedListM">
-        <label for="breedm">Breed: </label>
-        <script>
-          breedList('containerBreedListM');
-        </script><br>
-      </div>
+      <label for="breedm">Breed: </label>
+        <select name="breedm" id="breedm">
+          <option value="lesser">Lesser</option>
+          <option value="longhair">Longhair</option>
+          <option value="munchkin">Munchkin</option>
+          <option value="fire">Fire</option>
+          <option value="air">Air</option>
+          <option value="earth">Earth</option>
+          <option value="water">Water</option>
+          <option value="lightning">Lightning</option>
+          <option value="plant">Plant</option>
+          <option value="ice">Ice</option>
+        </select><br>
       <label for="baseml">Base Color: #</label>
         <input type="text" id="basem" name="basem" maxlength="6" size="6"><br>
       <label for="secondaryml">Secondary Color: #</label>
         <input type="text" id="secondarym" name="secondarym" maxlength="6" size="6"><br>
       <label for="tertiaryml">Tertiary Color: #</label>
         <input type="text" id="tertiarym" name="tertiarym" maxlength="6" size="6"><br>
-      <label for="eyeml">Eye Color: #</label>
+      <label for="eyel">Eye Color: #</label>
           <input type="text" id="eyem" name="eyem" maxlength="6" size="6"><br><br>
-
-      <label for="charml">Characteristic: </label>
-      <div id="containercharm">
-        <script>
-          charList('containercharm');
-        </script>
-        #<input type="text" id="charcm" name="charcm" maxlength="6" size="6">
-        <span id="containercharom">
-          <script>
-            opacList('containercharom');
-          </script>%
-        </span>
-      </div>
-      <br>
-
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
         <button id="markinglistm" onclick="addFields('mlm','containerm');">GO</button><br>
@@ -110,12 +94,19 @@ layout: default
       <div class="column"><div class="textblock"><b>Mweor Info</b>:</div><br>
 
       <label for="breedl">Breed: </label>
-        <div id="containerBreedListR">
-          <script>
-            breedList('containerBreedListR');
-          </script>
-          <input type="checkbox" title="Lock Value" id="breedCheck" name="breedCheck"><br>
-        </div>
+        <select name="breedr" id="breedr">
+          <option value="lesser">Lesser</option>
+          <option value="longhair">Longhair</option>
+          <option value="munchkin">Munchkin</option>
+          <option value="fire">Fire</option>
+          <option value="air">Air</option>
+          <option value="earth">Earth</option>
+          <option value="water">Water</option>
+          <option value="lightning">Lightning</option>
+          <option value="plant">Plant</option>
+          <option value="ice">Ice</option>
+        </select>
+        <input type="checkbox" title="Lock Value" id="breedCheck" name="breedCheck"><br>
       <label for="basel">Base Color: #</label>
         <input type="text" id="baser" name="baser" maxlength="6" size="6">
         <input type="checkbox" title="Lock Value" id="baseCheck" name="baseCheck"><br>
