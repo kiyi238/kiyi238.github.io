@@ -11,7 +11,7 @@ layout: default
   <div class="box">
     <div class="row">
       <div class="column"><div class="textblock">Mweor acting as <b>Female</b>:</div><br>
-//      
+      
       <label for="breedl">Breed: </label>
         <div id="containerBreedListF"></div>
         <script>
@@ -25,43 +25,27 @@ layout: default
         <input type="text" id="tertiary" name="tertiary" maxlength="6" size="6"><br>
       <label for="eyel">Eye Color: #</label>
         <input type="text" id="eye" name="eye" maxlength="6" size="6"><br>
-//
+
       <label for="charl">Characteristic: </label>
         <div id="containercharl"></div>
         <script>
           charList('containercharl');
         </script><br>
-        <select name="char" id="char">
-          <option value="none">None</option>
-          <option value="bioluminous">Bioluminous</option>
-          <option value="fade">Fade</option>
-          <option value="orante">Orante</option>
-          <option value="outline">Outline</option>
-          <option value="tiger">Tiger</option>
-        </select> #
         <input type="text" id="charc" name="charc" maxlength="6" size="6">
-        <select name="charo" id="charo">
-          <option value="100">100</option>
-          <option value="90">90</option>
-          <option value="80">80</option>
-          <option value="70">70</option>
-          <option value="60">60</option>
-          <option value="50">50</option>
-          <option value="40">40</option>
-          <option value="30">30</option>
-          <option value="20">20</option>
-          <option value="10">10</option>
-        </select>
+        <div id="containercharol"></div>
+        <script>
+          charList('containercharol');
+        </script>
         %<br><br>
-//
+
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
         <button id="markinglistf" onclick="addFields('mlf','containerf');">GO</button><br>
         <div id="containerf"></div>
       </div>
-//
+
       <div class="column"><div class="textblock">Mweor acting as <b>Male</b>:</div><br>
-//
+
       <label for="breedm">Breed: </label>
         <div id="containerBreedListM"></div>
         <script>
@@ -75,31 +59,19 @@ layout: default
         <input type="text" id="tertiarym" name="tertiarym" maxlength="6" size="6"><br>
       <label for="eyeml">Eye Color: #</label>
           <input type="text" id="eyem" name="eyem" maxlength="6" size="6"><br><br>
-//
+
       <label for="charml">Characteristic: </label>
-        <select name="charm" id="charm">
-          <option value="none">None</option>
-          <option value="bioluminous">Bioluminous</option>
-          <option value="fade">Fade</option>
-          <option value="orante">Orante</option>
-          <option value="outline">Outline</option>
-          <option value="tiger">Tiger</option>
-        </select> #
-        <input type="text" id="charmc" name="charmc" maxlength="6" size="6">
-        <select name="charmo" id="charmo">
-          <option value="100">100</option>
-          <option value="90">90</option>
-          <option value="80">80</option>
-          <option value="70">70</option>
-          <option value="60">60</option>
-          <option value="50">50</option>
-          <option value="40">40</option>
-          <option value="30">30</option>
-          <option value="20">20</option>
-          <option value="10">10</option>
-        </select>
+        <div id="containercharl"></div>
+        <script>
+          charList('containercharl');
+        </script><br>
+        <input type="text" id="charc" name="charc" maxlength="6" size="6">
+        <div id="containercharol"></div>
+        <script>
+          charList('containercharol');
+        </script>
         %<br><br>
-//
+
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
         <button id="markinglistm" onclick="addFields('mlm','containerm');">GO</button><br>
@@ -117,7 +89,7 @@ layout: default
           <div id="cMwittInfo"></div>
         </div>
       </div>
-//
+
       <div class="column">
         <div class="textblock"><b>Mwitt Preview:</b></div>
         <canvas id="prevCanvas" width="400" height="300"></canvas>
@@ -130,7 +102,7 @@ layout: default
   <div class="box">
     <div class="row">
       <div class="column"><div class="textblock"><b>Mweor Info</b>:</div><br>
-//
+
       <label for="breedl">Breed: </label>
         <div id="containerBreedListR"></div>
         <script>
@@ -155,11 +127,11 @@ layout: default
         <button id="markinglistr" onclick="addFields('mlr','containerr');">GO</button><br>
       <div id="containerr"></div>
       </div>  
-//
+
       <div class="column"><div class="textblock"><b>Mweor Preview:</b></div>
         <canvas id="randCanvas" width="400" height="300"></canvas>
       </div>
-//
+
     </div>
     <br><button id="predict" type="button" class="buttonblock" onclick="randomize()"><b>RANDOMIZE</b></button>
   </div>
