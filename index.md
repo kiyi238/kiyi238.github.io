@@ -34,7 +34,7 @@ layout: default
          #<input type="text" id="charcl" name="charcl" maxlength="6" size="6">
         <div id="containercharol"></div>
         <script>
-          charList('containercharol');
+          opacList('containercharol');
         </script>%<br><br>
 
       <label for="mlf">Number of Markings:</label>
@@ -67,7 +67,7 @@ layout: default
          #<input type="text" id="charcm" name="charcm" maxlength="6" size="6">
         <div id="containercharom"></div>
         <script>
-          charList('containercharom');
+          opacList('containercharom');
         </script>%<br><br>
 
       <label for="mlf">Number of Markings:</label>
