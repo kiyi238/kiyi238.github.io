@@ -30,13 +30,12 @@ layout: default
         <div id="containercharl"></div>
         <script>
           charList('containercharl');
-        </script><br>
-        <input type="text" id="charc" name="charc" maxlength="6" size="6">
+        </script>
+         #<input type="text" id="charcl" name="charcl" maxlength="6" size="6">
         <div id="containercharol"></div>
         <script>
           charList('containercharol');
-        </script>
-        %<br><br>
+        </script>%<br><br>
 
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlf" name="mlf" maxlength="2" size="2">
@@ -65,12 +64,11 @@ layout: default
         <script>
           charList('containercharl');
         </script><br>
-        <input type="text" id="charc" name="charc" maxlength="6" size="6">
-        <div id="containercharol"></div>
+         #<input type="text" id="charcm" name="charcm" maxlength="6" size="6">
+        <div id="containercharom"></div>
         <script>
-          charList('containercharol');
-        </script>
-        %<br><br>
+          charList('containercharom');
+        </script>%<br><br>
 
       <label for="mlf">Number of Markings:</label>
         <input type="text" id="mlm" name="mlm" maxlength="2" size="2">
