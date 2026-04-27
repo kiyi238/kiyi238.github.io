@@ -7,11 +7,11 @@ function randomize() {
 
 function calculateRandomBasics() {
   var basics = [];
-  if(document.getElementById("breedCheck").checked) { basics.push(document.getElementById("breedr").value); }
+  if(document.getElementById("breedCheck").checked) { basics.push(document.getElementById("containerBreedListR").getElementsByTagName("select").value); }
   else {
     var breed = breeds[Math.floor(Math.random() * breeds.length)];
     basics.push(breed);
-    document.getElementById("breedr").value = breed;
+    document.getElementById("containerBreedListR").getElementsByTagName("select").value = breed;
   }
 
   if(document.getElementById("baseCheck").checked) { basics.push(document.getElementById("baser").value); }

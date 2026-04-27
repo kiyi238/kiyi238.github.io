@@ -11,8 +11,8 @@ function Mweor(breed, base, second, tert, eye, markings, markingGenes, markingCo
 }
 
 function calculateMwitt() {
-  var femaleMweor = new Mweor(document.getElementById("breed").value,document.getElementById("base").value,document.getElementById("secondary").value,document.getElementById("tertiary").value,document.getElementById("eye").value,getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
-  var maleMweor = new Mweor(document.getElementById("breedm").value,document.getElementById("basem").value,document.getElementById("secondarym").value,document.getElementById("tertiarym").value,document.getElementById("eyem").value,getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
+  var femaleMweor = new Mweor(document.getElementById("containerBreedListF").getElementsByTagName("select").value,document.getElementById("base").value,document.getElementById("secondary").value,document.getElementById("tertiary").value,document.getElementById("eye").value,getMarkings("containerf"),getMarkingGenes("containerf"),getMarkingColors("containerf"),getMarkingOpacities("containerf"));
+  var maleMweor = new Mweor(document.getElementById("containerBreedListM").getElementsByTagName("select").value,document.getElementById("basem").value,document.getElementById("secondarym").value,document.getElementById("tertiarym").value,document.getElementById("eyem").value,getMarkings("containerm"),getMarkingGenes("containerm"),getMarkingColors("containerm"),getMarkingOpacities("containerm"));
 
   var markingResults = calculateMarkings(femaleMweor, maleMweor);
   var mwitt = new Mweor(calculateBreed(femaleMweor, maleMweor), calculateColor(femaleMweor.base, maleMweor.base), calculateColor(femaleMweor.second, maleMweor.second), calculateColor(femaleMweor.tert, maleMweor.tert), calculateColor(femaleMweor.eye, maleMweor.eye), markingResults[0], markingResults[1], markingResults[2], markingResults[3]);
